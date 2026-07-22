@@ -1,0 +1,4 @@
+src/locales/*.json linguist-detectable=true
+src/views/tools/*/md/**/*.md linguist-detectable=true
+src/views/tools/**/json/**/*.json linguist-detectable=true
+src/assets/svg/*.svg linguist-detectable=true

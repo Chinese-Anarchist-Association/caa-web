@@ -1,0 +1,15 @@
+node_modules
+dist
+.vite-ssg-temp
+
+# Editor directories and files
+.vscode/**/*
+!.vscode/extensions.json
+.idea
+
+# Logs
+*.log
+npm-debug.log*
+
+src/assets/_svg
+src/_test

@@ -1,0 +1,15 @@
+$primary: #61656c;
+
+//$modal-footer-bg: black;
+
+@import "bootstrap/scss/bootstrap";
+
+
+.modal{
+  --bs-modal-footer-bg: #a8a8a8;
+  --bs-modal-footer-color: #212529;
+}
+[data-bs-theme=dark] .modal{
+  --bs-modal-footer-bg: #1d1f22;
+  --bs-modal-footer-color: #aeb0b3;
+}
