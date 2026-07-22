@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const iconsName = [//需要复制的图标名
     'translate',
     'check2',
-    'github',
+    //'github',
     'moon-stars',
     'sun',
     'circle-half',

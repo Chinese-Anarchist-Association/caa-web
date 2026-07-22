@@ -8,7 +8,6 @@ import {isDev} from "@/ts/env/packMode.ts";
 import '@/assets/scss/bootstrap/bs-custom.scss';
 import 'virtual:svg-icons-register';//vite-plugin-svg-icons的虚拟模块
 import '@/assets/css/global/unSelect.css';
-import 'github-markdown-css/github-markdown.css';
 
 export default function () {
     if (isDev) console.log(`[main-ssg.ts] 进入`);

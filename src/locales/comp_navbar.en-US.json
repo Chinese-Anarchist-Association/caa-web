@@ -1,7 +1,6 @@
 {
     "comp_navbar": {
         "dev": "In development",
-        "toolList": "Tool List",
         "langs": {
             "lang-sel": "Language Selection",
             "zh-CN": "简体中文(Simplified Chinese)",

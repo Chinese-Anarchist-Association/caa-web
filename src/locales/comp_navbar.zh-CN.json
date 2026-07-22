@@ -1,7 +1,6 @@
 {
     "comp_navbar": {
         "dev": "网站开发中",
-        "toolList": "工具列表",
         "langs": {
             "lang-sel": "语言选择",
             "zh-CN": "简体中文",

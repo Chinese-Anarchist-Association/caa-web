@@ -47,14 +47,14 @@ onMounted(()=>{
 <template>
   <nav ref="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <router-link class="navbar-brand" :to="{ name: 'home'}">LTH</router-link>
+      <router-link class="navbar-brand" :to="{ name: 'home'}">CAA</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav d-flex me-auto nav-0">
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" :to="{ name: 'toolList'}">{{t(`${lp}.toolList`)}}</router-link>
+            <!--<router-link class="nav-link active" aria-current="page" :to="{ name: ''}">{{t(`${lp}.`)}}</router-link>-->
           </li>
         </ul>
         <ul class="navbar-nav d-flex me-auto nav-1">
@@ -120,7 +120,7 @@ onMounted(()=>{
               </li>
             </ul>
           </li>
-          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+          <!--<li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none my-2 text-white-50">
           </li>
@@ -128,7 +128,7 @@ onMounted(()=>{
             <a href="https://github.com/Hgnim/libre-tool-hub">
               <svg class="bi" width="24" height="24" ><use xlink:href="#svg-bsi-github"></use></svg>
             </a>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>

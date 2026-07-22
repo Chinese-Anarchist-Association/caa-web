@@ -1,5 +1,4 @@
 import {createRouter, createWebHashHistory,createMemoryHistory , createWebHistory} from 'vue-router';
-import toolRouter from './tool.router';
 import renderMode from "@/ts/env/renderMode.ts";
 
 export default createRouter({
@@ -21,11 +20,5 @@ export default createRouter({
             name: 'home',
             component: () => import('@/views/Home/Home.vue'),
         },
-        {
-            path:'/toollist',
-            name:'toolList',
-            component:()=>import('@/views/ToolList/ToolList.vue'),
-        },
-        ...toolRouter,
     ],
 });
