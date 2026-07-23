@@ -16,6 +16,7 @@ export default defineConfig(({}) =>{
     console.log(`当前模式：${mode}\nisDev: ${isDev}\nisProd: ${isProd}`);
     console.log(`当前渲染模式：${renderMode}`);
 return {
+    base: './',//使用相对路径
     plugins: [
         vue(),
         VueI18nPlugin({
