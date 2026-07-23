@@ -5,7 +5,11 @@
         "langs": {
             "lang-sel": "语言选择",
             "zh-CN": "简体中文",
-            "en-US": "English(英语)"
+            "en-US": "English(英语)",
+            "zh-Hant": "繁體中文(繁体中文)",
+            "es": "Español(西班牙语)",
+            "ru": "русский(俄语)",
+            "el": "Ελληνικά(希腊语)"
         },
         "theme": {
             "theme-sel": "主题选择",

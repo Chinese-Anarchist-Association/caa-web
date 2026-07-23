@@ -3,6 +3,7 @@ import { autoLoadLocale } from "@/ts/global/vue/autoLoadLocale";
 import {autoUseI18n, getCurrentLocale, switchLocale} from "@/utils/i18nUtils.ts";
 import {onMounted, type Ref, ref, watch} from "vue";
 import {useRoute} from "vue-router";
+import {useCookies} from "@vueuse/integrations/useCookies";
 
 const route = useRoute();
 
@@ -17,9 +18,10 @@ async function doLangSel(lang:string){
   curLoc.value=getCurrentLocale();
 }
 
+//region theme
 const themeIcon:Ref<string> = ref("#svg-bsi-circle-half");
 const curTheme:Ref<string> = ref("auto");
-function doThemeSel(tme:string){
+function doThemeSel(tme:string,setCookie:boolean=true){
   const html:HTMLHtmlElement = document.querySelector("html")!;
   switch(tme){
     case 'auto':
@@ -39,7 +41,18 @@ function doThemeSel(tme:string){
       break;
   }
   curTheme.value=tme;
+
+  if (setCookie)
+    useCookies().set('theme', tme);
 }
+onMounted(()=>{
+  const theme:'dark'|'light'|'auto'|undefined=useCookies().get('theme');
+  if (theme)
+    doThemeSel(theme,false);
+  else
+    doThemeSel('auto',true);
+});
+//endregion
 
 const navbar:Ref<HTMLElement|null> = ref(null);
 onMounted(()=>{
@@ -130,6 +143,30 @@ function routeName_onChange(){
                 <button @click="doLangSel('en-US')" :class="{ 'active': (curLoc=='en-US') }" class="dropdown-item">
                   {{t(`${lp}.langs.en-US`)}}
                   <svg :style="(curLoc!='en-US')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button @click="doLangSel('zh-Hant')" :class="{ 'active': (curLoc=='zh-Hant') }" class="dropdown-item">
+                  {{t(`${lp}.langs.zh-Hant`)}}
+                  <svg :style="(curLoc!='zh-Hant')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button @click="doLangSel('es')" :class="{ 'active': (curLoc=='es') }" class="dropdown-item">
+                  {{t(`${lp}.langs.es`)}}
+                  <svg :style="(curLoc!='es')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button @click="doLangSel('el')" :class="{ 'active': (curLoc=='el') }" class="dropdown-item">
+                  {{t(`${lp}.langs.el`)}}
+                  <svg :style="(curLoc!='el')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
+                </button>
+              </li>
+              <li>
+                <button @click="doLangSel('ru')" :class="{ 'active': (curLoc=='ru') }" class="dropdown-item">
+                  {{t(`${lp}.langs.ru`)}}
+                  <svg :style="(curLoc!='ru')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
             </ul>

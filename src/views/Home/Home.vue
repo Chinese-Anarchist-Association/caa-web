@@ -39,11 +39,11 @@ aos();
     <section class="pt-2rem pb-2rem bg-b">
       <div class="container">
         <div class="row">
-          <div class="col-6 d-flex justify-content-center align-items-center">
+          <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
             <img class="illustration w-50" alt="caa-logo" loading="lazy" src="@/assets/img/logo/caa.jpg" data-aos="flip-up" data-aos-delay="900"/>
           </div>
-          <div class="col-6 d-flex justify-content-center align-items-center">
-            <span class="general-text" data-aos="zoom-in" data-aos-delay="1100">中国无政府主义者总会<em>（Chinese Anarchist Association，CAA）</em>是一个以特定主义<em>（Especifismo）</em>为组织基础的无政府主义组织。</span>
+          <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+            <span class="general-text" data-aos="zoom-in" data-aos-delay="1100">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
           </div>
         </div>
       </div>
@@ -51,29 +51,29 @@ aos();
     <section class="pt-2rem pb-2rem bg-a">
       <div class="container">
         <div class="row">
-          <div class="col-6 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 justify-content-center align-items-center">
             <div>
-              <span class="general-text" data-aos="zoom-in-right">我们致力于无政府主义<strong>理论研究</strong>、<strong>历史资料整理</strong>、<strong>文献翻译</strong>、<strong>思想传播</strong>以及<strong>组织建设实践</strong>。</span>
+              <span class="general-text" data-aos="zoom-in-right">{{t(`${lp}.txt-1-0`)}}<strong>{{t(`${lp}.txt-1-1`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-3`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-4`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-5`)}}</strong>{{t(`${lp}.txt-1-6`)}}<strong>{{t(`${lp}.txt-1-7`)}}</strong>{{t(`${lp}.txt-1-8`)}}</span>
               <br/>
-              <span class="general-text" data-aos="zoom-in-right" data-aos-delay="400">CAA认为，无政府主义不仅是一种社会理想，也是一种需要通过理论学习、集体组织和社会实践不断发展的思想传统。</span>
+              <span class="general-text" data-aos="zoom-in-right" data-aos-delay="400">{{t(`${lp}.txt-2`)}}</span>
             </div>
           </div>
-          <div class="col-6 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 justify-content-center align-items-center">
             <div>
-              <strong class="general-text" data-aos="zoom-in-left" data-aos-delay="600">我们重视：</strong>
+              <strong class="general-text" data-aos="zoom-in-left" data-aos-delay="600">{{t(`${lp}.txt-3`)}}</strong>
               <div class="row">
                 <div class="col-6">
                   <ul class="general-text" data-aos="zoom-in-up" data-aos-delay="800">
-                    <li>自由联合</li>
-                    <li>平等参与</li>
-                    <li>互助合作</li>
+                    <li>{{t(`${lp}.txt-4`)}}</li>
+                    <li>{{t(`${lp}.txt-5`)}}</li>
+                    <li>{{t(`${lp}.txt-6`)}}</li>
                   </ul>
                 </div>
                 <div class="col-6">
                   <ul class="general-text" data-aos="zoom-in-up" data-aos-delay="800">
-                    <li>理论建设</li>
-                    <li>集体实践</li>
-                    <li>基层组织的发展</li>
+                    <li>{{t(`${lp}.txt-7`)}}</li>
+                    <li>{{t(`${lp}.txt-8`)}}</li>
+                    <li>{{t(`${lp}.txt-9`)}}</li>
                   </ul>
                 </div>
               </div>
@@ -86,7 +86,7 @@ aos();
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <span class="general-text" data-aos="zoom-out">我们希望通过持续的研究、交流和实践，推动无政府主义思想的发展。</span>
+            <span class="general-text" data-aos="zoom-out">{{t(`${lp}.txt-10`)}}</span>
           </div>
         </div>
       </div>
