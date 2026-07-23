@@ -1,5 +1,5 @@
 import {loadOtherLocale, localeEvents} from "@/utils/i18nUtils.ts";
-import {onMounted, onUnmounted} from "vue";
+import {onBeforeMount, onUnmounted} from "vue";
 
 /**
  * 加载语言和监听语言更改并执行加载
@@ -10,7 +10,7 @@ export function autoLoadLocale(localePrefix:string,loadedRun:(()=>void)|null=nul
     async function onLocaleChange(data:{newLocale:string; /*currentLocale:string;*/}){
         await loadOtherLocale(localePrefix,data.newLocale);//语言更改前加载目标语言
     }
-    onMounted(async () => {
+    onBeforeMount(async () => {
         await loadOtherLocale(localePrefix);
         localeEvents.on('beforeLocaleChange',onLocaleChange);
         if (loadedRun)

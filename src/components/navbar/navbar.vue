@@ -21,7 +21,7 @@ function doThemeSel(tme:string){
   switch(tme){
     case 'auto':
       themeIcon.value = '#svg-bsi-circle-half';
-      if (window.matchMedia("(prefers-color-scheme: dark)"))
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches)
         html.setAttribute('data-bs-theme','dark');
       else
         html.setAttribute('data-bs-theme','light');

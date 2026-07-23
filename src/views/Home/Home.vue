@@ -12,14 +12,6 @@ autoLoadLocale(lp,()=>{
 </script>
 
 <template>
-  <h1>{{t(`${lp}.tmp`)}}</h1>
-  <p>{{t('global.title')}}</p>
-  <p>{{
-      (()=>{
-        console.log('test go');
-        return t(`${lp}.test`);
-      })()
-    }}</p>
 </template>
 
 <style scoped lang="scss">
