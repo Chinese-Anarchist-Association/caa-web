@@ -1,5 +1,6 @@
 {
     "comp_navbar": {
+        "dev": "In development",
         "home": "Home",
         "langs": {
             "lang-sel": "Language Selection",

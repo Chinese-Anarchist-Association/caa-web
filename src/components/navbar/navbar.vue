@@ -73,7 +73,7 @@ function routeName_onChange(){
         </ul>
         <ul class="navbar-nav d-flex me-auto nav-1">
           <li class="nav-item">
-            <!--<span>{{t(`${lp}.dev`)}}</span>-->
+            <span>{{t(`${lp}.dev`)}}</span>
           </li>
         </ul>
         <ul class="navbar-nav d-flex nav-2">

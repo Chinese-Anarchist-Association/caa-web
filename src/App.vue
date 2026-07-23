@@ -2,6 +2,16 @@
 import navbar from "@/components/navbar/navbar.vue";
 import {loadGlobalLocale} from "@/utils/i18nUtils.ts";
 import {ref, type Ref} from "vue";
+import { useHead } from '@unhead/vue';
+import {isServer} from "@/ts/env/ssr.ts";
+
+if (isServer) {
+  useHead({
+    htmlAttrs: {
+      lang: 'zh',//html的lang静态值设置为zh。lang属性值将根据网站当前使用的语言动态更改
+    }
+  });
+}
 
 loadGlobalLocale();
 

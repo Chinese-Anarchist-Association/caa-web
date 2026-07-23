@@ -38,6 +38,8 @@ export async function switchLocale(locale: string) {
     );
 
     useCookies().set('locale', locale);
+
+    autoSetHtmlLang();
 }
 
 /**
@@ -115,4 +117,11 @@ export function getFallbackLocale(forceArray:boolean=false):string|string[]{
         else
             return [fblv];
     }else return i18nGlobal.fallbackLocale.value;
+}
+
+/**
+ * 自动设置html标签中的lang属性
+ */
+export function autoSetHtmlLang(){
+    document.querySelector('html')!.setAttribute('lang', getCurrentLocale());
 }
