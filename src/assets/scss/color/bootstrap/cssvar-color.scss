@@ -1,0 +1,74 @@
+//基础来源：https://github.com/MJYY-MC/MJYY_Web/blob/78c9730faec30640b578aa56ae99ca67a69cc4f5/src/assets/scss/color/bootstrap/cssvar-color.scss
+
+//默认主题（亮色）
+:root{
+  //标题颜色
+  ///--bs-heading-color: unset;
+  //包括大部分文字和没单独定义颜色的内容
+  ///--bs-body-color: unset;
+  //背景色，主要背景色以及没单独定义背景色的内容
+  //--bs-body-bg: rgb(247,249,252);
+  //code标签内的文本颜色
+  ///--bs-code-color: unset;
+}
+.navbar {
+  //导航栏按钮背景色
+  //--nav-item_background-color: rgba(202, 202, 202, 0.5);
+  //导航栏选中高亮色
+  ///--bs-navbar-active-color: unset;
+}
+.nav-link{
+  //导航栏链接颜色
+  ///--bs-nav-link-color: unset;
+  //导航栏链接鼠标停留时的颜色
+  ///--bs-nav-link-hover-color: unset;
+}
+.dropdown-menu{
+  //下拉栏背景色
+  ///--bs-dropdown-bg: unset;
+}
+.dropdown-item{
+  //下拉栏链接颜色
+  ///--bs-dropdown-link-color: unset;
+  //下拉栏链接选中高亮色
+  ///--bs-dropdown-link-active-color: unset;
+  //下拉栏链接选中高亮背景色
+  ///--bs-dropdown-link-active-bg: unset;
+  //下拉栏链接鼠标停留时的颜色
+  ///--bs-dropdown-link-hover-color: unset;
+  //下拉栏链接鼠标停留时的背景色
+  ///--bs-dropdown-link-hover-bg: unset;
+}
+.dropdown-header{
+  //下拉栏标题颜色
+  ///--bs-dropdown-header-color: unset;
+}
+
+//暗色主题
+:root[data-bs-theme=dark]{
+  //--bs-heading-color: var(--test-color);
+  //--bs-body-color: var(--test-color);
+  --bs-body-bg: #000;
+  //--bs-code-color: var(--test-color);
+}
+[data-bs-theme=dark] .navbar {
+  --bs-tertiary-bg-rgb: 14, 14, 14;
+  //--bs-navbar-active-color: var(--test-color);
+}
+[data-bs-theme=dark] .nav-link{
+  //--bs-nav-link-color: var(--test-color);
+  //--bs-nav-link-hover-color: var(--test-color);
+}
+[data-bs-theme=dark] .dropdown-menu{
+  //--bs-dropdown-bg: var(--test-color);
+}
+[data-bs-theme=dark] .dropdown-item{
+  //--bs-dropdown-link-color: var(--test-color);
+  //--bs-dropdown-link-active-color: var(--test-color);
+  //--bs-dropdown-link-active-bg: var(--test-color);
+  //--bs-dropdown-link-hover-color: var(--test-color);
+  //--bs-dropdown-link-hover-bg: var(--test-color);
+}
+[data-bs-theme=dark] .dropdown-header{
+  //--bs-dropdown-header-color: var(--test-color);
+}

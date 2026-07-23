@@ -1,15 +1,27 @@
-$primary: #61656c;
+//基础来源：https://github.com/MJYY-MC/MJYY_Web/blob/78c9730faec30640b578aa56ae99ca67a69cc4f5/src/assets/scss/bootstrap/bs-custom.scss
 
-//$modal-footer-bg: black;
+@import "../color/bootstrap/var-color";
 
 @import "bootstrap/scss/bootstrap";
 
+@import "../color/bootstrap/cssvar-color";
 
-.modal{
-  --bs-modal-footer-bg: #a8a8a8;
-  --bs-modal-footer-color: #212529;
+.mt-6 {
+  margin-top: 4rem !important;
 }
-[data-bs-theme=dark] .modal{
-  --bs-modal-footer-bg: #1d1f22;
-  --bs-modal-footer-color: #aeb0b3;
+.pt-6 {
+  padding-top: 4rem !important;
+}
+
+.dropdown{
+  &.hover-dropdown{
+    .dropdown-menu {
+      display: none;
+    }
+    &:hover .dropdown-menu {
+      display: block;
+      margin-top: 0;
+    }
+    .hover-dropdown-btn{}
+  }
 }

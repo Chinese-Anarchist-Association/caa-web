@@ -1,0 +1,26 @@
+.navbar{
+  padding: .2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  opacity: .9;
+
+  .nav-0{}
+  .nav-1{}
+  .nav-2{
+    .dropdown-toggle{
+      display: flex;
+      align-items: center;
+      .ml{
+        margin-left: 0.25rem;
+      }
+    }
+  }
+}
+
+.d-flex{
+  .flex-ai-c{
+    align-items: center;
+  }
+}

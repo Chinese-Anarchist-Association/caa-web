@@ -12,6 +12,16 @@ autoLoadLocale(lp,()=>{
 </script>
 
 <template>
+  <section class="pt-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>中国无政府主义协会</h1>
+          <h1>Chinese Anarchist Association</h1>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">

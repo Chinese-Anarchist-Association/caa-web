@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { autoLoadLocale } from "@/ts/global/vue/autoLoadLocale";
 import {autoUseI18n, getCurrentLocale, switchLocale} from "@/utils/i18nUtils.ts";
-import {onMounted, type Ref, ref} from "vue";
+import {onMounted, type Ref, ref, watch} from "vue";
+import {useRoute} from "vue-router";
+
+const route = useRoute();
 
 const emit = defineEmits(['navbarHeight']);
 const { gt:t } = autoUseI18n();
@@ -42,6 +45,17 @@ const navbar:Ref<HTMLElement|null> = ref(null);
 onMounted(()=>{
   emit('navbarHeight',navbar.value!.offsetHeight);
 })
+
+//region curRouteName
+const curRouteName:Ref<string|undefined>=ref(undefined);
+watch(
+    ()=>route.name,
+    ()=>{routeName_onChange();}
+)
+function routeName_onChange(){
+  curRouteName.value=route.name as string|undefined;
+}
+//endregion
 </script>
 
 <template>
@@ -54,12 +68,12 @@ onMounted(()=>{
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav d-flex me-auto nav-0">
           <li class="nav-item">
-            <!--<router-link class="nav-link active" aria-current="page" :to="{ name: ''}">{{t(`${lp}.`)}}</router-link>-->
+            <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
           </li>
         </ul>
         <ul class="navbar-nav d-flex me-auto nav-1">
           <li class="nav-item">
-            <span>{{t(`${lp}.dev`)}}</span>
+            <!--<span>{{t(`${lp}.dev`)}}</span>-->
           </li>
         </ul>
         <ul class="navbar-nav d-flex nav-2">
@@ -135,29 +149,4 @@ onMounted(()=>{
   </nav>
 </template>
 
-<style scoped lang="scss">
-.navbar{
-  padding: .2rem;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  opacity: .9;
-}
-.nav-0{}
-.nav-1{}
-.nav-2{
-  .dropdown-toggle{
-    display: flex;
-    align-items: center;
-    .ml{
-      margin-left: 0.25rem;
-    }
-  }
-}
-.d-flex{
-  .flex-ai-c{
-    align-items: center;
-  }
-}
-</style>
+<style scoped lang="scss" src="./scss/navbar.scss"></style>
