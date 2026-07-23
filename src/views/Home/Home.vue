@@ -5,15 +5,21 @@ import {autoLoadLocale} from "@/ts/global/vue/autoLoadLocale.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Home";
-useTitle(t('global.title'));
 
-autoLoadLocale(lp);//使用一体化自动加载语言
+autoLoadLocale(lp,()=>{
+  useTitle(t(`${lp}.title`));
+});
 </script>
 
 <template>
   <h1>{{t(`${lp}.tmp`)}}</h1>
   <p>{{t('global.title')}}</p>
-  <p>{{t(`${lp}.test`)}}</p>
+  <p>{{
+      (()=>{
+        console.log('test go');
+        return t(`${lp}.test`);
+      })()
+    }}</p>
 </template>
 
 <style scoped lang="scss">
