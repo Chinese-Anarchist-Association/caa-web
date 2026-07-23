@@ -6,3 +6,17 @@ section{
     background-color: var(--section-bg-b);
   }
 }
+
+.general-text{
+  font-size: 1.25rem;
+}
+
+//作为插图的img元素
+.illustration{
+  width: 100%;
+  border-radius: 10px;
+
+  &.w-50{
+    width:50%;
+  }
+}
