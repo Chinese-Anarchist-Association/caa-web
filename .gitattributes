@@ -1,4 +1,11 @@
 src/locales/*.json linguist-detectable=true
-src/views/tools/*/md/**/*.md linguist-detectable=true
-src/views/tools/**/json/**/*.json linguist-detectable=true
 src/assets/svg/*.svg linguist-detectable=true
+
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+*.jpge filter=lfs diff=lfs merge=lfs -text
+*.jpe filter=lfs diff=lfs merge=lfs -text
+*.doc filter=lfs diff=lfs merge=lfs -text
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text

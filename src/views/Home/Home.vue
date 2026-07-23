@@ -13,17 +13,51 @@ autoLoadLocale(lp,()=>{
 </script>
 
 <template>
-  <section class="pt-6">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h1>{{t(`global.name`)}}</h1>
-          <h1>{{name_enus}}</h1>
+  <div id="home">
+    <section class="pt-4rem pb-2rem bg-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>{{t('global.name')}}</h1>
+            <h1>{{name_enus}}</h1>
+            <em>{{t(`${lp}.subTitle`)}}</em>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="pt-2rem pb-2rem bg-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            图片位
+          </div>
+          <div class="col-6">
+            文字位
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-2rem pb-2rem bg-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            文字位
+          </div>
+          <div class="col-6">
+            文字位
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-2rem pb-2rem bg-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-12"></div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss" src="@/assets/scss/color/view/Home.scss"></style>
+<style scoped lang="scss" src="./scss/Home.scss"></style>
