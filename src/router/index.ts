@@ -1,13 +1,15 @@
 import {createRouter, createWebHashHistory,createMemoryHistory , createWebHistory} from 'vue-router';
 import renderMode from "@/ts/env/renderMode.ts";
+import {isServer} from "@/ts/env/ssr.ts";
+import baseUrl from "@/ts/env/baseUrl.ts";
 
 export default createRouter({
     history: (()=>{
         switch (renderMode){
             case 'ssg':
-                return import.meta.env.SSR ? createMemoryHistory() : createWebHistory();
+                return isServer ? createMemoryHistory() : createWebHistory(baseUrl||'/');
             case 'spa':
-                return createWebHistory();
+                return createWebHistory(baseUrl||'/');
             case 'spa-hash':
                 return createWebHashHistory();//hash模式，使用'#'内部导航，'#'及后面的内容不会发送给服务器，避免了非'/'时404的情况。
             default:
