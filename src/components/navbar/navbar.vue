@@ -83,12 +83,15 @@ function routeName_onChange(){
           <li class="nav-item">
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>
+          </li>
         </ul>
-        <ul class="navbar-nav d-flex me-auto nav-1">
+        <!--<ul class="navbar-nav d-flex me-auto nav-1">
           <li class="nav-item">
             <span>{{t(`${lp}.dev`)}}</span>
           </li>
-        </ul>
+        </ul>-->
         <ul class="navbar-nav d-flex nav-2">
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
@@ -135,37 +138,37 @@ function routeName_onChange(){
               </li>
               <li>
                 <button @click="doLangSel('zh-CN')" :class="{ 'active': (curLoc=='zh-CN') }" class="dropdown-item">
-                  {{t(`${lp}.langs.zh-CN`)}}
+                  简体中文{{(curLoc!='zh-CN')?`(${t(`${lp}.langs.zh-CN`)})`:''}}
                   <svg :style="(curLoc!='zh-CN')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('en-US')" :class="{ 'active': (curLoc=='en-US') }" class="dropdown-item">
-                  {{t(`${lp}.langs.en-US`)}}
+                  English{{(curLoc!='en-US')?`(${t(`${lp}.langs.en-US`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
                   <svg :style="(curLoc!='en-US')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('zh-Hant')" :class="{ 'active': (curLoc=='zh-Hant') }" class="dropdown-item">
-                  {{t(`${lp}.langs.zh-Hant`)}}
+                  繁體中文{{(curLoc!='zh-Hant')?`(${t(`${lp}.langs.zh-Hant`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
                   <svg :style="(curLoc!='zh-Hant')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('es')" :class="{ 'active': (curLoc=='es') }" class="dropdown-item">
-                  {{t(`${lp}.langs.es`)}}
+                  Español{{(curLoc!='es')?`(${t(`${lp}.langs.es`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
                   <svg :style="(curLoc!='es')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('el')" :class="{ 'active': (curLoc=='el') }" class="dropdown-item">
-                  {{t(`${lp}.langs.el`)}}
+                  Ελληνικά{{(curLoc!='el')?`(${t(`${lp}.langs.el`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
                   <svg :style="(curLoc!='el')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('ru')" :class="{ 'active': (curLoc=='ru') }" class="dropdown-item">
-                  {{t(`${lp}.langs.ru`)}}
+                  русский{{(curLoc!='ru')?`(${t(`${lp}.langs.ru`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
                   <svg :style="(curLoc!='ru')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>

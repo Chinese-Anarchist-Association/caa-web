@@ -20,3 +20,11 @@ section{
     width:50%;
   }
 }
+
+h1{
+  &.fs-big-0{
+    //hi default font-size
+    //font-size: calc(1.375rem + 1.5vw);
+    font-size: calc(1.5rem + 3vw);
+  }
+}
