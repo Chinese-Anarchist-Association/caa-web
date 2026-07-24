@@ -1,4 +1,4 @@
-import {defineConfig} from 'vite';
+import {defineConfig, loadEnv} from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import fs from 'fs';
@@ -7,17 +7,21 @@ import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import { createHtmlPlugin } from 'vite-plugin-html';
 import {isDev,isProd,mode} from "./src/ts/env/packMode.node.ts";
 import renderMode from "./src/ts/env/renderMode.node.ts";
+//import baseUrl from "./src/ts/env/baseUrl.node.ts";
+import {baseUrl_get} from "./src/ts/env/baseUrl.node.ts";
 //import postcssPrefixwrap from 'postcss-prefixwrap';
 
+const env = loadEnv(mode as string, process.cwd());
 const distPath=path.resolve(__dirname, 'dist');
 
 // https://vite.dev/config/
 export default defineConfig(({}) =>{
     console.log(`当前模式：${mode}\nisDev: ${isDev}\nisProd: ${isProd}`);
     console.log(`当前渲染模式：${renderMode}`);
+    console.log(`当前基路径：${baseUrl_get(env)/*baseUrl*/}`);
 return {
     //base: './',//使用相对路径
-    base: '/caa-web/',
+    base: baseUrl_get(env),//baseUrl,
     plugins: [
         vue(),
         VueI18nPlugin({
