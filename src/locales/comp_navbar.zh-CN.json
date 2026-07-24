@@ -2,6 +2,8 @@
     "comp_navbar": {
         "home": "主页",
         "aboutUs": "关于我们",
+        "joinUs":"加入我们",
+        "motionMatrix": "运动矩阵",
         "langs": {
             "lang-sel": "语言选择",
             "zh-CN": "简体中文",

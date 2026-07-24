@@ -86,6 +86,12 @@ function routeName_onChange(){
           <li class="nav-item">
             <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='joinUs')}" aria-current="page" :to="{ name: 'joinUs'}">{{t(`${lp}.joinUs`)}}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='motionMatrix')}" aria-current="page" :to="{ name: 'motionMatrix'}">{{t(`${lp}.motionMatrix`)}}</router-link>
+          </li>
         </ul>
         <!--<ul class="navbar-nav d-flex me-auto nav-1">
           <li class="nav-item">
