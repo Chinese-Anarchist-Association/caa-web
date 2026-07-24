@@ -22,5 +22,10 @@ export default createRouter({
             name: 'home',
             component: () => import('@/views/Home/Home.vue'),
         },
+        {
+            path: '/AboutUs',
+            name: 'aboutUs',
+            component: () => import('@/views/AboutUs/AboutUs.vue'),
+        },
     ],
 });

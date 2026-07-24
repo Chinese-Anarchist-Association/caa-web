@@ -2,6 +2,7 @@
     "comp_navbar": {
         "dev": "In development",
         "home": "Home",
+        "aboutUs": "About Us",
         "langs": {
             "lang-sel": "Language Selection",
             "zh-CN": "简体中文(Simplified Chinese)",

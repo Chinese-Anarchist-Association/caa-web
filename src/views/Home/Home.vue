@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import {useTitle} from "@vueuse/core";
-import {autoUseI18n, getCurrentLocale} from "@/utils/i18nUtils.ts";
+import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/ts/global/vue/autoLoadLocale.ts";
-import {name_enus, name_zhcn} from "@/ts/env/stringEnv.ts";
 import aos from "@/plugins/aos.ts";
 
 const {gt:t}=autoUseI18n();
@@ -21,17 +20,8 @@ aos();
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h1 data-aos="fade-right" data-aos-delay="300">{{(()=>{
-    switch(getCurrentLocale()){
-      case 'en-US':
-          return name_zhcn;
-      case 'zh-CN':
-      default:
-          return t('global.name');
-    }
-            })()}}</h1>
-            <h1 data-aos="fade-left" data-aos-delay="500">{{name_enus}}</h1>
-            <em data-aos="fade-up" data-aos-delay="700">{{t(`${lp}.subTitle`)}}</em>
+            <h1 class="fs-big-0" data-aos="fade-down" data-aos-delay="300">{{t('global.name')}}</h1>
+            <em data-aos="fade-up" data-aos-delay="500">{{t(`${lp}.subTitle`)}}</em>
           </div>
         </div>
       </div>
@@ -40,10 +30,10 @@ aos();
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <img class="illustration w-50" alt="caa-logo" loading="lazy" src="@/assets/img/logo/caa.jpg" data-aos="flip-up" data-aos-delay="900"/>
+            <img class="illustration w-50" alt="caa-logo" loading="lazy" src="@/assets/img/logo/caa.jpg" data-aos="flip-up" data-aos-delay="700"/>
           </div>
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <span class="general-text" data-aos="zoom-in" data-aos-delay="1100">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
+            <span class="general-text" data-aos="zoom-in" data-aos-delay="900">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
           </div>
         </div>
       </div>
@@ -90,6 +80,9 @@ aos();
           </div>
         </div>
       </div>
+    </section>
+    <section class="pt-6 pb-6 bg-a">
+      <!--用于占位-->
     </section>
   </div>
 </template>

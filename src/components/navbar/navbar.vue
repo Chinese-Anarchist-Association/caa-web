@@ -83,6 +83,9 @@ function routeName_onChange(){
           <li class="nav-item">
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>
+          </li>
         </ul>
         <ul class="navbar-nav d-flex me-auto nav-1">
           <li class="nav-item">
