@@ -1,22 +1,22 @@
 {
     "comp_navbar": {
-        "dev": "In development",
         "home": "Home",
         "aboutUs": "About Us",
         "langs": {
             "lang-sel": "Language Selection",
-            "zh-CN": "简体中文(Simplified Chinese)",
+            "zh-CN": "Simplified Chinese",
             "en-US": "English",
-            "zh-Hant": "繁體中文(Traditional Chinese)",
-            "es": "Español(Spanish)",
-            "ru": "русский(Russian)",
-            "el": "Ελληνικά(Greek)"
+            "zh-Hant": "Traditional Chinese",
+            "es": "Spanish",
+            "ru": "Russian",
+            "el": "Greek"
         },
         "theme": {
             "theme-sel": "Theme Selection",
             "light": "Light",
             "dark": "Dark",
             "auto": "Auto"
-        }
+        },
+        "ttii": "(The translation is incomplete)"
     }
 }
