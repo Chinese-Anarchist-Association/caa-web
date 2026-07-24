@@ -19,6 +19,18 @@ autoLoadLocale(lp,()=>{
         <span class="fs-big-0">{{t(`${lp}.txt-0`)}}</span>
         <a href="xmpp:caa@conference.conversations.im?join" class="fs-big-0">caa@conference.conversations.im</a>
       </div>
+      <div class="col-12 text-center mt-6">
+        <p><strong>{{t(`${lp}.txt-1`)}}</strong></p>
+        <p>{{t(`${lp}.txt-2`)}}</p>
+        <p>{{t(`${lp}.txt-3`)}}</p>
+        <p>{{t(`${lp}.txt-4`)}}</p>
+        <p>{{t(`${lp}.txt-5`)}}</p>
+        <p>{{t(`${lp}.txt-6`)}}</p>
+        <p>{{t(`${lp}.txt-7`)}}</p>
+        <p>{{t(`${lp}.txt-8`)}}</p>
+        <p>{{t(`${lp}.txt-9`)}}</p>
+        <p><strong>{{t(`${lp}.txt-10`)}}</strong></p>
+      </div>
     </div>
   </div>
 </div>
