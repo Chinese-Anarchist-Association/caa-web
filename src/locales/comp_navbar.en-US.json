@@ -2,6 +2,8 @@
     "comp_navbar": {
         "home": "Home",
         "aboutUs": "About Us",
+        "joinUs": "Join Us",
+        "motionMatrix": "Motion Matrix",
         "langs": {
             "lang-sel": "Language Selection",
             "zh-CN": "Simplified Chinese",

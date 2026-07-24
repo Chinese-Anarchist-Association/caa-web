@@ -27,5 +27,15 @@ export default createRouter({
             name: 'aboutUs',
             component: () => import('@/views/AboutUs/AboutUs.vue'),
         },
+        {
+            path: '/JoinUs',
+            name: 'joinUs',
+            component: () => import('@/views/JoinUs/JoinUs.vue'),
+        },
+        {
+            path: '/MotionMatrix',
+            name: 'motionMatrix',
+            component: () => import('@/views/MotionMatrix/MotionMatrix.vue'),
+        },
     ],
 });
