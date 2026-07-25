@@ -13,9 +13,19 @@ autoLoadLocale(lp,()=>{
 
 <template>
 <div id="joinUs">
-  <div class="container pt-6">
+  <div class="container pt-4">
     <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-12 col-md-6">
+        <span>
+          {{t(`${lp}.txt-11`)}}
+        </span>
+      </div>
+      <div class="col-12 col-md-6">
+        <span>
+          {{t(`${lp}.txt-12`)}}
+        </span>
+      </div>
+      <div class="col-12 pt-6 text-center">
         <span class="fs-big-0">{{t(`${lp}.txt-0`)}}</span>
         <a href="xmpp:caa@conference.conversations.im?join" class="fs-big-0 wrap-break-word">caa@conference.conversations.im</a>
       </div>
