@@ -17,7 +17,7 @@ autoLoadLocale(lp,()=>{
     <div class="row">
       <div class="col-12 text-center">
         <span class="fs-big-0">{{t(`${lp}.txt-0`)}}</span>
-        <a href="xmpp:caa@conference.conversations.im?join" class="fs-big-0">caa@conference.conversations.im</a>
+        <a href="xmpp:caa@conference.conversations.im?join" class="fs-big-0 wrap-break-word">caa@conference.conversations.im</a>
       </div>
       <div class="col-12 text-center mt-6">
         <p><strong>{{t(`${lp}.txt-1`)}}</strong></p>
@@ -39,5 +39,8 @@ autoLoadLocale(lp,()=>{
 <style scoped lang="scss">
 .fs-big-0{
   font-size: 1.5rem;
+}
+.wrap-break-word{
+  overflow-wrap: break-word
 }
 </style>
