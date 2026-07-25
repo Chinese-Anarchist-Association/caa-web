@@ -30,7 +30,7 @@ aos();
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <img class="illustration w-50" alt="caa-logo" loading="lazy" src="@/assets/img/logo/caa.jpg" data-aos="flip-up" data-aos-delay="700"/>
+            <img class="illustration w-50 bg_only-light-show have-padding" alt="caa-logo" loading="lazy" src="@/assets/img/logo/caa_transparentBackground.gif" data-aos="flip-up" data-aos-delay="700"/>
           </div>
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
             <span class="general-text" data-aos="zoom-in" data-aos-delay="900">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
