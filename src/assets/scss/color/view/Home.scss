@@ -1,9 +1,21 @@
 #home{
   --section-bg-a: rgb(250,250,250);
   --section-bg-b: rgb(242,242,242);
+
+  .illustration{
+    &.bg_only-light-show{
+      background-color: #b4b4b4;
+    }
+  }
 }
 
 [data-bs-theme=dark] #home{
   --section-bg-a: #000;
   --section-bg-b: rgb(8,8,8);
+
+  .illustration{
+    &.bg_only-light-show{
+      background-color: transparent;
+    }
+  }
 }
