@@ -1,4 +1,26 @@
 {
     "comp_navbar": {
+        "home": "Beranda",
+        "aboutUs": "Tentang Kami",
+        "joinUs": "Bergabung",
+        "motionMatrix": "Matriks Gerak",
+        "langs": {
+            "lang-sel": "Pemilihan Bahasa",
+            "zh-CN": "Cina Sederhana",
+            "en-US": "Inggris",
+            "zh-Hant": "Cina Tradisional",
+            "es": "Spanyol",
+            "ru": "Rusia",
+            "el": "Yunani",
+            "pt-PT": "Portugis",
+            "id-ID": "Indonesia"
+        },
+        "theme": {
+            "theme-sel": "Pilihan Tema",
+            "light": "Terang",
+            "dark": "Gelap",
+            "auto": "Otomatis"
+        },
+        "ttii": "(Terjemahan belum selesai)"
     }
 }

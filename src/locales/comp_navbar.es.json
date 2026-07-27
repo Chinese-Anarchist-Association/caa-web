@@ -1,4 +1,26 @@
 {
     "comp_navbar": {
+        "home": "Inicio",
+        "aboutUs": "Sobre nosotros",
+        "joinUs": "Únete a nosotros",
+        "motionMatrix": "Matriz de Movimiento",
+        "langs": {
+            "lang-sel": "Selección de idioma",
+            "zh-CN": "Chino simplificado",
+            "en-US": "Inglés",
+            "zh-Hant": "Chino tradicional",
+            "es": "Español",
+            "ru": "Ruso",
+            "el": "Griego",
+            "pt-PT": "Portugués",
+            "id-ID": "Indonesio"
+        },
+        "theme": {
+            "theme-sel": "Selección de tema",
+            "light": "Claro",
+            "dark": "Oscuro",
+            "auto": "Automático"
+        },
+        "ttii": "(La traducción está incompleta)"
     }
 }
