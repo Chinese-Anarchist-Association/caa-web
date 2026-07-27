@@ -11,7 +11,9 @@
             "zh-Hant": "Traditional Chinese",
             "es": "Spanish",
             "ru": "Russian",
-            "el": "Greek"
+            "el": "Greek",
+            "pt-PT": "Portuguese",
+            "id-ID": "Indonesian"
         },
         "theme": {
             "theme-sel": "Theme Selection",
