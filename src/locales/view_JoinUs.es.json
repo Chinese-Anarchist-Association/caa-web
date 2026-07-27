@@ -1,4 +1,21 @@
 {
   "view_JoinUs": {
+    "title": "Únete",
+    "txt-0": "Únete a nuestro grupo: ",
+
+    "txt-1": "Estamos en todas partes",
+    "txt-2": "Podríamos ser tu vecino",
+    "txt-3": "Podríamos ser tu amigo",
+    "txt-4": "Podríamos ser tu compañero de trabajo",
+    "txt-5": "Podríamos ser tu médico",
+    "txt-6": "Podríamos ser quien arregla tu coche",
+    "txt-7": "Podríamos ser la persona que entrega tu comida",
+    "txt-8": "Podríamos ser el cajero que conoce tu nombre",
+    "txt-9": "Podríamos ser el desconocido que te encuentras en la calle",
+    "txt-10": "Podríamos ser cualquiera, en todas partes",
+
+    "txt-11": "¿Aún te sientes perdido respecto al futuro? ¿Sientes la injusticia de la sociedad? ¿Tienes talento pero no dónde emplearlo? ¿Trabajas hasta altas horas por un sueldo miserable; terminas estudios y descubres que el trabajo es peor que estudiar? Si estás cansado de la competitividad y la carrera de ratas, no estás solo.",
+
+    "txt-12": "Aquellos que están en lo alto nunca se preocupan por ti — ¿por qué sigues esperando que te salven? Nadie nace para ser tratado así, y nadie nace para mandarte. No necesitas el permiso de nadie para actuar. Únete a otros, construid ayuda mutua y solidaridad, y tomad acción directa para cambiar el mundo en que vivís."
   }
 }

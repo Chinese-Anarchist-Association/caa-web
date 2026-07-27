@@ -144,49 +144,49 @@ function routeName_onChange(){
               </li>
               <li>
                 <button @click="doLangSel('zh-CN')" :class="{ 'active': (curLoc=='zh-CN') }" class="dropdown-item">
-                  简体中文{{(curLoc!='zh-CN')?`(${t(`${lp}.langs.zh-CN`)})`:''}}
+                  简体中文{{(curLoc!='zh-CN')?`(${t(`${lp}.langs.zh-CN`)})`:''}}<!--{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}-->
                   <svg :style="(curLoc!='zh-CN')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('en-US')" :class="{ 'active': (curLoc=='en-US') }" class="dropdown-item">
-                  English{{(curLoc!='en-US')?`(${t(`${lp}.langs.en-US`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  English{{(curLoc!='en-US')?`(${t(`${lp}.langs.en-US`)})`:''}}
                   <svg :style="(curLoc!='en-US')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('zh-Hant')" :class="{ 'active': (curLoc=='zh-Hant') }" class="dropdown-item">
-                  繁體中文{{(curLoc!='zh-Hant')?`(${t(`${lp}.langs.zh-Hant`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  繁體中文{{(curLoc!='zh-Hant')?`(${t(`${lp}.langs.zh-Hant`)})`:''}}
                   <svg :style="(curLoc!='zh-Hant')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('es')" :class="{ 'active': (curLoc=='es') }" class="dropdown-item">
-                  Español{{(curLoc!='es')?`(${t(`${lp}.langs.es`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  Español{{(curLoc!='es')?`(${t(`${lp}.langs.es`)})`:''}}
                   <svg :style="(curLoc!='es')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('ru')" :class="{ 'active': (curLoc=='ru') }" class="dropdown-item">
-                  русский{{(curLoc!='ru')?`(${t(`${lp}.langs.ru`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  русский{{(curLoc!='ru')?`(${t(`${lp}.langs.ru`)})`:''}}
                   <svg :style="(curLoc!='ru')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('pt-PT')" :class="{ 'active': (curLoc=='pt-PT') }" class="dropdown-item">
-                  Português{{(curLoc!='pt-PT')?`(${t(`${lp}.langs.pt-PT`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  Português{{(curLoc!='pt-PT')?`(${t(`${lp}.langs.pt-PT`)})`:''}}
                   <svg :style="(curLoc!='pt-PT')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('el')" :class="{ 'active': (curLoc=='el') }" class="dropdown-item">
-                  Ελληνικά{{(curLoc!='el')?`(${t(`${lp}.langs.el`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  Ελληνικά{{(curLoc!='el')?`(${t(`${lp}.langs.el`)})`:''}}
                   <svg :style="(curLoc!='el')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('id-ID')" :class="{ 'active': (curLoc=='id-ID') }" class="dropdown-item">
-                  Bahasa Indonesia{{(curLoc!='id-ID')?`(${t(`${lp}.langs.id-ID`)})`:''}}{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}
+                  Bahasa Indonesia{{(curLoc!='id-ID')?`(${t(`${lp}.langs.id-ID`)})`:''}}
                   <svg :style="(curLoc!='id-ID')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
