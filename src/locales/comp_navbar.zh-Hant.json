@@ -1,6 +1,9 @@
 {
     "comp_navbar": {
         "home": "主頁",
+        "aboutUs": "關於我們",
+        "joinUs": "加入我們",
+        "motionMatrix": "運動矩陣",
         "langs": {
             "lang-sel": "語言選擇",
             "zh-CN": "簡體中文",
@@ -8,13 +11,16 @@
             "zh-Hant": "繁體中文",
             "es": "西班牙語",
             "ru": "俄語",
-            "el": "希臘語"
+            "el": "希臘語",
+            "pt-PT": "葡萄牙語",
+            "id-ID": "印尼語"
         },
         "theme": {
             "theme-sel": "主題選擇",
             "light": "淺色",
             "dark": "深色",
             "auto": "自動"
-        }
+        },
+        "ttii": "（翻譯不完整）"
     }
 }
