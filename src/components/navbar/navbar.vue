@@ -43,7 +43,9 @@ function doThemeSel(tme:string,setCookie:boolean=true){
   curTheme.value=tme;
 
   if (setCookie)
-    useCookies().set('theme', tme);
+    useCookies().set('theme', tme,{
+      maxAge: 60*60*24*365,
+    });
 }
 onMounted(()=>{
   const theme:'dark'|'light'|'auto'|undefined=useCookies().get('theme');
