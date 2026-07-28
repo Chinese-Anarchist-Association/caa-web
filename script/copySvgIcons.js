@@ -12,6 +12,9 @@ const iconsName = [//需要复制的图标名
     'moon-stars',
     'sun',
     'circle-half',
+    'folder-fill',
+    'folder2-open',
+    'file-earmark-fill',
 ];
 const sourceDir = path.resolve(__dirname, '../node_modules/bootstrap-icons/icons');
 const targetDir = path.resolve(__dirname, '../src/assets/_svg/bsi');

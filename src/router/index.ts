@@ -2,6 +2,7 @@ import {createRouter, createWebHashHistory,createMemoryHistory , createWebHistor
 import renderMode from "@/ts/env/renderMode.ts";
 import {isServer} from "@/ts/env/ssr.ts";
 import baseUrl from "@/ts/env/baseUrl.ts";
+import libraryRouter from "@/router/library.router.ts";
 
 export default createRouter({
     history: (()=>{
@@ -37,5 +38,11 @@ export default createRouter({
             name: 'motionMatrix',
             component: () => import('@/views/MotionMatrix/MotionMatrix.vue'),
         },
+        {
+            path: '/Library',
+            name: 'library',
+            component: () => import('@/views/Library/Library.vue'),
+        },
+        ...libraryRouter(),
     ],
 });
