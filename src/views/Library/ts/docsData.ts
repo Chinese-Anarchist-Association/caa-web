@@ -15,11 +15,19 @@ export type DocsData=DocData[];/*{
 const docsData:DocsData=[
     {
         id:-1,
-        path:'',
+        path: 'test/',
         fileName:'test.pdf',
         classShow:{
             path:'/test',
         }
-    }
+    },
+    {
+        id: -2,
+        path: 'test/',
+        fileName: 'test.docx',
+        classShow:{
+            path: '/test',
+        }
+    },
 ];
 export default docsData;
