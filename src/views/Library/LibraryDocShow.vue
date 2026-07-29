@@ -9,7 +9,8 @@ import {useTitle} from "@vueuse/core";
 
 const docFiles= import.meta.glob([
   '@/views/Library/doc/**/*.pdf',
-  '@/views/Library/doc/**/*.docx'
+  '@/views/Library/doc/**/*.docx',
+  '@/views/Library/doc/**/*.txt',
 ], {
   eager: true,
   query: '?url',
@@ -44,24 +45,47 @@ function getFilePath(){
   return docFiles[`/src/views/Library/doc/${docData.value!.path}${docData.value!.fileName}`] as string;
 }
 
-const vpe_source:Ref<string>=ref('');
+const vpe_source:Ref<(Uint8Array<ArrayBufferLike>)|null>=ref(null);
 const vpe_show:Ref<boolean>=ref(false);
 
 const docxView:Ref<HTMLDivElement|null> = ref(null);
 const docxView_show:Ref<boolean>=ref(false);
 
+//const txtView:Ref<HTMLDivElement|null> = ref(null);
+const txtView_show:Ref<boolean>=ref(false);
+const txtView_content:Ref<string>=ref('');
+
+/*enum LoadStatus{
+  loading,done,error,
+}*/
+type LoadStatus='loading'|'done'|'error'|'notSupport';
+const loadStatus:Ref<LoadStatus>=ref('loading');
+
 onMounted(async ()=>{
   do_useTitle(docData.value?.classShow.name || docData.value?.fileName);
-  switch (fileType.value) {
-    case 'pdf':
-      vpe_source.value=getFilePath();
-      vpe_show.value = true;
-      break;
-    case 'docx':
-      await renderAsync((await fetch(getFilePath())).blob(),docxView.value!);
-      docxView_show.value=true;
-      break;
-  }
+
+  const res=await fetch(getFilePath());
+  if (res.ok || res.status==304) {
+    switch (fileType.value) {
+      case 'pdf':
+        vpe_source.value = new Uint8Array(await res.arrayBuffer());
+        vpe_show.value = true;
+        break;
+      case 'docx':
+        await renderAsync(res.blob(), docxView.value!);
+        docxView_show.value = true;
+        break;
+      case 'txt':
+        txtView_content.value = await res.text();
+        txtView_show.value = true;
+        break;
+      default:
+        loadStatus.value='notSupport';
+        break;
+    }
+    if (loadStatus.value=='loading')
+      loadStatus.value='done';
+  }else loadStatus.value='error';
 });
 </script>
 
@@ -84,8 +108,16 @@ onMounted(async ()=>{
         </div>
       </div>
       <div class="col-12 pt-2">
+        <div v-show="loadStatus!='done'" class="text-center">
+          <span v-if="loadStatus=='loading'">{{t('loading')}}</span>
+          <span v-else-if="loadStatus=='error'">{{t('error')}}</span>
+          <span v-else-if="loadStatus=='notSupport'">{{t('notSupport')}}</span>
+        </div>
         <vue-pdf-embed v-show="vpe_show" :source="vpe_source"/>
         <div v-show="docxView_show" ref="docxView" />
+        <div v-show="txtView_show" id="txtView"><!--ref="txtView"-->
+          <span>{{txtView_content}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -113,6 +145,11 @@ onMounted(async ()=>{
       grid-area: g2;
     }
   }
+  #txtView{
+    span{
+      white-space: pre-line;
+    }
+  }
 }
 </style>
 
@@ -120,11 +157,17 @@ onMounted(async ()=>{
 {
   "zh-CN": {
     "title": "图书馆",
-    "download": "下载"
+    "download": "下载",
+    "loading": "正在加载",
+    "error": "加载失败",
+    "notSupport": "不支持在线浏览该文件"
   },
   "en-US": {
     "title": "Library",
-    "download": "Download"
+    "download": "Download",
+    "loading": "Loading...",
+    "error": "Error.",
+    "notSupport": "Not support."
   }
 }
 </i18n>

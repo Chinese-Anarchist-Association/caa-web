@@ -21,7 +21,7 @@ function dtFile_click(id:number){
 const dtData=computed(():btfpPath[]=>{//将所有文档数据整理后传递至目录树绘制
   const bp:btfpPath[] = [];
   docsData.forEach((dd)=>{
-    if(/*dd.id>=0*/true){
+    if(dd.id>=0){//负数编号的为测试文档，不需要列入
       bp.push({
         name: dd.classShow.name || dd.fileName,
         path: dd.classShow.path,
