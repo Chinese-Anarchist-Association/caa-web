@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import {computed, onMounted, type Ref, ref} from "vue";
+import {computed, onMounted, type Ref, ref, shallowRef} from "vue";
 import {useRoute} from "vue-router";
 import docsData from "@/views/Library/ts/docsData.ts";
-import VuePdfEmbed from 'vue-pdf-embed';
 import { renderAsync } from 'docx-preview'
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {useTitle} from "@vueuse/core";
+import {isClient} from "@/ts/env/ssr.ts";
+
+const VuePdfEmbed:any = shallowRef(null);
 
 const docFiles= import.meta.glob([
   '@/views/Library/doc/**/*.pdf',
@@ -62,6 +64,10 @@ type LoadStatus='loading'|'done'|'error'|'notSupport';
 const loadStatus:Ref<LoadStatus>=ref('loading');
 
 onMounted(async ()=>{
+  if (isClient){//动态且仅在客户端加载vue-pdf-embed组件，避免ssg构建失败
+    VuePdfEmbed.value=(await import('vue-pdf-embed')).default;
+  }
+
   do_useTitle(docData.value?.classShow.name || docData.value?.fileName);
 
   const res=await fetch(getFilePath());
@@ -101,7 +107,7 @@ onMounted(async ()=>{
           <h3>{{docData?.classShow.name || docData?.fileName}}</h3>
         </div>
         <div class="g2 d-flex justify-content-end align-items-center">
-          <a class="btn btn-primary" :href="getFilePath()" :download="docData?.fileName">
+          <a class="btn btn-primary" :href="getFilePath()" :download="docData?.classShow.name || docData?.fileName">
             <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-download"></use></svg>
             {{t(`download`)}}
           </a>
@@ -113,7 +119,9 @@ onMounted(async ()=>{
           <span v-else-if="loadStatus=='error'">{{t('error')}}</span>
           <span v-else-if="loadStatus=='notSupport'">{{t('notSupport')}}</span>
         </div>
-        <vue-pdf-embed v-show="vpe_show" :source="vpe_source"/>
+        <div v-if="isClient && VuePdfEmbed">
+          <VuePdfEmbed v-show="vpe_show" :source="vpe_source"/>
+        </div>
         <div v-show="docxView_show" ref="docxView" />
         <div v-show="txtView_show" id="txtView"><!--ref="txtView"-->
           <span>{{txtView_content}}</span>
