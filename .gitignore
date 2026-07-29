@@ -13,3 +13,6 @@ npm-debug.log*
 
 src/assets/_svg
 src/_test
+
+script/tools/input
+script/tools/output

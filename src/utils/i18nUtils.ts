@@ -37,7 +37,9 @@ export async function switchLocale(locale: string) {
         }
     );
 
-    useCookies().set('locale', locale);
+    useCookies().set('locale', locale,{
+        maxAge: 60*60*24*365,
+    });
 
     autoSetHtmlLang();
 }

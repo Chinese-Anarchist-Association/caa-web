@@ -1,0 +1,9 @@
+.directory-tree{
+  --dt-border-color: #b1b1b1;
+  --dt-bg-color: #f3f3f3;
+}
+
+[data-bs-theme=dark] .directory-tree {
+  --dt-border-color: #202020;
+  --dt-bg-color:#000;
+}

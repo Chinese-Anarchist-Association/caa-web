@@ -1,0 +1,24 @@
+.tree-node {
+  user-select: none;
+
+  .node-content {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .node-content:hover {
+    background: var(--tn-nc-hover-bg-color);
+  }
+  .head-icon {
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+  }
+  .name {
+    font-size: 14px;
+  }
+  .children {
+  }
+}

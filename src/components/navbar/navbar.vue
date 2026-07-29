@@ -43,7 +43,9 @@ function doThemeSel(tme:string,setCookie:boolean=true){
   curTheme.value=tme;
 
   if (setCookie)
-    useCookies().set('theme', tme);
+    useCookies().set('theme', tme,{
+      maxAge: 60*60*24*365,
+    });
 }
 onMounted(()=>{
   const theme:'dark'|'light'|'auto'|undefined=useCookies().get('theme');
@@ -82,6 +84,9 @@ function routeName_onChange(){
         <ul class="navbar-nav d-flex me-auto nav-0">
           <li class="nav-item">
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='library' || curRouteName?.startsWith('library_doc-'))}" aria-current="page" :to="{ name: 'library'}">{{t(`${lp}.library`)}}</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>

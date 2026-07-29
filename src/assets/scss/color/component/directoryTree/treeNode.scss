@@ -1,0 +1,7 @@
+.tree-node{
+  --tn-nc-hover-bg-color: #d8d8d8;
+}
+
+[data-bs-theme=dark] .tree-node{
+  --tn-nc-hover-bg-color: #222222;
+}
