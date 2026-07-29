@@ -319,7 +319,7 @@ const docsData: DocsData = [
             name: "克鲁泡特金 《伦理学的起源和发展》 .pdf",
         },
     },
-    {
+    /*{
         id: 37,
         path: "pkj/",
         fileName: "37.pdf",
@@ -327,7 +327,7 @@ const docsData: DocsData = [
             path: "/巴枯宁、克鲁泡特金哲学",
             name: "克鲁泡特金互助伦理思想探究.pdf",
         },
-    },
+    },*/
     {
         id: 38,
         path: "pkj/",
