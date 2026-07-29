@@ -5,7 +5,9 @@ export type DocData={
     fileName:string,
     //在显示时的类别分类
     classShow:{
+        //可以与文件实际路径不同，这是自定义路径。开头要加斜杠，末尾不加斜杠
         path:string,
+        //可以与文件的实际名称不同，这是自定义名称
         name?:string,
     }
 };
@@ -26,7 +28,7 @@ const docsData:DocsData=[
         path: 'test/',
         fileName: 'test.docx',
         classShow:{
-            path: '/test',
+            path: '/test2',
         }
     },
 ];

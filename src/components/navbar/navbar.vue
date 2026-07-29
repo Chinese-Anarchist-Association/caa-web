@@ -86,7 +86,7 @@ function routeName_onChange(){
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='library')}" aria-current="page" :to="{ name: 'library'}">{{t(`${lp}.library`)}}</router-link>
+            <router-link class="nav-link" :class="{'active':(curRouteName=='library' || curRouteName?.startsWith('library_doc-'))}" aria-current="page" :to="{ name: 'library'}">{{t(`${lp}.library`)}}</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>
