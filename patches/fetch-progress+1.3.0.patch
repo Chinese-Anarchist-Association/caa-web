@@ -1,0 +1,20 @@
+diff --git a/node_modules/fetch-progress/Progress.js b/node_modules/fetch-progress/Progress.js
+index 285fdce..6393a10 100644
+--- a/node_modules/fetch-progress/Progress.js
++++ b/node_modules/fetch-progress/Progress.js
+@@ -1,4 +1,4 @@
+-import speedometer from './speedometer';
++import speedometer from './speedometer.js';
+ 
+ export default class Progress {
+   constructor(length, emitDelay = 1000) {
+diff --git a/node_modules/fetch-progress/index.js b/node_modules/fetch-progress/index.js
+index 66633ad..fed819a 100644
+--- a/node_modules/fetch-progress/index.js
++++ b/node_modules/fetch-progress/index.js
+@@ -1,4 +1,4 @@
+-import Progress from './Progress';
++import Progress from './Progress.js';
+ 
+ export function isFetchProgressSupported() {
+   return (

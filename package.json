@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "postinstall": "patch-package",
     "copy-files": "node script/copySvgIcons.js",
     "before-build": "npm run copy-files",
     "type-check": "vue-tsc -b",
@@ -51,6 +52,7 @@
     "@vue/tsconfig": "^0.8.1",
     "bootstrap-icons": "^1.13.1",
     "cross-env": "^10.1.0",
+    "patch-package": "^8.0.1",
     "postcss-prefixwrap": "^1.57.2",
     "sass": "^1.97.0",
     "typescript": "~5.9.3",

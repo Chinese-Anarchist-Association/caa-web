@@ -83,29 +83,30 @@ onMounted(async ()=>{
   loadStatus.value='waitLoad';
 });
 
-const loading_speed:Ref<number>=ref(0);
-const loading_percentage:Ref<number>=ref(0);
-const loading_eta:Ref<number>=ref(0);
-const loading_total:Ref<number>=ref(0);
+const loading_speed:Ref<number>=ref(-1);
+const loading_percentage:Ref<number>=ref(-1);
+const loading_eta:Ref<number>=ref(-1);
+const loading_total:Ref<number>=ref(-1);
 //已下载的字节数
-const loading_transferred:Ref<number>=ref(0);
+const loading_transferred:Ref<number>=ref(-1);
 //剩余未下载的字节数
-const loading_remaining:Ref<number>=ref(0);
+const loading_remaining:Ref<number>=ref(-1);
 async function doLoad(){
   loadStatus.value='loading';
   const res=await fetch(getFilePath()).then(
       fetchProgress({
         onProgress(prog){
-          loading_speed.value=prog.speed;
+          //console.log('progress:', prog);
+          loading_speed.value=prog.speed??-1;
           //@ts-ignore
-          loading_percentage.value=prog.percentage;
+          loading_percentage.value=prog.percentage??-1;
           //loading_eta.value=prog.eta;//它自带的剩余时间计算存在问题，因此自己计算
           //@ts-ignore
-          loading_eta.value=prog.remaining/prog.speed;
-          loading_total.value=prog.total;
-          loading_transferred.value=prog.transferred;
+          loading_eta.value=(prog.remaining && prog.speed && prog.remaining!=0 && prog.speed!=0)?(prog.remaining/prog.speed):-1;
+          loading_total.value=prog.total??-1;
+          loading_transferred.value=prog.transferred??-1;
           //@ts-ignore
-          loading_remaining.value=prog.remaining;
+          loading_remaining.value=prog.remaining??-1;
         }
       })
   );
@@ -155,12 +156,12 @@ async function doLoad(){
         <div v-show="loadStatus!='done'" class="text-center">
           <div v-if="loadStatus=='loading'">
             <span>{{t('loading')}}</span><br/>
-            <span>{{`${t('total')}${filesize(loading_total)}`}}</span><br/>
-            <span>{{`${t('transferred')}${filesize(loading_transferred)}`}}</span><br/>
-            <span>{{`${t('remaining')}${filesize(loading_remaining)}`}}</span><br/>
-            <span>{{`${t('speed')}${filesize(loading_speed)}/s`}}</span><br/>
-            <span>{{`${t('eta')}${dayjs.duration(Math.round(loading_eta*1000),'ms').format('HH:mm:ss:SSS')}`}}</span><br/>
-            <span>{{`${t('percentage')}${loading_percentage}%`}}</span>
+            <span v-if="loading_total!=-1 && loading_total!=0">{{`${t('total')}${(loading_total!=-1)?filesize(loading_total):''}`}}</span><br/>
+            <span v-if="loading_transferred!=-1 && loading_transferred!=0">{{`${t('transferred')}${(loading_transferred!=-1)?filesize(loading_transferred):''}`}}</span><br/>
+            <span v-if="loading_remaining!=-1">{{`${t('remaining')}${(loading_remaining!=-1)?filesize(loading_remaining):''}`}}</span><br/>
+            <span v-if="loading_speed!=-1">{{`${t('speed')}${(loading_speed!=-1)?filesize(loading_speed):''}/s`}}</span><br/>
+            <span v-if="loading_eta!=-1 && loading_eta!=0">{{`${t('eta')}${(loading_eta!=-1)?(dayjs.duration(Math.round(loading_eta*1000),'ms').format('HH:mm:ss:SSS')):''}`}}</span><br/>
+            <span v-if="loading_percentage!=-1 && loading_percentage!=0">{{`${t('percentage')}${loading_percentage}%`}}</span>
           </div>
           <span v-else-if="loadStatus=='error'">{{t('error')}}</span>
           <span v-else-if="loadStatus=='notSupport'">{{t('notSupport')}}</span>
