@@ -7,9 +7,12 @@ import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {useTitle} from "@vueuse/core";
 import {isClient} from "@/ts/env/ssr.ts";
 //import {md_libraryDocs} from "@/ts/env/moduleDisable.ts";
-
 //@ts-ignore 该别名将会在@/../ts/vite/resolveAlias.node.ts中动态添加
 import docFiles from "@@glob/libraryDocFiles.ts";
+import fetchProgress from "fetch-progress";
+import {filesize} from "filesize";
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 
 const VuePdfEmbed:any = shallowRef(null);
 
@@ -52,6 +55,8 @@ function getFilePath(){
     return '';
 }
 
+dayjs.extend(duration);//注册dayjs的duration插件
+
 const vpe_source:Ref<(Uint8Array<ArrayBufferLike>)|null>=ref(null);
 const vpe_show:Ref<boolean>=ref(false);
 
@@ -65,8 +70,8 @@ const txtView_content:Ref<string>=ref('');
 /*enum LoadStatus{
   loading,done,error,
 }*/
-type LoadStatus='loading'|'done'|'error'|'notSupport';
-const loadStatus:Ref<LoadStatus>=ref('loading');
+type LoadStatus='init'|'waitLoad'|'loading'|'done'|'error'|'notSupport';
+const loadStatus:Ref<LoadStatus>=ref('init');
 
 onMounted(async ()=>{
   if (isClient){//动态且仅在客户端加载vue-pdf-embed组件，避免ssg构建失败
@@ -75,7 +80,36 @@ onMounted(async ()=>{
 
   do_useTitle(docData.value?.classShow.name || docData.value?.fileName);
 
-  const res=await fetch(getFilePath());
+  loadStatus.value='waitLoad';
+});
+
+const loading_speed:Ref<number>=ref(-1);
+const loading_percentage:Ref<number>=ref(-1);
+const loading_eta:Ref<number>=ref(-1);
+const loading_total:Ref<number>=ref(-1);
+//已下载的字节数
+const loading_transferred:Ref<number>=ref(-1);
+//剩余未下载的字节数
+const loading_remaining:Ref<number>=ref(-1);
+async function doLoad(){
+  loadStatus.value='loading';
+  const res=await fetch(getFilePath()).then(
+      fetchProgress({
+        onProgress(prog){
+          //console.log('progress:', prog);
+          loading_speed.value=prog.speed??-1;
+          //@ts-ignore
+          loading_percentage.value=prog.percentage??-1;
+          //loading_eta.value=prog.eta;//它自带的剩余时间计算存在问题，因此自己计算
+          //@ts-ignore
+          loading_eta.value=(prog.remaining && prog.speed && prog.remaining!=0 && prog.speed!=0)?(prog.remaining/prog.speed):-1;
+          loading_total.value=prog.total??-1;
+          loading_transferred.value=prog.transferred??-1;
+          //@ts-ignore
+          loading_remaining.value=prog.remaining??-1;
+        }
+      })
+  );
   if (res.ok || res.status==304) {
     switch (fileType.value) {
       case 'pdf':
@@ -97,7 +131,7 @@ onMounted(async ()=>{
     if (loadStatus.value=='loading')
       loadStatus.value='done';
   }else loadStatus.value='error';
-});
+}
 </script>
 
 <template>
@@ -120,9 +154,21 @@ onMounted(async ()=>{
       </div>
       <div class="col-12 pt-2">
         <div v-show="loadStatus!='done'" class="text-center">
-          <span v-if="loadStatus=='loading'">{{t('loading')}}</span>
+          <div v-if="loadStatus=='loading'">
+            <span>{{t('loading')}}</span><br/>
+            <span v-if="loading_total!=-1 && loading_total!=0">{{`${t('total')}${(loading_total!=-1)?filesize(loading_total):''}`}}</span><br/>
+            <span v-if="loading_transferred!=-1 && loading_transferred!=0">{{`${t('transferred')}${(loading_transferred!=-1)?filesize(loading_transferred):''}`}}</span><br/>
+            <span v-if="loading_remaining!=-1">{{`${t('remaining')}${(loading_remaining!=-1)?filesize(loading_remaining):''}`}}</span><br/>
+            <span v-if="loading_speed!=-1">{{`${t('speed')}${(loading_speed!=-1)?filesize(loading_speed):''}/s`}}</span><br/>
+            <span v-if="loading_eta!=-1 && loading_eta!=0">{{`${t('eta')}${(loading_eta!=-1)?(dayjs.duration(Math.round(loading_eta*1000),'ms').format('HH:mm:ss:SSS')):''}`}}</span><br/>
+            <span v-if="loading_percentage!=-1 && loading_percentage!=0">{{`${t('percentage')}${loading_percentage}%`}}</span>
+          </div>
           <span v-else-if="loadStatus=='error'">{{t('error')}}</span>
           <span v-else-if="loadStatus=='notSupport'">{{t('notSupport')}}</span>
+          <div v-else-if="loadStatus=='waitLoad'">
+            <button class="btn btn-primary" @click="doLoad();">{{t('previewOnline')}}</button>
+          </div>
+          <span v-else-if="loadStatus=='init'">{{t('initing')}}</span>
         </div>
         <div v-if="isClient && VuePdfEmbed">
           <VuePdfEmbed v-show="vpe_show" :source="vpe_source"/>
@@ -173,14 +219,24 @@ onMounted(async ()=>{
     "download": "下载",
     "loading": "正在加载",
     "error": "加载失败",
-    "notSupport": "不支持在线浏览该文件"
+    "notSupport": "不支持在线浏览该文件",
+    "previewOnline": "在线预览",
+    "initing": "初始化中",
+    "total": "总大小：",
+    "transferred": "已加载：",
+    "remaining": "剩余：",
+    "speed": "速度：",
+    "eta": "剩余时间：",
+    "percentage": "进度："
   },
   "en-US": {
     "title": "Library",
     "download": "Download",
     "loading": "Loading...",
     "error": "Error.",
-    "notSupport": "Not support."
+    "notSupport": "Not support.",
+    "previewOnline": "Preview Online",
+    "initing": "Initializing"
   }
 }
 </i18n>
