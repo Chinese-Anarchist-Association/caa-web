@@ -1,3 +1,5 @@
+import {md_libraryDocs} from "@/ts/env/moduleDisable.ts";
+
 export type DocData={
     id:number,
     //文件路径。开头不加斜杠，末尾需要添加斜杠（处于根时留空不加斜杠）
@@ -14,7 +16,7 @@ export type DocData={
 export type DocsData=DocData[];/*{
     [key: string]: DocData;
 };*/
-const docsData: DocsData = [
+const docsData: DocsData = (!md_libraryDocs) ? [
     {
         id: -1,
         path: "test/",
@@ -1330,5 +1332,5 @@ const docsData: DocsData = [
             name: "鲁道夫罗克：温和的无政府主义者.pdf",
         },
     },
-];
+]:[];
 export default docsData;
