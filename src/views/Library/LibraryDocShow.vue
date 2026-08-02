@@ -6,18 +6,12 @@ import { renderAsync } from 'docx-preview'
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {useTitle} from "@vueuse/core";
 import {isClient} from "@/ts/env/ssr.ts";
+//import {md_libraryDocs} from "@/ts/env/moduleDisable.ts";
+
+//@ts-ignore 该别名将会在@/../ts/vite/resolveAlias.node.ts中动态添加
+import docFiles from "@@glob/libraryDocFiles.ts";
 
 const VuePdfEmbed:any = shallowRef(null);
-
-const docFiles= import.meta.glob([
-  '@/views/Library/doc/**/*.pdf',
-  '@/views/Library/doc/**/*.docx',
-  '@/views/Library/doc/**/*.txt',
-], {
-  eager: true,
-  query: '?url',
-  import: 'default',
-});
 
 const {lt:t,gt}=autoUseI18n();
 
@@ -44,7 +38,18 @@ const fileType = computed(():string|undefined => {
   }
 });
 function getFilePath(){
-  return docFiles[`/src/views/Library/doc/${docData.value!.path}${docData.value!.fileName}`] as string;
+  if (docFiles!=null && docData.value) {
+    if (docData.value.uri.startsWith('http')){
+      if (docData.value.uri.endsWith('/'))
+        return `${docData.value.uri}${docData.value.fileName}`;
+      else
+        return docData.value.uri;
+    }else{
+      return docFiles[`/src/views/Library/doc/${docData.value.uri}${docData.value.fileName}`] as string;
+    }
+  }
+  else
+    return '';
 }
 
 const vpe_source:Ref<(Uint8Array<ArrayBufferLike>)|null>=ref(null);

@@ -9,16 +9,27 @@ import {isDev,isProd,mode} from "./src/ts/env/packMode.node.ts";
 import renderMode from "./src/ts/env/renderMode.node.ts";
 //import baseUrl from "./src/ts/env/baseUrl.node.ts";
 import {baseUrl_get} from "./src/ts/env/baseUrl.node.ts";
+import {md_libraryDocs_get} from "./src/ts/env/moduleDisable.node.ts";
 //import postcssPrefixwrap from 'postcss-prefixwrap';
+import resolveAlias from './ts/vite/resolveAlias.node.ts';
 
 const env = loadEnv(mode as string, process.cwd());
 const distPath=path.resolve(__dirname, 'dist');
+
+const ra={
+    '@': path.resolve(__dirname, 'src'),
+    ...resolveAlias(env,__dirname),
+}
+console.log(ra);
 
 // https://vite.dev/config/
 export default defineConfig(({}) =>{
     console.log(`当前模式：${mode}\nisDev: ${isDev}\nisProd: ${isProd}`);
     console.log(`当前渲染模式：${renderMode}`);
     console.log(`当前基路径：${baseUrl_get(env)/*baseUrl*/}`);
+
+    console.log(`当前模块禁用情况（为true则表示被禁用）：`);
+    console.log(`libraryDocs: ${md_libraryDocs_get(env)}`);
 return {
     //base: './',//使用相对路径
     base: baseUrl_get(env),//baseUrl,
@@ -48,9 +59,7 @@ return {
         }),
     ],
     resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'src'),
-        }
+        alias: ra,
     },
     css: {
         preprocessorOptions: {

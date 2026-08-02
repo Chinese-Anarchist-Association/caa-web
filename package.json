@@ -22,7 +22,8 @@
     "build-quick:spa": "npm run type-check && npm run build-only:spa",
     "build-quick:spa-hash": "npm run type-check && npm run build-only:spa-hash",
     "build-quick:ssg": "npm run type-check && npm run build-only:ssg",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-quick-small": "cross-env VITE_MD_LIBRARYDOCS=true npm run build-quick"
   },
   "dependencies": {
     "@vueuse/core": "^14.1.0",

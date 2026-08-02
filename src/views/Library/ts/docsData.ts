@@ -1,7 +1,11 @@
+import {md_libraryDocs} from "@/ts/env/moduleDisable.ts";
+import {libraryDocs_baseUrl_1} from "@/ts/env/libraryDocs_baseUrl.ts";
+
 export type DocData={
     id:number,
     //文件路径。开头不加斜杠，末尾需要添加斜杠（处于根时留空不加斜杠）
-    path:string,
+    //文件网络地址。需要以http开头（https同理）。如果以斜杠结尾，则会自动将fileName的值追加在后面
+    uri:string,
     fileName:string,
     //在显示时的类别分类
     classShow:{
@@ -14,10 +18,10 @@ export type DocData={
 export type DocsData=DocData[];/*{
     [key: string]: DocData;
 };*/
-const docsData: DocsData = [
+const docsData: DocsData = (!md_libraryDocs) ? [
     {
         id: -1,
-        path: "test/",
+        uri: "test/",
         fileName: "test.pdf",
         classShow: {
             path: "/test",
@@ -25,7 +29,7 @@ const docsData: DocsData = [
     },
     {
         id: -2,
-        path: "test/",
+        uri: "test/",
         fileName: "test.docx",
         classShow: {
             path: "/test2",
@@ -33,7 +37,7 @@ const docsData: DocsData = [
     },
     {
         id: 0,
-        path: "gt/qvsl/",
+        uri: libraryDocs_baseUrl_1+"gt/qvsl/",
         fileName: "0.pdf",
         classShow: {
             path: "/工团/《乔治索雷尔思想包》",
@@ -42,7 +46,7 @@ const docsData: DocsData = [
     },
     {
         id: 1,
-        path: "gt/qvsl/",
+        uri: libraryDocs_baseUrl_1+"gt/qvsl/",
         fileName: "1.pdf",
         classShow: {
             path: "/工团/《乔治索雷尔思想包》",
@@ -51,7 +55,7 @@ const docsData: DocsData = [
     },
     {
         id: 2,
-        path: "gt/qvsl/",
+        uri: libraryDocs_baseUrl_1+"gt/qvsl/",
         fileName: "2.pdf",
         classShow: {
             path: "/工团/《乔治索雷尔思想包》",
@@ -60,7 +64,7 @@ const docsData: DocsData = [
     },
     {
         id: 3,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "3.pdf",
         classShow: {
             path: "/工团",
@@ -69,13 +73,13 @@ const docsData: DocsData = [
     },
     {
         id: 4,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "4.pdf",
         classShow: { path: "/工团", name: "安工团.pdf" },
     },
     {
         id: 5,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "5.epub",
         classShow: {
             path: "/工团",
@@ -84,19 +88,19 @@ const docsData: DocsData = [
     },
     {
         id: 6,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "6.pdf",
         classShow: { path: "/工团", name: "无政府工团主义：从理论到实践.pdf" },
     },
     {
         id: 7,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "7.pdf",
         classShow: { path: "/工团", name: "法国的工团主义——思想研究.pdf" },
     },
     {
         id: 8,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "8.pdf",
         classShow: {
             path: "/工团",
@@ -105,13 +109,13 @@ const docsData: DocsData = [
     },
     {
         id: 9,
-        path: "gt/",
+        uri: libraryDocs_baseUrl_1+"gt/",
         fileName: "2.pdf",
         classShow: { path: "/工团", name: "乔治 索雷尔政治理论研究.pdf" },
     },
     {
         id: 10,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "10.pdf",
         classShow: {
             path: "/历史",
@@ -120,19 +124,19 @@ const docsData: DocsData = [
     },
     {
         id: 11,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "11.pdf",
         classShow: { path: "/历史", name: "[书籍]俄罗斯：从革命到反革命.pdf" },
     },
     {
         id: 12,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "12.pdf",
         classShow: { path: "/历史", name: "《我对俄国的幻灭》艾玛戈德曼.pdf" },
     },
     {
         id: 13,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "13.pdf",
         classShow: {
             path: "/历史",
@@ -141,31 +145,31 @@ const docsData: DocsData = [
     },
     {
         id: 14,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "14.pdf",
         classShow: { path: "/历史", name: "《耄耋和赛Gm》密码18903247.pdf" },
     },
     {
         id: 15,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "15.pdf",
         classShow: { path: "/历史", name: "不为人知的革命 第一卷.pdf" },
     },
     {
         id: 16,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "16.pdf",
         classShow: { path: "/历史", name: "不为人知的革命 第三卷.pdf" },
     },
     {
         id: 17,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "17.pdf",
         classShow: { path: "/历史", name: "以安分析俄革（密码18711936）.pdf" },
     },
     {
         id: 18,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "18.pdf",
         classShow: {
             path: "/历史",
@@ -174,7 +178,7 @@ const docsData: DocsData = [
     },
     {
         id: 19,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "19.pdf",
         classShow: {
             path: "/历史",
@@ -183,19 +187,19 @@ const docsData: DocsData = [
     },
     {
         id: 20,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "20.pdf",
         classShow: { path: "/历史", name: "喀琅施塔得：1921.pdf" },
     },
     {
         id: 21,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "21.pdf",
         classShow: { path: "/历史", name: "国际的历史发展.pdf" },
     },
     {
         id: 22,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "22.pdf",
         classShow: {
             path: "/历史",
@@ -204,7 +208,7 @@ const docsData: DocsData = [
     },
     {
         id: 23,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "23.pdf",
         classShow: {
             path: "/历史",
@@ -213,7 +217,7 @@ const docsData: DocsData = [
     },
     {
         id: 24,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "24.pdf",
         classShow: {
             path: "/历史",
@@ -222,13 +226,13 @@ const docsData: DocsData = [
     },
     {
         id: 25,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "25.docx",
         classShow: { path: "/历史", name: "无政府主义反帝国主义简史.docx" },
     },
     {
         id: 26,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "26.pdf",
         classShow: {
             path: "/历史",
@@ -237,13 +241,13 @@ const docsData: DocsData = [
     },
     {
         id: 27,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "27.pdf",
         classShow: { path: "/历史", name: "试探马赫诺运动.pdf" },
     },
     {
         id: 28,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "28.pdf",
         classShow: {
             path: "/历史",
@@ -252,7 +256,7 @@ const docsData: DocsData = [
     },
     {
         id: 29,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "29.docx",
         classShow: {
             path: "/历史",
@@ -261,7 +265,7 @@ const docsData: DocsData = [
     },
     {
         id: 30,
-        path: "lu/",
+        uri: libraryDocs_baseUrl_1+"lu/",
         fileName: "30.pdf",
         classShow: {
             path: "/历史",
@@ -270,13 +274,13 @@ const docsData: DocsData = [
     },
     {
         id: 31,
-        path: "lu/mdf/",
+        uri: libraryDocs_baseUrl_1+"lu/mdf/",
         fileName: "31.pdf",
         classShow: { path: "/历史/梅毒反R100年", name: "梅毒反GM100年.pdf" },
     },
     {
         id: 32,
-        path: "lu/mdf/",
+        uri: libraryDocs_baseUrl_1+"lu/mdf/",
         fileName: "32.pdf",
         classShow: {
             path: "/历史/梅毒反R100年",
@@ -285,7 +289,7 @@ const docsData: DocsData = [
     },
     {
         id: 33,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "33.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -294,7 +298,7 @@ const docsData: DocsData = [
     },
     {
         id: 34,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "34.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -303,7 +307,7 @@ const docsData: DocsData = [
     },
     {
         id: 35,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "35.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -312,7 +316,7 @@ const docsData: DocsData = [
     },
     {
         id: 36,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "36.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -321,7 +325,7 @@ const docsData: DocsData = [
     },
     /*{
         id: 37,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "37.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -330,7 +334,7 @@ const docsData: DocsData = [
     },*/
     {
         id: 38,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "38.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -339,7 +343,7 @@ const docsData: DocsData = [
     },
     /*{
         id: 39,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "39.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -348,7 +352,7 @@ const docsData: DocsData = [
     },*/
     {
         id: 40,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "40.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -357,7 +361,7 @@ const docsData: DocsData = [
     },
     {
         id: 41,
-        path: "pkj/",
+        uri: libraryDocs_baseUrl_1+"pkj/",
         fileName: "41.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学",
@@ -366,7 +370,7 @@ const docsData: DocsData = [
     },
     {
         id: 42,
-        path: "pkj/feb/",
+        uri: libraryDocs_baseUrl_1+"pkj/feb/",
         fileName: "42.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学/费尔巴哈著作",
@@ -375,7 +379,7 @@ const docsData: DocsData = [
     },
     {
         id: 43,
-        path: "pkj/feb/",
+        uri: libraryDocs_baseUrl_1+"pkj/feb/",
         fileName: "43.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学/费尔巴哈著作",
@@ -384,7 +388,7 @@ const docsData: DocsData = [
     },
     {
         id: 44,
-        path: "pkj/feb/",
+        uri: libraryDocs_baseUrl_1+"pkj/feb/",
         fileName: "44.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学/费尔巴哈著作",
@@ -393,7 +397,7 @@ const docsData: DocsData = [
     },
     {
         id: 45,
-        path: "pkj/feb/",
+        uri: libraryDocs_baseUrl_1+"pkj/feb/",
         fileName: "45.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学/费尔巴哈著作",
@@ -402,7 +406,7 @@ const docsData: DocsData = [
     },
     {
         id: 46,
-        path: "pkj/feb/",
+        uri: libraryDocs_baseUrl_1+"pkj/feb/",
         fileName: "46.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学/费尔巴哈著作",
@@ -411,7 +415,7 @@ const docsData: DocsData = [
     },
     {
         id: 47,
-        path: "pkj/feb/",
+        uri: libraryDocs_baseUrl_1+"pkj/feb/",
         fileName: "47.pdf",
         classShow: {
             path: "/巴枯宁、克鲁泡特金哲学/费尔巴哈著作",
@@ -420,7 +424,7 @@ const docsData: DocsData = [
     },
     {
         id: 48,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "48.pdf",
         classShow: {
             path: "/政治",
@@ -429,7 +433,7 @@ const docsData: DocsData = [
     },
     {
         id: 49,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "49.pdf",
         classShow: {
             path: "/政治",
@@ -438,7 +442,7 @@ const docsData: DocsData = [
     },
     {
         id: 50,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "50.pdf",
         classShow: {
             path: "/政治",
@@ -447,7 +451,7 @@ const docsData: DocsData = [
     },
     {
         id: 51,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "51.pdf",
         classShow: {
             path: "/政治",
@@ -456,7 +460,7 @@ const docsData: DocsData = [
     },
     {
         id: 52,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "52.pdf",
         classShow: {
             path: "/政治",
@@ -465,7 +469,7 @@ const docsData: DocsData = [
     },
     {
         id: 53,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "53.docx",
         classShow: {
             path: "/政治",
@@ -474,7 +478,7 @@ const docsData: DocsData = [
     },
     {
         id: 54,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "54.pdf",
         classShow: {
             path: "/政治",
@@ -483,7 +487,7 @@ const docsData: DocsData = [
     },
     {
         id: 55,
-        path: "vv/",
+        uri: libraryDocs_baseUrl_1+"vv/",
         fileName: "55.pdf",
         classShow: {
             path: "/政治",
@@ -492,7 +496,7 @@ const docsData: DocsData = [
     },
     {
         id: 56,
-        path: "jcfx/",
+        uri: libraryDocs_baseUrl_1+"jcfx/",
         fileName: "56.epub",
         classShow: {
             path: "/交叉分析",
@@ -501,7 +505,7 @@ const docsData: DocsData = [
     },
     {
         id: 57,
-        path: "jcfx/",
+        uri: libraryDocs_baseUrl_1+"jcfx/",
         fileName: "57.pdf",
         classShow: {
             path: "/交叉分析",
@@ -510,7 +514,7 @@ const docsData: DocsData = [
     },
     {
         id: 58,
-        path: "jcfx/",
+        uri: libraryDocs_baseUrl_1+"jcfx/",
         fileName: "58.pdf",
         classShow: {
             path: "/交叉分析",
@@ -519,7 +523,7 @@ const docsData: DocsData = [
     },
     {
         id: 59,
-        path: "jcfx/",
+        uri: libraryDocs_baseUrl_1+"jcfx/",
         fileName: "59.pdf",
         classShow: {
             path: "/交叉分析",
@@ -528,7 +532,7 @@ const docsData: DocsData = [
     },
     {
         id: 60,
-        path: "jcfx/",
+        uri: libraryDocs_baseUrl_1+"jcfx/",
         fileName: "60.docx",
         classShow: {
             path: "/交叉分析",
@@ -537,7 +541,7 @@ const docsData: DocsData = [
     },
     {
         id: 61,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "61.pdf",
         classShow: {
             path: "/全集及文集",
@@ -546,7 +550,7 @@ const docsData: DocsData = [
     },
     {
         id: 62,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "62.pdf",
         classShow: {
             path: "/全集及文集",
@@ -555,7 +559,7 @@ const docsData: DocsData = [
     },
     {
         id: 63,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "63.pdf",
         classShow: {
             path: "/全集及文集",
@@ -564,7 +568,7 @@ const docsData: DocsData = [
     },
     {
         id: 64,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "64.pdf",
         classShow: {
             path: "/全集及文集",
@@ -573,7 +577,7 @@ const docsData: DocsData = [
     },
     {
         id: 65,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "65.pdf",
         classShow: {
             path: "/全集及文集",
@@ -582,7 +586,7 @@ const docsData: DocsData = [
     },
     {
         id: 66,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "66.pdf",
         classShow: {
             path: "/全集及文集",
@@ -591,7 +595,7 @@ const docsData: DocsData = [
     },
     {
         id: 67,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "67.pdf",
         classShow: {
             path: "/全集及文集",
@@ -600,7 +604,7 @@ const docsData: DocsData = [
     },
     {
         id: 68,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "68.pdf",
         classShow: {
             path: "/全集及文集",
@@ -609,7 +613,7 @@ const docsData: DocsData = [
     },
     {
         id: 69,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "69.pdf",
         classShow: {
             path: "/全集及文集",
@@ -618,13 +622,13 @@ const docsData: DocsData = [
     },
     {
         id: 70,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "70.pdf",
         classShow: { path: "/全集及文集", name: "师复文集 (2).pdf" },
     },
     {
         id: 71,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "71.pdf",
         classShow: {
             path: "/全集及文集",
@@ -633,7 +637,7 @@ const docsData: DocsData = [
     },
     {
         id: 72,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "72.pdf",
         classShow: {
             path: "/全集及文集",
@@ -642,7 +646,7 @@ const docsData: DocsData = [
     },
     {
         id: 73,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "73.pdf",
         classShow: {
             path: "/全集及文集",
@@ -651,13 +655,13 @@ const docsData: DocsData = [
     },
     {
         id: 74,
-        path: "qj/",
+        uri: libraryDocs_baseUrl_1+"qj/",
         fileName: "74.docx",
         classShow: { path: "/全集及文集", name: "马拉泰斯塔 生平与思想.docx" },
     },
     {
         id: 75,
-        path: "qj/mhlw/",
+        uri: libraryDocs_baseUrl_1+"qj/mhlw/",
         fileName: "75.pdf",
         classShow: {
             path: "/全集及文集/马赫诺文集资源包",
@@ -666,7 +670,7 @@ const docsData: DocsData = [
     },
     {
         id: 76,
-        path: "qj/mhlw/",
+        uri: libraryDocs_baseUrl_1+"qj/mhlw/",
         fileName: "76.pdf",
         classShow: {
             path: "/全集及文集/马赫诺文集资源包",
@@ -675,7 +679,7 @@ const docsData: DocsData = [
     },
     {
         id: 77,
-        path: "qj/mhlw/",
+        uri: libraryDocs_baseUrl_1+"qj/mhlw/",
         fileName: "77.pdf",
         classShow: {
             path: "/全集及文集/马赫诺文集资源包",
@@ -684,7 +688,7 @@ const docsData: DocsData = [
     },
     {
         id: 78,
-        path: "qj/mlts/",
+        uri: libraryDocs_baseUrl_1+"qj/mlts/",
         fileName: "78.txt",
         classShow: {
             path: "/全集及文集/《马拉泰斯塔第一卷》",
@@ -693,7 +697,7 @@ const docsData: DocsData = [
     },
     {
         id: 79,
-        path: "qj/mlts/",
+        uri: libraryDocs_baseUrl_1+"qj/mlts/",
         fileName: "79.txt",
         classShow: {
             path: "/全集及文集/《马拉泰斯塔第一卷》",
@@ -702,7 +706,7 @@ const docsData: DocsData = [
     },
     {
         id: 80,
-        path: "qj/mlts/",
+        uri: libraryDocs_baseUrl_1+"qj/mlts/",
         fileName: "80.txt",
         classShow: {
             path: "/全集及文集/《马拉泰斯塔第一卷》",
@@ -711,7 +715,7 @@ const docsData: DocsData = [
     },
     {
         id: 81,
-        path: "qj/mlts/",
+        uri: libraryDocs_baseUrl_1+"qj/mlts/",
         fileName: "81.txt",
         classShow: {
             path: "/全集及文集/《马拉泰斯塔第一卷》",
@@ -720,7 +724,7 @@ const docsData: DocsData = [
     },
     {
         id: 82,
-        path: "qj/mlts/",
+        uri: libraryDocs_baseUrl_1+"qj/mlts/",
         fileName: "82.txt",
         classShow: {
             path: "/全集及文集/《马拉泰斯塔第一卷》",
@@ -729,7 +733,7 @@ const docsData: DocsData = [
     },
     {
         id: 83,
-        path: "qj/mlts/",
+        uri: libraryDocs_baseUrl_1+"qj/mlts/",
         fileName: "83.docx",
         classShow: {
             path: "/全集及文集/《马拉泰斯塔第一卷》",
@@ -738,7 +742,7 @@ const docsData: DocsData = [
     },
     {
         id: 84,
-        path: "pld/",
+        uri: libraryDocs_baseUrl_1+"pld/",
         fileName: "84.pdf",
         classShow: {
             path: "/蒲鲁东、个人哲学",
@@ -747,7 +751,7 @@ const docsData: DocsData = [
     },
     {
         id: 85,
-        path: "pld/",
+        uri: libraryDocs_baseUrl_1+"pld/",
         fileName: "85.pdf",
         classShow: {
             path: "/蒲鲁东、个人哲学",
@@ -756,7 +760,7 @@ const docsData: DocsData = [
     },
     {
         id: 86,
-        path: "pld/",
+        uri: libraryDocs_baseUrl_1+"pld/",
         fileName: "86.pdf",
         classShow: {
             path: "/蒲鲁东、个人哲学",
@@ -765,7 +769,7 @@ const docsData: DocsData = [
     },
     {
         id: 87,
-        path: "pld/",
+        uri: libraryDocs_baseUrl_1+"pld/",
         fileName: "87.epub",
         classShow: {
             path: "/蒲鲁东、个人哲学",
@@ -774,7 +778,7 @@ const docsData: DocsData = [
     },
     {
         id: 88,
-        path: "pld/",
+        uri: libraryDocs_baseUrl_1+"pld/",
         fileName: "88.pdf",
         classShow: {
             path: "/蒲鲁东、个人哲学",
@@ -783,7 +787,7 @@ const docsData: DocsData = [
     },
     {
         id: 89,
-        path: "hxd/",
+        uri: libraryDocs_baseUrl_1+"hxd/",
         fileName: "89.docx",
         classShow: {
             path: "/后现代",
@@ -792,7 +796,7 @@ const docsData: DocsData = [
     },
     {
         id: 90,
-        path: "hxd/",
+        uri: libraryDocs_baseUrl_1+"hxd/",
         fileName: "90.pdf",
         classShow: {
             path: "/后现代",
@@ -801,7 +805,7 @@ const docsData: DocsData = [
     },
     {
         id: 91,
-        path: "hxd/",
+        uri: libraryDocs_baseUrl_1+"hxd/",
         fileName: "91.pdf",
         classShow: {
             path: "/后现代",
@@ -810,7 +814,7 @@ const docsData: DocsData = [
     },
     {
         id: 92,
-        path: "hxd/",
+        uri: libraryDocs_baseUrl_1+"hxd/",
         fileName: "92.pdf",
         classShow: {
             path: "/后现代",
@@ -819,7 +823,7 @@ const docsData: DocsData = [
     },
     {
         id: 93,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "93.pdf",
         classShow: {
             path: "/平台—特殊",
@@ -828,19 +832,19 @@ const docsData: DocsData = [
     },
     {
         id: 94,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "94.docx",
         classShow: { path: "/平台—特殊", name: "《公社主义与特定主义》.docx" },
     },
     {
         id: 95,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "95.pdf",
         classShow: { path: "/平台—特殊", name: "《建设性的安》马克西莫夫.pdf" },
     },
     {
         id: 96,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "96.pdf",
         classShow: {
             path: "/平台—特殊",
@@ -849,19 +853,19 @@ const docsData: DocsData = [
     },
     {
         id: 97,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "97.pdf",
         classShow: { path: "/平台—特殊", name: "《组织理念和模式》.pdf" },
     },
     {
         id: 98,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "98.pdf",
         classShow: { path: "/平台—特殊", name: "《致混淆者们》阿尔西洛夫.pdf" },
     },
     {
         id: 99,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "99.pdf",
         classShow: {
             path: "/平台—特殊",
@@ -870,19 +874,19 @@ const docsData: DocsData = [
     },
     {
         id: 100,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "100.pdf",
         classShow: { path: "/平台—特殊", name: "杜鲁提之友小组1937.pdf" },
     },
     {
         id: 101,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "101.docx",
         classShow: { path: "/平台—特殊", name: "特定主义（Especifism.docx" },
     },
     {
         id: 102,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "102.pdf",
         classShow: {
             path: "/平台—特殊",
@@ -891,7 +895,7 @@ const docsData: DocsData = [
     },
     {
         id: 103,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "103.pdf",
         classShow: {
             path: "/平台—特殊",
@@ -900,7 +904,7 @@ const docsData: DocsData = [
     },
     {
         id: 104,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "104.pdf",
         classShow: {
             path: "/平台—特殊",
@@ -909,13 +913,13 @@ const docsData: DocsData = [
     },
     {
         id: 105,
-        path: "pt/",
+        uri: libraryDocs_baseUrl_1+"pt/",
         fileName: "105.pdf",
         classShow: { path: "/平台—特殊", name: "迈向新的革命—海梅·巴柳斯.pdf" },
     },
     {
         id: 106,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "106.pdf",
         classShow: {
             path: "/佐供及稀有著作",
@@ -924,13 +928,13 @@ const docsData: DocsData = [
     },
     {
         id: 107,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "107.pdf",
         classShow: { path: "/佐供及稀有著作", name: "作为哲学家的列宁.pdf" },
     },
     {
         id: 108,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "108.pdf",
         classShow: {
             path: "/佐供及稀有著作",
@@ -939,7 +943,7 @@ const docsData: DocsData = [
     },
     {
         id: 109,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "109.pdf",
         classShow: {
             path: "/佐供及稀有著作",
@@ -948,13 +952,13 @@ const docsData: DocsData = [
     },
     {
         id: 110,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "110.pdf",
         classShow: { path: "/佐供及稀有著作", name: "委员会共产主义读本.pdf" },
     },
     {
         id: 111,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "111.pdf",
         classShow: {
             path: "/佐供及稀有著作",
@@ -963,13 +967,13 @@ const docsData: DocsData = [
     },
     {
         id: 112,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "112.pdf",
         classShow: { path: "/佐供及稀有著作", name: "柯尔施《废除之书》.pdf" },
     },
     {
         id: 113,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "113.pdf",
         classShow: {
             path: "/佐供及稀有著作",
@@ -978,7 +982,7 @@ const docsData: DocsData = [
     },
     {
         id: 114,
-        path: "zg/",
+        uri: libraryDocs_baseUrl_1+"zg/",
         fileName: "114.pdf",
         classShow: {
             path: "/佐供及稀有著作",
@@ -987,7 +991,7 @@ const docsData: DocsData = [
     },
     {
         id: 115,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "115.pdf",
         classShow: {
             path: "/政治批判",
@@ -996,13 +1000,13 @@ const docsData: DocsData = [
     },
     {
         id: 116,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "116.pdf",
         classShow: { path: "/政治批判", name: "国家资本主义.pdf" },
     },
     {
         id: 117,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "117.pdf",
         classShow: {
             path: "/政治批判",
@@ -1011,7 +1015,7 @@ const docsData: DocsData = [
     },
     {
         id: 118,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "118.pdf",
         classShow: {
             path: "/政治批判",
@@ -1020,7 +1024,7 @@ const docsData: DocsData = [
     },
     {
         id: 119,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "119.pdf",
         classShow: {
             path: "/政治批判",
@@ -1029,7 +1033,7 @@ const docsData: DocsData = [
     },
     {
         id: 120,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "120.pdf",
         classShow: {
             path: "/政治批判",
@@ -1038,13 +1042,13 @@ const docsData: DocsData = [
     },
     {
         id: 121,
-        path: "vvpp/",
+        uri: libraryDocs_baseUrl_1+"vvpp/",
         fileName: "121.pdf",
         classShow: { path: "/政治批判", name: "苏联的资本主义与阶级斗争.pdf" },
     },
     {
         id: 122,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "122.pdf",
         classShow: {
             path: "/经济",
@@ -1053,7 +1057,7 @@ const docsData: DocsData = [
     },
     {
         id: 123,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "123.pdf",
         classShow: {
             path: "/经济",
@@ -1062,13 +1066,13 @@ const docsData: DocsData = [
     },
     {
         id: 124,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "124.pdf",
         classShow: { path: "/经济", name: "《巴枯宁经济思想选》.pdf" },
     },
     {
         id: 125,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "125.pdf",
         classShow: {
             path: "/经济",
@@ -1077,7 +1081,7 @@ const docsData: DocsData = [
     },
     {
         id: 126,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "126.epub",
         classShow: {
             path: "/经济",
@@ -1086,13 +1090,13 @@ const docsData: DocsData = [
     },
     {
         id: 127,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "127.pdf",
         classShow: { path: "/经济", name: "债：5000年债务史 大卫·格雷伯.pdf" },
     },
     {
         id: 128,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "128.docx",
         classShow: {
             path: "/经济",
@@ -1101,7 +1105,7 @@ const docsData: DocsData = [
     },
     {
         id: 129,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "129.pdf",
         classShow: {
             path: "/经济",
@@ -1110,7 +1114,7 @@ const docsData: DocsData = [
     },
     {
         id: 130,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "130.pdf",
         classShow: {
             path: "/经济",
@@ -1119,13 +1123,13 @@ const docsData: DocsData = [
     },
     {
         id: 131,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "131.pdf",
         classShow: { path: "/经济", name: "无政府主义经济学常见问题.pdf" },
     },
     {
         id: 132,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "132.pdf",
         classShow: {
             path: "/经济",
@@ -1134,25 +1138,25 @@ const docsData: DocsData = [
     },
     {
         id: 133,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "133.pdf",
         classShow: { path: "/经济", name: "社会主义-卡斯托尼亚迪斯.pdf" },
     },
     {
         id: 134,
-        path: "jj/",
+        uri: libraryDocs_baseUrl_1+"jj/",
         fileName: "134.pdf",
         classShow: { path: "/经济", name: "革命之后（迭戈·桑蒂兰）.pdf" },
     },
     {
         id: 135,
-        path: "wd/",
+        uri: libraryDocs_baseUrl_1+"wd/",
         fileName: "135.pdf",
         classShow: { path: "/问答", name: "无政府主义常见问答C+D节.pdf" },
     },
     {
         id: 136,
-        path: "wd/",
+        uri: libraryDocs_baseUrl_1+"wd/",
         fileName: "136.pdf",
         classShow: {
             path: "/问答",
@@ -1161,13 +1165,13 @@ const docsData: DocsData = [
     },
     {
         id: 137,
-        path: "jmjx/",
+        uri: libraryDocs_baseUrl_1+"jmjx/",
         fileName: "137.pdf",
         classShow: { path: "/简介", name: "《从资到安》密码18711936.pdf" },
     },
     {
         id: 138,
-        path: "jmjx/",
+        uri: libraryDocs_baseUrl_1+"jmjx/",
         fileName: "138.pdf",
         classShow: {
             path: "/简介",
@@ -1176,13 +1180,13 @@ const docsData: DocsData = [
     },
     {
         id: 139,
-        path: "jmjx/",
+        uri: libraryDocs_baseUrl_1+"jmjx/",
         fileName: "139.docx",
         classShow: { path: "/简介", name: "安那其主义入门的补充.docx" },
     },
     {
         id: 140,
-        path: "jmjx/",
+        uri: libraryDocs_baseUrl_1+"jmjx/",
         fileName: "140.pdf",
         classShow: {
             path: "/简介",
@@ -1191,7 +1195,7 @@ const docsData: DocsData = [
     },
     {
         id: 141,
-        path: "jmjx/",
+        uri: libraryDocs_baseUrl_1+"jmjx/",
         fileName: "141.docx",
         classShow: {
             path: "/简介",
@@ -1200,13 +1204,13 @@ const docsData: DocsData = [
     },
     {
         id: 142,
-        path: "jmjx/",
+        uri: libraryDocs_baseUrl_1+"jmjx/",
         fileName: "142.pdf",
         classShow: { path: "/简介", name: "马拉泰斯塔：安那其.pdf" },
     },
     {
         id: 143,
-        path: "zh/",
+        uri: libraryDocs_baseUrl_1+"zh/",
         fileName: "143.pdf",
         classShow: {
             path: "/综合—Rebellion",
@@ -1215,13 +1219,13 @@ const docsData: DocsData = [
     },
     {
         id: 144,
-        path: "rl/",
+        uri: libraryDocs_baseUrl_1+"rl/",
         fileName: "144.pdf",
         classShow: { path: "/人类学等", name: "人与地 埃利塞.邵可侣.pdf" },
     },
     {
         id: 145,
-        path: "rl/",
+        uri: libraryDocs_baseUrl_1+"rl/",
         fileName: "145.pdf",
         classShow: {
             path: "/人类学等",
@@ -1230,7 +1234,7 @@ const docsData: DocsData = [
     },
     {
         id: 146,
-        path: "rl/",
+        uri: libraryDocs_baseUrl_1+"rl/",
         fileName: "146.pdf",
         classShow: {
             path: "/人类学等",
@@ -1239,13 +1243,13 @@ const docsData: DocsData = [
     },
     {
         id: 147,
-        path: "rl/",
+        uri: libraryDocs_baseUrl_1+"rl/",
         fileName: "147.pdf",
         classShow: { path: "/人类学等", name: "进化与革命 邵可侣.pdf" },
     },
     {
         id: 148,
-        path: "az/",
+        uri: libraryDocs_baseUrl_1+"az/",
         fileName: "148.pdf",
         classShow: {
             path: "/安总哲学",
@@ -1254,13 +1258,13 @@ const docsData: DocsData = [
     },
     {
         id: 149,
-        path: "az/",
+        uri: libraryDocs_baseUrl_1+"az/",
         fileName: "149.pdf",
         classShow: { path: "/安总哲学", name: "《安那其与哲学》布利尔.pdf" },
     },
     {
         id: 150,
-        path: "az/",
+        uri: libraryDocs_baseUrl_1+"az/",
         fileName: "150.pdf",
         classShow: {
             path: "/安总哲学",
@@ -1269,7 +1273,7 @@ const docsData: DocsData = [
     },
     {
         id: 151,
-        path: "az/",
+        uri: libraryDocs_baseUrl_1+"az/",
         fileName: "151.pdf",
         classShow: {
             path: "/安总哲学",
@@ -1278,7 +1282,7 @@ const docsData: DocsData = [
     },
     {
         id: 152,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "152.pdf",
         classShow: {
             path: "/学说概述",
@@ -1287,13 +1291,13 @@ const docsData: DocsData = [
     },
     {
         id: 153,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "153.pdf",
         classShow: { path: "/学说概述", name: "《蒲鲁东学说》麦利荪.pdf" },
     },
     {
         id: 154,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "154.pdf",
         classShow: {
             path: "/学说概述",
@@ -1302,7 +1306,7 @@ const docsData: DocsData = [
     },
     {
         id: 155,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "155.pdf",
         classShow: {
             path: "/学说概述",
@@ -1311,24 +1315,24 @@ const docsData: DocsData = [
     },
     {
         id: 156,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "156.pdf",
         classShow: { path: "/学说概述", name: "基本巴枯宁.pdf" },
     },
     {
         id: 157,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "157.pdf",
         classShow: { path: "/学说概述", name: "巴枯宁的学说.pdf" },
     },
     {
         id: 158,
-        path: "xt/",
+        uri: libraryDocs_baseUrl_1+"xt/",
         fileName: "158.pdf",
         classShow: {
             path: "/学说概述",
             name: "鲁道夫罗克：温和的无政府主义者.pdf",
         },
     },
-];
+]:[];
 export default docsData;
