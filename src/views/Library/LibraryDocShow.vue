@@ -38,8 +38,16 @@ const fileType = computed(():string|undefined => {
   }
 });
 function getFilePath(){
-  if (docFiles!=null)
-    return docFiles[`/src/views/Library/doc/${docData.value!.path}${docData.value!.fileName}`] as string;
+  if (docFiles!=null && docData.value) {
+    if (docData.value.uri.startsWith('http')){
+      if (docData.value.uri.endsWith('/'))
+        return `${docData.value.uri}${docData.value.fileName}`;
+      else
+        return docData.value.uri;
+    }else{
+      return docFiles[`/src/views/Library/doc/${docData.value.uri}${docData.value.fileName}`] as string;
+    }
+  }
   else
     return '';
 }
