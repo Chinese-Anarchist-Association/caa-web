@@ -1,0 +1,18 @@
+[
+  {
+    "id": -1,
+    "uri": "test/",
+    "fileName": "test.pdf",
+    "classShow": {
+      "path": "/test"
+    }
+  },
+  {
+    "id": -2,
+    "uri": "test/",
+    "fileName": "test.docx",
+    "classShow": {
+      "path": "/test2"
+    }
+  }
+]

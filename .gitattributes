@@ -1,4 +1,4 @@
-src/locales/*.json linguist-detectable=true
+#src/locales/*.json linguist-detectable=true
 src/assets/svg/*.svg linguist-detectable=true
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
