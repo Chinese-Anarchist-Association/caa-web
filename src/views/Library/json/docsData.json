@@ -14,5 +14,21 @@
     "classShow": {
       "path": "/test2"
     }
+  },
+  {
+    "id": -3,
+    "uri": "test/",
+    "fileName": "test.md",
+    "classShow": {
+      "path": "/test3"
+    }
+  },
+  {
+    "id": -4,
+    "uri": "test/",
+    "fileName": "test.mdz",
+    "classShow": {
+      "path": "/test3"
+    }
   }
 ]

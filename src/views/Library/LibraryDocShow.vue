@@ -14,6 +14,7 @@ import {filesize} from "filesize";
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import libraryDocs_baseUrl from "@/ts/env/libraryDocs_baseUrl.ts";
+import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
 
 const VuePdfEmbed:any = shallowRef(null);
 
@@ -82,6 +83,9 @@ const docxView_show:Ref<boolean>=ref(false);
 const txtView_show:Ref<boolean>=ref(false);
 const txtView_content:Ref<string>=ref('');
 
+const mdzView:Ref<HTMLDivElement|null> = ref(null);
+const mdzView_show:Ref<boolean>=ref(false);
+
 /*enum LoadStatus{
   loading,done,error,
 }*/
@@ -139,6 +143,21 @@ async function doLoad(){
         txtView_content.value = await res.text();
         txtView_show.value = true;
         break;
+      case 'mdz':
+      case 'md':
+      {
+        const view = new MdzipWorkspaceView(mdzView.value!,{
+          controls: 'preview',
+          initialLayout: 'preview',
+          initialColorScheme: document.querySelector("html")!.getAttribute('data-bs-theme') as MdzipColorScheme,
+        });
+        await view.open(new Uint8Array(await res.arrayBuffer()),{
+          mode: 'read-only',
+          fileName: `.${fileType.value}`,
+        });
+        mdzView_show.value = true;
+      }
+        break;
       default:
         loadStatus.value='notSupport';
         break;
@@ -192,6 +211,7 @@ async function doLoad(){
         <div v-show="txtView_show" id="txtView"><!--ref="txtView"-->
           <span>{{txtView_content}}</span>
         </div>
+        <div v-show="mdzView_show" ref="mdzView"></div>
       </div>
     </div>
   </div>
