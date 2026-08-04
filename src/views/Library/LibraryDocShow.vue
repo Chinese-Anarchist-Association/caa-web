@@ -13,6 +13,7 @@ import fetchProgress from "fetch-progress";
 import {filesize} from "filesize";
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import libraryDocs_baseUrl from "@/ts/env/libraryDocs_baseUrl.ts";
 
 const VuePdfEmbed:any = shallowRef(null);
 
@@ -42,13 +43,27 @@ const fileType = computed(():string|undefined => {
 });
 function getFilePath(){
   if (docFiles!=null && docData.value) {
-    if (docData.value.uri.startsWith('http')){
-      if (docData.value.uri.endsWith('/'))
-        return `${docData.value.uri}${docData.value.fileName}`;
+    //处理变量字段后的uri字符串
+    let afterActionUri=(()=>{
+      let output='';
+      const aauSp:string[]=docData.value.uri.split('$$$');
+      if (aauSp.length>1){
+        for (let i=0;i<aauSp.length;i++){
+          if (i%2!=0){
+            output+=libraryDocs_baseUrl[aauSp[i] as string] || '';
+          }else output+=aauSp[i];
+        }
+      }else return docData.value.uri;
+      return output;
+    })();
+
+    if (afterActionUri.startsWith('http')){
+      if (afterActionUri.endsWith('/'))
+        return `${afterActionUri}${docData.value.fileName}`;
       else
-        return docData.value.uri;
+        return afterActionUri;
     }else{
-      return docFiles[`/src/views/Library/doc/${docData.value.uri}${docData.value.fileName}`] as string;
+      return docFiles[`/src/views/Library/doc/${afterActionUri}${docData.value.fileName}`] as string;
     }
   }
   else

@@ -5,7 +5,8 @@
   "scripts": {
     "postinstall": "patch-package",
     "copy-files": "node script/copySvgIcons.js",
-    "before-build": "npm run copy-files",
+    "download-files": "node script/downloadDocDatas.js",
+    "before-build": "npm run copy-files && npm run download-files",
     "type-check": "vue-tsc -b",
     "dev": "npm run dev:spa",
     "dev:host": "cross-env VITE_RENDER_MODE=spa vite --host",
