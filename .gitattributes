@@ -12,3 +12,4 @@ src/assets/svg/*.svg linguist-detectable=true
 *.epub filter=lfs diff=lfs merge=lfs -text
 src/views/Library/doc/**/* filter=lfs diff=lfs merge=lfs -text
 *.mdz filter=lfs diff=lfs merge=lfs -text
+*.enc filter=lfs diff=lfs merge=lfs -text

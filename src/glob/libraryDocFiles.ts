@@ -5,6 +5,7 @@ import.meta.glob([
     '@/views/Library/doc/**/*.txt',
     '@/views/Library/doc/**/*.md',
     '@/views/Library/doc/**/*.mdz',
+    '@/views/Library/doc/**/*.enc',
 ], {
     eager: true,
     query: '?url',

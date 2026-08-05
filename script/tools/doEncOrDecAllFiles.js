@@ -1,4 +1,7 @@
 /*
+工具：将指定目录下的所有文件按照目录结构进行加密或解密
+以脚本所在目录为基础，输入目录在./input，输出目录在./output
+
 使用方法：
 node ./script/tools/doEncOrDecAllFiles.js [加密或解密：enc或dec] [密码]
  */

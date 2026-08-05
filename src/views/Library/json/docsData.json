@@ -30,5 +30,37 @@
     "classShow": {
       "path": "/test3"
     }
+  },
+  {
+    "id": -5,
+    "uri": "test/",
+    "fileName": "test.txt",
+    "classShow": {
+      "path": "/test4"
+    }
+  },
+  {
+    "id": -6,
+    "uri": "enctest/",
+    "fileName": "test.txt.enc",
+    "classShow": {
+      "path": "/enctest"
+    }
+  },
+  {
+    "id": -7,
+    "uri": "enctest/",
+    "fileName": "test.mdz.enc",
+    "classShow": {
+      "path": "/enctest"
+    }
+  },
+  {
+    "id": -8,
+    "uri": "enctest/",
+    "fileName": "test.docx.enc",
+    "classShow": {
+      "path": "/enctest"
+    }
   }
 ]

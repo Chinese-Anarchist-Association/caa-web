@@ -15,6 +15,8 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import libraryDocs_baseUrl from "@/ts/env/libraryDocs_baseUrl.ts";
 import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
+import {decryptUint8Array} from "@/utils/crypto.ts";
+import defPw from '@/json/defPw.json';
 
 const VuePdfEmbed:any = shallowRef(null);
 
@@ -130,17 +132,46 @@ async function doLoad(){
       })
   );
   if (res.ok || res.status==304) {
-    switch (fileType.value) {
+    //动态fileType
+    let ft=fileType.value;
+    const decData:Uint8Array|null=await (async ()=>{
+      try {
+        if (ft == 'enc') {
+          ft = ((): string | undefined => {
+            if (docData.value) {
+              const fnSp = docData.value.fileName.split('.');
+              return fnSp[fnSp.length - 2];//获取二级后缀名
+            }
+          })()
+          return decryptUint8Array(await res.text(), defPw.value);
+        } else
+          return null;
+      }catch {
+        loadStatus.value='error';
+        throw new Error();
+      }
+    })();
+
+    switch (ft) {
       case 'pdf':
-        vpe_source.value = new Uint8Array(await res.arrayBuffer());
+        if (decData!=null)
+          vpe_source.value = decData;
+        else
+          vpe_source.value = new Uint8Array(await res.arrayBuffer());
         vpe_show.value = true;
         break;
       case 'docx':
-        await renderAsync(res.blob(), docxView.value!);
+        if (decData!=null)
+          await renderAsync(new Blob([decData as BlobPart]),docxView.value!);
+        else
+          await renderAsync(res.blob(), docxView.value!);
         docxView_show.value = true;
         break;
       case 'txt':
-        txtView_content.value = await res.text();
+        if (decData!=null)
+          txtView_content.value = await new Blob([decData as BlobPart]).text();
+        else
+          txtView_content.value = await res.text();
         txtView_show.value = true;
         break;
       case 'mdz':
@@ -151,9 +182,13 @@ async function doLoad(){
           initialLayout: 'preview',
           initialColorScheme: document.querySelector("html")!.getAttribute('data-bs-theme') as MdzipColorScheme,
         });
-        await view.open(new Uint8Array(await res.arrayBuffer()),{
+        const u8a=await (async ()=>{
+          if (decData!=null)return decData;
+          else return new Uint8Array(await res.arrayBuffer());
+        })()
+        await view.open(u8a,{
           mode: 'read-only',
-          fileName: `.${fileType.value}`,
+          fileName: `.${ft}`,
         });
         mdzView_show.value = true;
       }
@@ -177,7 +212,7 @@ async function doLoad(){
           <h4>{{docData?.classShow.path}}/</h4>
         </div>
         <div class="g1 text-center">
-          <h3>{{docData?.classShow.name || docData?.fileName}}</h3>
+          <h3>{{docData?.classShow.name || docData?.fileName}} {{(docData?.fileName.endsWith('.enc'))?t('isEnc'):''}}</h3>
         </div>
         <div class="g2 d-flex justify-content-end align-items-center">
           <a class="btn btn-primary" :href="getFilePath()" :download="docData?.classShow.name || docData?.fileName">
@@ -262,7 +297,8 @@ async function doLoad(){
     "remaining": "剩余：",
     "speed": "速度：",
     "eta": "剩余时间：",
-    "percentage": "进度："
+    "percentage": "进度：",
+    "isEnc": "（加密文档）"
   },
   "en-US": {
     "title": "Library",
