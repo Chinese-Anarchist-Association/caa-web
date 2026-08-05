@@ -44,5 +44,10 @@ export default createRouter({
             component: () => import('@/views/Library/Library.vue'),
         },
         ...libraryRouter(),
+        {
+            path: '/EncAndDec',
+            name: 'encAndDec',
+            component: () => import('@/views/EncAndDec/EncAndDec.vue'),
+        },
     ],
 });

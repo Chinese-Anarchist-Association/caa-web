@@ -9,6 +9,8 @@ export type DocData={
     //文件网络地址。需要以http开头（https同理）。如果以斜杠结尾，则会自动将fileName的值追加在后面
     //使用$$$ $$$包裹以携带变量
     uri:string,
+    //源文件名
+    //如果是.part-xxx结尾的拆分文件，则可以使用.part=[拆分文件数量]来指代
     fileName:string,
     //在显示时的类别分类
     classShow:{
