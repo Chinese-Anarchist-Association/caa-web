@@ -62,5 +62,13 @@
     "classShow": {
       "path": "/enctest"
     }
+  },
+  {
+    "id": -9,
+    "uri": "parttest/",
+    "fileName": "test.docx.enc.part=5",
+    "classShow": {
+      "path": "/parttest"
+    }
   }
 ]
