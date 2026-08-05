@@ -16,6 +16,7 @@ const iconsName = [//需要复制的图标名
     'folder2-open',
     'file-earmark-fill',
     'download',
+    'box-arrow-right',
 ];
 const sourceDir = path.resolve(__dirname, '../node_modules/bootstrap-icons/icons');
 const targetDir = path.resolve(__dirname, '../src/assets/_svg/bsi');
