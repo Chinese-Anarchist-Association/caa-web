@@ -5,6 +5,7 @@ import {defineAsyncComponent, ref, type Ref} from "vue";
 import { useHead } from '@unhead/vue';
 import {isServer} from "@/ts/env/ssr.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useFavicon} from "@vueuse/core";
 
 //动态按需加载caa页面
 const ChessAmateurAssociation=defineAsyncComponent(() => import("@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue"));
@@ -28,10 +29,14 @@ function viewMtComput(data:number){//导航栏在获取了自身高度后将传�
 
 const isTrueCaa:Ref<boolean> = ref((()=>{
   const ck:boolean|undefined=useCookies().get('itcaa');
-  if (ck!=undefined)
+  if (ck!=undefined) {
+    useFavicon().value='/favicon.png';
     return ck;
-  else
+  }
+  else {
+    useFavicon().value='';
     return false;
+  }
 })());
 function itcaaSwitchHandler(){
   useCookies().set('itcaa',true,{
@@ -41,6 +46,7 @@ function itcaaSwitchHandler(){
     sameSite: 'strict',
   })
   isTrueCaa.value=true;
+  useFavicon().value='/favicon.png';
 }
 </script>
 

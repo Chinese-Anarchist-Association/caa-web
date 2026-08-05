@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import {useTitle} from "@vueuse/core";
+
+useTitle("国际象棋爱好者协会");
+
 const emit = defineEmits(['itcaaSwitch']);
 
 //true key
