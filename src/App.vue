@@ -7,6 +7,8 @@ import {isServer} from "@/ts/env/ssr.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import {useFavicon} from "@vueuse/core";
 import isTrueCaa from "@/ts/global/isTrueCaa.ts";
+import {decryptUint8Array} from "@/utils/crypto.ts";
+import defPw from "@/json/defPw.json";
 
 //动态按需加载caa页面
 const ChessAmateurAssociation=defineAsyncComponent(() => import("@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue"));
@@ -26,9 +28,19 @@ function viewMtComput(data:number){//导航栏在获取了自身高度后将传�
   }
 }
 
-function isTrueCaa_trueDo(){
+function isTrueCaa_trueDo() {
+  import('@/glob/encImg.ts').then(mod=>{
+    fetch(mod.default['/src/assets/img/logo/favicon.png.enc'] as string).then(res=>{
+      res.text().then(rt=>{
+        useFavicon().value=URL.createObjectURL(
+          new Blob([
+            decryptUint8Array(rt,defPw.value) as BlobPart
+          ], { type: 'image/png' })
+        );
+      });
+    });
+  });
   loadGlobalLocale();
-  useFavicon().value='/favicon.png';
 }
 
 isTrueCaa.value = (()=>{
