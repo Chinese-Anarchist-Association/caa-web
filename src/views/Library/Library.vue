@@ -6,6 +6,7 @@ import {computed} from "vue";
 import type {btfpPath} from "@/components/directoryTree/ts/buildTreeFromPaths.ts";
 import docsData from "@/views/Library/ts/docsData.ts";
 import {useRouter} from "vue-router";
+import {isDev} from "@/ts/env/packMode.ts";
 
 const {lt:t,gt}=autoUseI18n();
 
@@ -21,7 +22,7 @@ function dtFile_click(id:number){
 const dtData=computed(():btfpPath[]=>{//将所有文档数据整理后传递至目录树绘制
   const bp:btfpPath[] = [];
   docsData.forEach((dd)=>{
-    if(dd.id>=0){//负数编号的为测试文档，不需要列入
+    if(dd.id>=0 || isDev){//负数编号的为测试文档，不需要列入。如果是开发模式下，则显示
       bp.push({
         name: dd.classShow.name || dd.fileName,
         path: dd.classShow.path,
