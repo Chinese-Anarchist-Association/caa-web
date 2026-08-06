@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useTitle} from "@vueuse/core";
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
-import {autoLoadLocale} from "@/ts/global/vue/autoLoadLocale.ts";
+import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import aos from "@/plugins/aos.ts";
 
 const {gt:t}=autoUseI18n();

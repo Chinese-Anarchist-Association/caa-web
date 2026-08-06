@@ -17,7 +17,7 @@ import libraryDocs_baseUrl from "@/ts/env/libraryDocs_baseUrl.ts";
 import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from '@/json/defPw.json';
-import {isString, isStringArray} from "@/ts/global/typeCheck.ts";
+import {isString, isStringArray} from "@/utils/typeCheck.ts";
 
 const VuePdfEmbed:any = shallowRef(null);
 

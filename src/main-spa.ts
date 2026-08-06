@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from '@/router';
 import {i18n} from "@/plugins/i18n.ts";
-import sharedFunc from '@/ts/main/shared.ts';
+import sharedFunc from '@/utils/main/shared.ts';
 import {isDev} from "@/ts/env/packMode.ts";
 
 import '@/assets/scss/bootstrap/bs-custom.scss';
