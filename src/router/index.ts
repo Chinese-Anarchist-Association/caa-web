@@ -3,8 +3,10 @@ import renderMode from "@/ts/env/renderMode.ts";
 import {isServer} from "@/ts/env/ssr.ts";
 import baseUrl from "@/ts/env/baseUrl.ts";
 import libraryRouter from "@/router/library.router.ts";
+import lazyLoadGuard from "@/utils/router/lazyLoadGuard.ts";
+//import isTrueCaa from "@/ts/global/isTrueCaa.ts";
 
-export default createRouter({
+const router = createRouter({
     history: (()=>{
         switch (renderMode){
             case 'ssg':
@@ -21,33 +23,50 @@ export default createRouter({
         {
             path: '/',
             name: 'home',
-            component: () => import('@/views/Home/Home.vue'),
+            component: lazyLoadGuard(() => import('@/views/Home/Home.vue')),
+        },
+        {
+            path: '/nothing',
+            name: 'nothing',
+            component: lazyLoadGuard(() => import('@/views/Nothing/Nothing.vue')),
         },
         {
             path: '/AboutUs',
             name: 'aboutUs',
-            component: () => import('@/views/AboutUs/AboutUs.vue'),
+            component: lazyLoadGuard(() => import('@/views/AboutUs/AboutUs.vue')),
         },
         {
             path: '/JoinUs',
             name: 'joinUs',
-            component: () => import('@/views/JoinUs/JoinUs.vue'),
+            component: lazyLoadGuard(() => import('@/views/JoinUs/JoinUs.vue')),
         },
         {
             path: '/MotionMatrix',
             name: 'motionMatrix',
-            component: () => import('@/views/MotionMatrix/MotionMatrix.vue'),
+            component: lazyLoadGuard(() => import('@/views/MotionMatrix/MotionMatrix.vue')),
         },
         {
             path: '/Library',
             name: 'library',
-            component: () => import('@/views/Library/Library.vue'),
+            component: lazyLoadGuard(() => import('@/views/Library/Library.vue')),
         },
         ...libraryRouter(),
         {
             path: '/EncAndDec',
             name: 'encAndDec',
-            component: () => import('@/views/EncAndDec/EncAndDec.vue'),
+            component: lazyLoadGuard(() => import('@/views/EncAndDec/EncAndDec.vue')),
         },
     ],
 });
+//此方法无法成功在资源加载前拦截
+/*router.beforeEach((to, _from) => {
+    if (!(isTrueCaa.value===true)){//如果不成立则不加载任何路由
+        console.log('test')
+        if (to.path === '/nothing')//如果已经被拦截，则放行，避免死循环
+            return true;
+        return { path: '/nothing', replace: true };//拦截
+    }
+    return true;
+});*/
+
+export default router;

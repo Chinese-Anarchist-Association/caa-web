@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { autoLoadLocale } from "@/ts/global/vue/autoLoadLocale";
+import { autoLoadLocale } from "@/utils/vue/autoLoadLocale";
 import {autoUseI18n, getCurrentLocale, switchLocale} from "@/utils/i18nUtils.ts";
 import {onMounted, type Ref, ref, watch} from "vue";
 import {useRoute} from "vue-router";
