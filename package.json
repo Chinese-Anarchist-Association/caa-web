@@ -62,6 +62,7 @@
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
     "vite-plugin-html": "^3.2.2",
+    "vite-plugin-javascript-obfuscator": "^3.1.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-ssg": "^28.2.2",
     "vue-tsc": "^3.1.4"
