@@ -9,6 +9,7 @@ import {useFavicon} from "@vueuse/core";
 import isTrueCaa from "@/ts/global/isTrueCaa.ts";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
+import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
 
 //动态按需加载caa页面
 const ChessAmateurAssociation=defineAsyncComponent(() => import("@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue"));
@@ -45,7 +46,7 @@ function isTrueCaa_trueDo() {
 
 isTrueCaa.value = (()=>{
   const ck:boolean|undefined=useCookies().get('itcaa');
-  if (ck!=undefined) {
+  if (ck!=undefined || !(isUseCaaMask==='true')) {
     isTrueCaa_trueDo();
     return true;
   }

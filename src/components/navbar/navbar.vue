@@ -4,6 +4,7 @@ import {autoUseI18n, getCurrentLocale, switchLocale} from "@/utils/i18nUtils.ts"
 import {onMounted, type Ref, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
 
 const route = useRoute();
 
@@ -204,7 +205,7 @@ function leaveBtn_click(){
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-show="isUseCaaMask==='true'">
             <button type="button" class="btn btn-link nav-link" @click="leaveBtn_click">
               <svg class="bi" width="24" height="24" ><use xlink:href="#svg-bsi-box-arrow-right"></use></svg>
             </button>
