@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import {useTitle} from "@vueuse/core";
+import caaMaskCode from '@/json/caaMaskCode.json';
 
 useTitle("国际象棋爱好者协会");
 
 const emit = defineEmits(['itcaaSwitch']);
 
-//true key
-const tk:string="AnarchyIsOrder".toLowerCase();
 let abcInput:string="";
 function abcClick(input:string){
   abcInput+=input;
-  if (tk.startsWith(abcInput)){
-    if (abcInput==tk){
+  if (caaMaskCode.value.startsWith(abcInput)){
+    if (abcInput==caaMaskCode.value){
       emit('itcaaSwitch');
     }
   }
