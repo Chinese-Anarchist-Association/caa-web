@@ -280,18 +280,20 @@ function downloadBtn_click(){
 <div id="libraryDocShow">
   <div class="container pt-3">
     <div class="row">
-      <div class="topTitleRoot col-12">
-        <div class="g0 d-flex justify-content-start align-items-center">
-          <h4>{{docData?.classShow.path}}/</h4>
-        </div>
-        <div class="g1 text-center">
-          <h3>{{docData?.classShow.name || docData?.fileName}} {{(docData?.fileName.endsWith('.enc'))?t('isEnc'):''}}</h3>
-        </div>
-        <div class="g2 d-flex justify-content-end align-items-center">
-          <button class="btn btn-primary" @click="downloadBtn_click"><!--:href="getFilePath()" :download="docData?.classShow.name || docData?.fileName"-->
-            <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-download"></use></svg>
-            {{t(`download`)}}
-          </button>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-start align-items-center">
+            <h4>{{docData?.classShow.path}}/</h4>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <h3>{{docData?.classShow.name || docData?.fileName}} {{(docData?.fileName.endsWith('.enc'))?t('isEnc'):''}}</h3>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary" @click="downloadBtn_click"><!--:href="getFilePath()" :download="docData?.classShow.name || docData?.fileName"-->
+              <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-download"></use></svg>
+              {{t(`download`)}}
+            </button>
+          </div>
         </div>
       </div>
       <div class="col-12 pt-2">
@@ -329,25 +331,6 @@ function downloadBtn_click(){
 
 <style scoped lang="scss">
 #libraryDocShow{
-  .topTitleRoot{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);//三列等分
-    grid-template-rows: auto;//一行
-    grid-column-gap: .3rem;//行间距
-    grid-row-gap: .2rem;//列间距
-    grid-template-areas:
-    "g0 g1 g2";
-
-    .g0{
-      grid-area: g0;
-    }
-    .g1{
-      grid-area: g1;
-    }
-    .g2{
-      grid-area: g2;
-    }
-  }
   #txtView{
     span{
       white-space: pre-line;
