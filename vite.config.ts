@@ -70,6 +70,7 @@ return {
                     'src/components/**/*.vue',
                     'src/components/**/*.ts',
                     'src/ts/global/*.ts',
+                    'src/ts/env/*.ts'
                 ],
                 //排除的文件
                 exclude: [

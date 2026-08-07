@@ -25,7 +25,9 @@
     "build-quick:spa-hash": "npm run type-check && npm run build-only:spa-hash",
     "build-quick:ssg": "npm run type-check && npm run build-only:ssg",
     "preview": "vite preview",
-    "build-quick-small": "cross-env VITE_MD_LIBRARYDOCS=true npm run build-quick"
+    "build-quick-small": "cross-env VITE_MD_LIBRARYDOCS=true npm run build-quick",
+    "build_gh-pages": "cross-env VITE_ISUSE_CAAMASK=false VITE_BASE_URL=/caa-web/ npm run build",
+    "build_cf-pages": "npm run build"
   },
   "dependencies": {
     "@mdzip/editor": "^1.3.21",
