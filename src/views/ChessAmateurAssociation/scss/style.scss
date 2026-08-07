@@ -12,5 +12,30 @@
   background-color: #2e1d00;
 }
 
+.secBg-0{
+  background-color: #af6e00;
+}
+[data-bs-theme=dark] .secBg-0{
+  background-color: #3a2400;
+}
+.secBg-1{
+  background-color: #bc7600;
+}
+[data-bs-theme=dark] .secBg-1{
+  background-color: #352200;
+}
+
 #ChessAmateurAssociation{
+  .df-jcc-aic{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .content-img{
+    position: relative;
+    width: 35%;
+  }
+  .content-text{
+    font-size: 1.2rem;
+  }
 }

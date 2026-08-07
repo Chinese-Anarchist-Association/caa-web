@@ -55,7 +55,7 @@ isTrueCaa.value = (()=>{
     import("@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue").then(mod=>{
       ChessAmateurAssociation.value=mod.default;
     });
-    useFavicon().value='';
+    useFavicon().value='/ChessAmateurAssociation/favicon.png';
     return false;
   }
 })();
