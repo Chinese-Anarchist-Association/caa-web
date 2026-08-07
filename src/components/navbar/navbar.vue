@@ -89,20 +89,20 @@ function leaveBtn_click(){
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav d-flex me-auto nav-0">
-          <li class="nav-item">
+        <ul class="navbar-nav flex-row flex-wrap me-auto nav-0">
+          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='library' || curRouteName?.startsWith('library_doc-'))}" aria-current="page" :to="{ name: 'library'}">{{t(`${lp}.library`)}}</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='joinUs')}" aria-current="page" :to="{ name: 'joinUs'}">{{t(`${lp}.joinUs`)}}</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='motionMatrix')}" aria-current="page" :to="{ name: 'motionMatrix'}">{{t(`${lp}.motionMatrix`)}}</router-link>
           </li>
         </ul>
@@ -111,12 +111,12 @@ function leaveBtn_click(){
             <span>{{t(`${lp}.dev`)}}</span>
           </li>
         </ul>-->
-        <ul class="navbar-nav d-flex nav-2">
+        <ul class="navbar-nav flex-row flex-wrap nav-2">
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none my-2 text-white-50">
           </li>
-          <li class="nav-item dropdown d-flex flex-ai-c">
+          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center">
             <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <svg class="bi" width="24" height="24" ><use :xlink:href="themeIcon"></use></svg>
             </button>
@@ -147,7 +147,7 @@ function leaveBtn_click(){
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown d-flex flex-ai-c">
+          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center">
             <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <svg class="bi" width="24" height="24" ><use xlink:href="#svg-bsi-translate"></use></svg>
             </button>
@@ -205,7 +205,7 @@ function leaveBtn_click(){
               </li>
             </ul>
           </li>
-          <li class="nav-item" v-show="isUseCaaMask==='true'">
+          <li class="nav-item col-6 col-lg-auto d-flex flex-ai-c justify-content-center" v-if="isUseCaaMask==='true'">
             <button type="button" class="btn btn-link nav-link" @click="leaveBtn_click">
               <svg class="bi" width="24" height="24" ><use xlink:href="#svg-bsi-box-arrow-right"></use></svg>
             </button>

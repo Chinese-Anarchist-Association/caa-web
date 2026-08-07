@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import navbar from "@/components/navbar/navbar.vue";
 import {loadGlobalLocale} from "@/utils/i18nUtils.ts";
-import {defineAsyncComponent, ref, type Ref} from "vue";
+import {ref, type Ref, shallowRef} from "vue";
 import { useHead } from '@unhead/vue';
 import {isServer} from "@/ts/env/ssr.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
@@ -10,9 +10,6 @@ import isTrueCaa from "@/ts/global/isTrueCaa.ts";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
 import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
-
-//动态按需加载caa页面
-const ChessAmateurAssociation=defineAsyncComponent(() => import("@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue"));
 
 if (isServer) {
   useHead({
@@ -28,6 +25,9 @@ function viewMtComput(data:number){//导航栏在获取了自身高度后将传�
     view.value.style.marginTop = `${data}px`;
   }
 }
+
+//region caaMask
+const ChessAmateurAssociation:any=shallowRef(null);
 
 function isTrueCaa_trueDo() {
   import('@/glob/encImg.ts').then(mod=>{
@@ -51,7 +51,11 @@ isTrueCaa.value = (()=>{
     return true;
   }
   else {
-    useFavicon().value='';
+    //动态按需加载caa页面
+    import("@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue").then(mod=>{
+      ChessAmateurAssociation.value=mod.default;
+    });
+    useFavicon().value='/ChessAmateurAssociation/favicon.png';
     return false;
   }
 })();
@@ -65,6 +69,7 @@ function itcaaSwitchHandler(){
   isTrueCaa_trueDo();
   isTrueCaa.value=true;
 }
+//endregion
 </script>
 
 <template>
@@ -75,7 +80,9 @@ function itcaaSwitchHandler(){
     </div>
   </div>
   <div v-else-if="!isTrueCaa">
-    <chess-amateur-association v-on:itcaaSwitch="itcaaSwitchHandler"/>
+    <div v-if="ChessAmateurAssociation">
+      <chess-amateur-association v-on:itcaaSwitch="itcaaSwitchHandler"/>
+    </div>
   </div>
 </template>
 
