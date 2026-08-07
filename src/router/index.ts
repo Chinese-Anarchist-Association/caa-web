@@ -56,6 +56,11 @@ const router = createRouter({
             name: 'encAndDec',
             component: lazyLoadGuard(() => import('@/views/EncAndDec/EncAndDec.vue')),
         },
+        {
+            path: '/Blog',
+            name: 'blog',
+            component: lazyLoadGuard(()=>import('@/views/Blog/Blog.vue')),
+        },
     ],
 });
 //此方法无法成功在资源加载前拦截
