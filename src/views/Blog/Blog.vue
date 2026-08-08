@@ -81,7 +81,7 @@ const localView_blogsData:Ref<BlogsData> = ref([]);
 })();
 </script>
 <template>
-<div class="container">
+<div class="container pt-3">
   <div class="row">
     <div class="col-12 text-center">
       <h2>{{t(`${lp}.title`)}}</h2>
