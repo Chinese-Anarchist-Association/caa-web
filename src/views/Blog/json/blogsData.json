@@ -1,0 +1,21 @@
+[
+  {
+    "id": -1,
+    "blog": {
+      "uri": "",
+      "fileType": "mdz"
+    },
+    "cover": {
+      "title": "测试博客1",
+      "summary": "编号为-1的测试博客",
+      "image": {
+        "uri": "test/1/ci.jpg.enc",
+        "isEnc": "enc"
+      }
+    },
+    "creationTime": "2026-08-08T16:29:49+08:00",
+    "lastModificationTime": "2026-08-08T16:29:49+08:00",
+    "blogTypeKey": [],
+    "author": ["Hgnim"]
+  }
+]

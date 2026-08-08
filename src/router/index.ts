@@ -4,6 +4,7 @@ import {isServer} from "@/ts/env/ssr.ts";
 import baseUrl from "@/ts/env/baseUrl.ts";
 import libraryRouter from "@/router/library.router.ts";
 import lazyLoadGuard from "@/utils/router/lazyLoadGuard.ts";
+import blogRouter from "@/router/blog.router.ts";
 //import isTrueCaa from "@/ts/global/isTrueCaa.ts";
 
 const router = createRouter({
@@ -61,6 +62,7 @@ const router = createRouter({
             name: 'blog',
             component: lazyLoadGuard(()=>import('@/views/Blog/Blog.vue')),
         },
+        ...blogRouter(),
     ],
 });
 //此方法无法成功在资源加载前拦截
