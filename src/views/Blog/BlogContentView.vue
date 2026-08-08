@@ -11,8 +11,14 @@ import getFilePath from "@/views/Blog/ts/getFilePath.ts";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
 import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
+import {useTitle} from "@vueuse/core";
 
-const {lt:t}=autoUseI18n();
+const {lt:t,gt}=autoUseI18n();
+
+function do_useTitle(ct:string|null = null){
+  useTitle(`${ct!=null?`${ct} - `:''}${t('title')} - ${gt('global.name')}`);
+}
+do_useTitle();
 
 const route = useRoute();
 const meta = computed(() => ({
@@ -40,6 +46,8 @@ const loading_transferred:Ref<number>=ref(-1);
 //剩余未下载的字节数
 const loading_remaining:Ref<number>=ref(-1);
 onMounted(async ()=>{
+  do_useTitle(blogData.value?.cover.title);
+
   if (blogData.value) {
     const res = await fetch(getFilePath(blogData.value.blog.uri)).then(
         fetchProgress({

@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "patch-package",
     "copy-files": "node script/copySvgIcons.js",
-    "download-files": "node script/downloadDocDatas.js",
+    "download-files": "node script/downloadDocDatas.js && node script/downloadBlogDatas.js",
     "before-build": "npm run copy-files && npm run download-files",
     "type-check": "vue-tsc -b",
     "dev": "npm run dev:spa",

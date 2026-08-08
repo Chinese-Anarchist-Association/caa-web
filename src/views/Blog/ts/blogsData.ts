@@ -1,4 +1,5 @@
 import blogsDataJson from '@/views/Blog/json/blogsData.json';
+import remote_bd1 from '@/views/Blog/json/_remote/bd-1.json';
 
 export type IsEnc='enc'|string;
 export type FileType='md'|'mdz'|string;
@@ -42,6 +43,7 @@ export type BlogData={
 export type BlogsData=BlogData[];
 
 const blogsData:BlogsData=[
+    ...remote_bd1,
     ...blogsDataJson,
 ];
 
