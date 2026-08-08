@@ -2,8 +2,8 @@
   {
     "id": -1,
     "blog": {
-      "uri": "",
-      "fileType": "mdz"
+      "uri": "test/1/test1.md",
+      "fileType": "md"
     },
     "cover": {
       "title": "测试博客1",
