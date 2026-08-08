@@ -52,7 +52,17 @@ function pushCoverImgUrl(id:number, uri:string,isEnc:IsEnc|undefined):'' {
   })();
   return '';
 }
-
+//处理作者数组并返回字符串
+function getAuthor(input:string[]):string{
+  let output='';
+  for(let i=0;i<input.length;i++){
+    output+=input[i];
+    if (i+1<input.length){
+      output+=', ';
+    }
+  }
+  return output;
+}
 </script>
 <template>
 <div class="container">
@@ -62,27 +72,31 @@ function pushCoverImgUrl(id:number, uri:string,isEnc:IsEnc|undefined):'' {
     </div>
   </div>
   <div class="row">
-    <div class="col-10 mx-auto">
-      <div class="list-group">
-        <router-link v-for="(bd,index) in blogsData" :key="index"
-                     :to="{name:`blog_ct-${bd.id}`}"
-                     class="list-group-item list-group-item-action"
-        >
-          <div v-if="bd.cover.image">
-            <img alt="cover image" :src="allCoverImgsUrl.find(obj=>obj.id===bd.id)?.url || pushCoverImgUrl(bd.id ,bd.cover.image.uri,bd.cover.image.isEnc)" />
-          </div>
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{bd.cover.title}}</h5>
-          </div>
+    <div v-for="(bd,index) in blogsData" :key="index" class="col-12 col-md-6 col-xl-4">
+      <router-link :to="{name:`blog_ct-${bd.id}`}"
+                   class="card blog-card"
+      >
+        <img alt="cover image"
+             v-if="bd.cover.image"
+             class="card-img-top"
+             :src="allCoverImgsUrl.find(obj=>obj.id===bd.id)?.url || pushCoverImgUrl(bd.id ,bd.cover.image.uri,bd.cover.image.isEnc)"
+        />
+        <div class="card-body">
+          <h4 class="card-title">{{bd.cover.title}}</h4>
           <p class="mb-1">{{bd.cover.summary}}</p>
-          <div class="d-flex w-100 justify-content-end">
+        </div>
+        <div class="card-footer">
+          <div class="text-start position-absolute">
+            <small class="text-body-secondary">{{getAuthor(bd.author)}}</small>
+          </div>
+          <div class="text-end">
             <small class="text-body-secondary">{{getFromNowTime(bd.lastModificationTime)}}</small>
           </div>
-        </router-link>
-      </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </div>
 </template>
-<style scoped lang="scss">
-</style>
+
+<style scoped lang="scss" src="./scss/Blog.scss"></style>
