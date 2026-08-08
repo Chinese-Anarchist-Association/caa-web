@@ -39,4 +39,29 @@
   .content-text{
     font-size: 1.2rem;
   }
+  .abc-click{
+    //transition: bottom .5s;
+    position: relative;
+    //bottom: 0;
+  }
+  .abc-click:hover{
+    bottom: .1rem;
+  }
+
+  #abcdInput{
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-body-color);
+    caret-color: transparent;
+    cursor: default;
+  }
+  #abcdInput:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: var(--bs-body-color);
+  }
 }

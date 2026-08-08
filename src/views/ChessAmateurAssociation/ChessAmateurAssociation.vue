@@ -2,20 +2,35 @@
 import {useTitle} from "@vueuse/core";
 import caaMaskCode from '@/json/caaMaskCode.json';
 import aos from "@/plugins/aos.ts";
+import {ref, type Ref} from "vue";
 
 useTitle("国际象棋爱好者协会");
 
 const emit = defineEmits(['itcaaSwitch']);
 
 let abcInput:string="";
-function abcClick(input:string){
-  abcInput+=input;
-  if (caaMaskCode.value.startsWith(abcInput)){
-    if (abcInput==caaMaskCode.value){
-      emit('itcaaSwitch');
-    }
+const abcdInput_isShow:Ref<boolean> = ref(false);
+
+function abcClick(event: Event){
+  const elem=event.target as HTMLSpanElement;
+  
+  abcInput+=elem.innerText.substring(0,1).toLowerCase();
+
+  if (!abcdInput_isShow.value) abcdInput_isShow.value = true;
+
+  elem.style.display="none";
+}
+function abcdInput(event: Event){
+  const elem=event.target as HTMLInputElement;
+
+  if (
+      abcInput==caaMaskCode.value
+      && elem.value==caaMaskCode.inputValue
+      && abcdInput_isShow.value//避免多次触发
+  ){
+    abcdInput_isShow.value=false;
+    emit('itcaaSwitch');
   }
-  else abcInput=input;
 }
 
 aos();
@@ -33,18 +48,55 @@ aos();
         <div class="col-12 col-md-4 order-0 order-md-1 text-center unSelectable">
           <h1 data-aos="zoom-in-down">国际象棋爱好者协会</h1>
           <h2 data-aos="zoom-in-down">
-            <span @click="abcClick('c');" @contextmenu.prevent="abcClick('c');">C</span>
-            <span @click="abcClick('h');" @contextmenu.prevent="abcClick('h');">h</span>
-            <span @click="abcClick('e');" @contextmenu.prevent="abcClick('e');">e</span>ss
-            <span @click="abcClick('a');" @contextmenu.prevent="abcClick('a');">A</span>mateu<span @click="abcClick('r');" @contextmenu.prevent="abcClick('r');">r</span>
-            Ass<span @click="abcClick('o');" @contextmenu.prevent="abcClick('o');">o</span>ciatio<span @click="abcClick('n');" @contextmenu.prevent="abcClick('n');">n</span></h2>
+            <span class="abc-click" @click="(e:Event)=>abcClick(e)" @contextmenu.prevent="(e:Event)=>abcClick(e)">C</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">h</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">e</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span> <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">A</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">m</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">a</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">t</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">e</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">u</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">r</span> <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">A</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">o</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">c</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">i</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">a</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">t</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">i</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">o</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">n</span>
+          </h2>
           <h6 data-aos="zoom-in-up">这是我们共同的爱好</h6>
-          <h6 data-aos="zoom-in-up">This <span @click="abcClick('is');" @contextmenu.prevent="abcClick('is');">is</span> our share<span @click="abcClick('d');" @contextmenu.prevent="abcClick('d');">d</span> hobb<span @click="abcClick('y');" @contextmenu.prevent="abcClick('y');">y</span></h6>
+          <h6 data-aos="zoom-in-up">
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">T</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">h</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">i</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span> <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">i</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span> <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">o</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">u</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">r</span> <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">s</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">h</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">a</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">r</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">e</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">d</span> <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">h</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">o</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">b</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">b</span>
+            <span class="abc-click" @click="abcClick" @contextmenu.prevent="abcClick">y</span>
+          </h6>
         </div>
         <div class="col-6 col-md-4 order-2 order-md-2 df-jcc-aic">
           <img class="w-50" alt="img" loading="lazy" src="@/assets/img/ChessAmateurAssociation/1.png" data-aos="zoom-in-left"/>
         </div>
       </div>
+    </div>
+    <div class="col-12" v-if="abcdInput_isShow">
+      <input type="text" class="form-control" id="abcdInput" @keyup="abcdInput" @change="abcdInput" value="恭喜你，发现彩蛋:)">
     </div>
   </div>
   <div class="row mt-6">

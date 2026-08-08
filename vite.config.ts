@@ -71,7 +71,9 @@ return {
                     'src/components/**/*.ts',
                     'src/ts/global/*.ts',
                     'src/ts/env/*.ts',
-                    'src/json/**/*.json'
+                    'src/json/**/*.json',
+                    'src/ts/App/*.ts',
+                    'src/App.vue',
                 ],
                 //排除的文件
                 exclude: [
@@ -110,6 +112,8 @@ return {
                     //以避免动态导入失败等问题
                     reservedStrings:[
                         'vue-pdf-embed',
+                        '@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue',
+                        '@/glob/encImg.ts',
                     ],
                     //把所有字符串提取到字符串数组里，通过索引调用
                     stringArray: true,
