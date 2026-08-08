@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { autoLoadLocale } from "@/utils/vue/autoLoadLocale";
 import {autoUseI18n, getCurrentLocale, switchLocale} from "@/utils/i18nUtils.ts";
-import {onMounted, type Ref, ref, watch} from "vue";
+import {onMounted, onUnmounted, type Ref, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
@@ -58,8 +58,17 @@ onMounted(()=>{
 //endregion
 
 const navbar:Ref<HTMLElement|null> = ref(null);
+let navbarResizeObserver:ResizeObserver|null=null;
 onMounted(()=>{
-  emit('navbarHeight',navbar.value!.offsetHeight);
+  navbarResizeObserver=new ResizeObserver((/*entries*/)=>{//监听元素尺寸变化
+    //entries.forEach(()=>{
+      emit('navbarHeight',navbar.value!.offsetHeight);
+    //});
+  });
+  navbarResizeObserver.observe(navbar.value!);
+})
+onUnmounted(()=>{
+  navbarResizeObserver?.disconnect();
 })
 
 //region curRouteName
@@ -92,6 +101,9 @@ function leaveBtn_click(){
         <ul class="navbar-nav flex-row flex-wrap me-auto nav-0">
           <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
+          </li>
+          <li class="nav-item col-6 col-lg-auto text-center">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='blog' || curRouteName?.startsWith('blog_ct-'))}" aria-current="page" :to="{ name: 'blog'}">{{t(`${lp}.blog`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='library' || curRouteName?.startsWith('library_doc-'))}" aria-current="page" :to="{ name: 'library'}">{{t(`${lp}.library`)}}</router-link>

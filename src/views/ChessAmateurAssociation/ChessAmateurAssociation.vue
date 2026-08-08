@@ -9,7 +9,10 @@ useTitle("国际象棋爱好者协会");
 const emit = defineEmits(['itcaaSwitch']);
 
 let abcInput:string="";
+const abcdInput:Ref<HTMLInputElement|null> = ref(null);
 const abcdInput_isShow:Ref<boolean> = ref(false);
+let ai1:boolean = false;
+let ai2:boolean = false;
 
 function abcClick(event: Event){
   const elem=event.target as HTMLSpanElement;
@@ -17,19 +20,29 @@ function abcClick(event: Event){
   abcInput+=elem.innerText.substring(0,1).toLowerCase();
 
   if (!abcdInput_isShow.value) abcdInput_isShow.value = true;
+  if (abcInput==caaMaskCode.value) {
+    abcdInput.value!.value = "同志你好";
+    ai1 = true;
+  }else if (ai1){
+    abcdInput.value!.value = "同志再见";
+    ai1 = false;
+  }
 
   elem.style.display="none";
 }
-function abcdInput(event: Event){
+function abcdInput_kuOrC(event: Event){
   const elem=event.target as HTMLInputElement;
 
   if (
-      abcInput==caaMaskCode.value
+      ai1
       && elem.value==caaMaskCode.inputValue
       && abcdInput_isShow.value//避免多次触发
   ){
     abcdInput_isShow.value=false;
     emit('itcaaSwitch');
+  }else if (!ai2 && !ai1){
+    elem.value="恭喜你，发现第二个彩蛋:D";
+    ai2=true;
   }
 }
 
@@ -96,7 +109,7 @@ aos();
       </div>
     </div>
     <div class="col-12" v-if="abcdInput_isShow">
-      <input type="text" class="form-control" id="abcdInput" @keyup="abcdInput" @change="abcdInput" value="恭喜你，发现彩蛋:)">
+      <input type="text" class="form-control" id="abcdInput" ref="abcdInput" @keyup="abcdInput_kuOrC" @change="abcdInput_kuOrC" value="恭喜你，发现彩蛋:)">
     </div>
   </div>
   <div class="row mt-6">

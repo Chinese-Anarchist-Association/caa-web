@@ -1,0 +1,38 @@
+[
+  {
+    "id": -2,
+    "blog": {
+      "uri": "test/2/test2.mdz.enc",
+      "fileType": "mdz",
+      "isEnc": "enc"
+    },
+    "cover": {
+      "title": "测试博客2",
+      "summary": "编号为-2的测试博客",
+      "image": {
+        "uri": "test/2/ci.jpg"
+      }
+    },
+    "creationTime": "2026-08-08T20:05:35+08:00",
+    "lastModificationTime": "2026-08-08T20:05:35+08:00",
+    "author": ["Hgnim"]
+  },
+  {
+    "id": -1,
+    "blog": {
+      "uri": "test/1/test1.md",
+      "fileType": "md"
+    },
+    "cover": {
+      "title": "测试博客1",
+      "summary": "编号为-1的测试博客",
+      "image": {
+        "uri": "test/1/ci.jpg.enc",
+        "isEnc": "enc"
+      }
+    },
+    "creationTime": "2026-08-08T16:29:49+08:00",
+    "lastModificationTime": "2026-08-08T16:29:49+08:00",
+    "author": ["Hgnim"]
+  }
+]

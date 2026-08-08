@@ -13,3 +13,4 @@ src/assets/svg/*.svg linguist-detectable=true
 src/views/Library/doc/**/* filter=lfs diff=lfs merge=lfs -text
 *.mdz filter=lfs diff=lfs merge=lfs -text
 *.enc filter=lfs diff=lfs merge=lfs -text
+src/views/Blog/content/**/* filter=lfs diff=lfs merge=lfs -text
