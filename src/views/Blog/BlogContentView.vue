@@ -97,14 +97,16 @@ onMounted(async ()=>{
       {{t('error')}}
     </div>
     <div class="col-12" v-show="loadStatus==='done'">
-      <div ref="blogView"></div>
+      <div ref="blogView" id="blogView"></div>
     </div>
   </div>
 </div>
 </template>
 
 <style scoped lang="scss">
-
+#blogView{
+  --theme-editor-background-color:transparent;
+}
 </style>
 
 <i18n>

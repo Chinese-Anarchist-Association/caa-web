@@ -2,12 +2,13 @@
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import {useTitle} from "@vueuse/core";
-import blogsData, {type IsEnc} from './ts/blogsData.ts';
+import blogsData, {type BlogsData, type IsEnc} from './ts/blogsData.ts';
 import {getFromNowTime} from "@/utils/date.ts";
 import {onUnmounted, ref, type Ref} from "vue";
 import getFilePath from "@/views/Blog/ts/getFilePath.ts";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
+import {isDev} from "@/ts/env/packMode.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Blog";
@@ -32,7 +33,8 @@ onUnmounted(()=>{
  */
 function pushCoverImgUrl(id:number, uri:string,isEnc:IsEnc|undefined):'' {
   (async () => {
-    const res = await fetch(getFilePath(uri));
+    const fp=getFilePath(uri)
+    const res = await fetch(fp);
     if (isEnc == 'enc') {
       const url = URL.createObjectURL(
           new Blob([
@@ -46,7 +48,7 @@ function pushCoverImgUrl(id:number, uri:string,isEnc:IsEnc|undefined):'' {
     } else {
       allCoverImgsUrl.value.push({
         id:id,
-        url:uri,
+        url:fp,
       });
     }
   })();
@@ -63,6 +65,20 @@ function getAuthor(input:string[]):string{
   }
   return output;
 }
+
+//当前页面的blogsData，将会过滤掉一些不符合条件的内容
+const localView_blogsData:Ref<BlogsData> = ref([]);
+(async ()=>{
+  const output:BlogsData=[];
+  blogsData.forEach(bdat=>{
+    if (
+        (bdat.id>=0 || isDev)
+    ){
+      output.push(bdat);
+    }
+  })
+  localView_blogsData.value=output;
+})();
 </script>
 <template>
 <div class="container">
@@ -72,7 +88,7 @@ function getAuthor(input:string[]):string{
     </div>
   </div>
   <div class="row">
-    <div v-for="(bd,index) in blogsData" :key="index" class="col-12 col-md-6 col-xl-4">
+    <div v-for="(bd,index) in localView_blogsData" :key="index" class="col-12 col-md-6 col-xl-4">
       <router-link :to="{name:`blog_ct-${bd.id}`}"
                    class="card blog-card"
       >

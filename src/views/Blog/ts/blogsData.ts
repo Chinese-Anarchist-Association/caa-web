@@ -35,7 +35,7 @@ export type BlogData={
     //博客最后修改时间，使用ISO 8601标准的时间字符串，例如：2026-05-13T00:11:10+08:00
     lastModificationTime:string,
     //博客类型键，用于给博客分类
-    blogTypeKey:string[],
+    //blogTypeKey:string[],
     //作者
     author:string[],
 }
