@@ -10,6 +10,7 @@ import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
 import {isDev} from "@/ts/env/packMode.ts";
 import Masonry from 'masonry-layout';
+import getAuthorStr from "@/views/Blog/ts/getAuthorStr.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Blog";
@@ -54,17 +55,6 @@ function pushCoverImgUrl(id:number, uri:string,isEnc:IsEnc|undefined):'' {
     }
   })();
   return '';
-}
-//处理作者数组并返回字符串
-function getAuthor(input:string[]):string{
-  let output='';
-  for(let i=0;i<input.length;i++){
-    output+=input[i];
-    if (i+1<input.length){
-      output+=', ';
-    }
-  }
-  return output;
 }
 
 //当前页面的blogsData，将会过滤掉一些不符合条件的内容
@@ -114,7 +104,7 @@ onMounted(()=>{
         </div>
         <div class="card-footer">
           <div class="text-start position-absolute">
-            <small class="text-body-secondary">{{getAuthor(bd.author)}}</small>
+            <small class="text-body-secondary">{{getAuthorStr(bd.author)}}</small>
           </div>
           <div class="text-end">
             <small class="text-body-secondary">{{getFromNowTime(bd.lastModificationTime)}}</small>

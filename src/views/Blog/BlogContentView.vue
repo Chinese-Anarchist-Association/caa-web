@@ -12,6 +12,8 @@ import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
 import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
 import {useTitle} from "@vueuse/core";
+import {getFormatTime} from "@/utils/date.ts";
+import getAuthorStr from "@/views/Blog/ts/getAuthorStr.ts";
 
 const {lt:t,gt}=autoUseI18n();
 
@@ -92,7 +94,7 @@ onMounted(async ()=>{
 <template>
 <div class="container">
   <div class="row">
-    <div class="col-12" v-if="loadStatus==='loading'">
+    <div class="col-12 text-center" v-if="loadStatus==='loading'">
       <span>{{t('loading')}}</span><br/>
       <span v-if="loading_total!=-1 && loading_total!=0">{{`${t('total')}${(loading_total!=-1)?filesize(loading_total):''}`}}</span><br/>
       <span v-if="loading_transferred!=-1 && loading_transferred!=0">{{`${t('transferred')}${(loading_transferred!=-1)?filesize(loading_transferred):''}`}}</span><br/>
@@ -106,6 +108,13 @@ onMounted(async ()=>{
     </div>
     <div class="col-12" v-show="loadStatus==='done'">
       <div ref="blogView" id="blogView"></div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <span>{{t('creationTime')}}{{(blogData)?getFormatTime(blogData.creationTime):''}}</span><br/>
+          <span>{{t('lastModificationTime')}}{{(blogData)?getFormatTime(blogData.lastModificationTime):''}}</span>
+        </div>
+        <span>{{t('author')}}{{blogData?getAuthorStr(blogData.author):''}}</span>
+      </div>
     </div>
   </div>
 </div>
@@ -129,6 +138,9 @@ onMounted(async ()=>{
     "speed": "速度：",
     "eta": "剩余时间：",
     "percentage": "进度：",
+    "creationTime": "创建时间：",
+    "lastModificationTime": "最后修改：",
+    "author": "作者："
   },
   "en-US": {
     "title": "Blog",
