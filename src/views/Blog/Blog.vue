@@ -4,11 +4,12 @@ import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import {useTitle} from "@vueuse/core";
 import blogsData, {type BlogsData, type IsEnc} from './ts/blogsData.ts';
 import {getFromNowTime} from "@/utils/date.ts";
-import {onUnmounted, ref, type Ref} from "vue";
+import {onMounted, onUnmounted, ref, type Ref} from "vue";
 import getFilePath from "@/views/Blog/ts/getFilePath.ts";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
 import {isDev} from "@/ts/env/packMode.ts";
+import Masonry from 'masonry-layout';
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Blog";
@@ -79,6 +80,16 @@ const localView_blogsData:Ref<BlogsData> = ref([]);
   })
   localView_blogsData.value=output;
 })();
+
+const blogGrid:Ref<HTMLDivElement|null>=ref(null);
+onMounted(()=>{
+  if (blogGrid.value){
+    new Masonry(blogGrid.value, {
+      itemSelector: '.blog-item',
+      percentPosition: true
+    })
+  }
+})
 </script>
 <template>
 <div class="container pt-3">
@@ -87,8 +98,8 @@ const localView_blogsData:Ref<BlogsData> = ref([]);
       <h2>{{t(`${lp}.title`)}}</h2>
     </div>
   </div>
-  <div class="row">
-    <div v-for="(bd,index) in localView_blogsData" :key="index" class="col-12 col-md-6 col-xl-4">
+  <div class="row" ref="blogGrid">
+    <div v-for="(bd,index) in localView_blogsData" :key="index" class="blog-item col-12 col-md-6 col-xl-4 mb-3">
       <router-link :to="{name:`blog_ct-${bd.id}`}"
                    class="card blog-card"
       >
