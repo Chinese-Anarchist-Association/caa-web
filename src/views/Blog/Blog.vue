@@ -11,6 +11,7 @@ import defPw from "@/json/defPw.json";
 import {isDev} from "@/ts/env/packMode.ts";
 import Masonry from 'masonry-layout';
 import getAuthorStr from "@/views/Blog/ts/getAuthorStr.ts";
+import {isClient} from "@/ts/env/ssr.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Blog";
@@ -23,7 +24,9 @@ autoLoadLocale(lp,()=>{
 const allCoverImgsUrl:Ref<{id:number,url:string}[]>=ref([]);
 
 onUnmounted(()=>{
-
+  allCoverImgsUrl.value.forEach(ciu=>{
+    URL.revokeObjectURL(ciu.url);
+  });
 })
 
 /**
@@ -73,7 +76,7 @@ const localView_blogsData:Ref<BlogsData> = ref([]);
 
 const blogGrid:Ref<HTMLDivElement|null>=ref(null);
 onMounted(()=>{
-  if (blogGrid.value){
+  if (blogGrid.value && isClient){
     new Masonry(blogGrid.value, {
       itemSelector: '.blog-item',
       percentPosition: true

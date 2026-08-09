@@ -118,11 +118,15 @@ function leaveBtn_click(){
             <router-link class="nav-link" :class="{'active':(curRouteName=='motionMatrix')}" aria-current="page" :to="{ name: 'motionMatrix'}">{{t(`${lp}.motionMatrix`)}}</router-link>
           </li>
         </ul>
-        <!--<ul class="navbar-nav d-flex me-auto nav-1">
-          <li class="nav-item">
-            <span>{{t(`${lp}.dev`)}}</span>
+        <ul class="navbar-nav flex-row flex-wrap nav-1">
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none my-2 text-white-50">
           </li>
-        </ul>-->
+          <li class="nav-item col-6 col-lg-auto text-center">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='encAndDec')}" aria-current="page" :to="{ name: 'encAndDec'}">{{t(`${lp}.encAndDec`)}}</router-link>
+          </li>
+        </ul>
         <ul class="navbar-nav flex-row flex-wrap nav-2">
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>

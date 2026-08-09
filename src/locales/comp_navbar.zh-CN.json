@@ -6,6 +6,7 @@
         "motionMatrix": "运动矩阵",
         "library": "图书馆",
         "blog": "博客",
+        "encAndDec": "加解密工具",
         "langs": {
             "lang-sel": "语言选择",
             "zh-CN": "简体中文",
