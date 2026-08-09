@@ -1,127 +1,88 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { encryptUint8Array, decryptUint8Array } from '@/utils/crypto.ts';
-import defPw from '@/json/defPw.json';
+import {DEC, ENC} from "@/views/EncAndDec/ts/encAndDec.ts";
+import {autoUseI18n} from "@/utils/i18nUtils.ts";
+import {useTitle} from "@vueuse/core";
 
-//region 加密
-const encPassword = ref('');
-let encFileData: Uint8Array | null = null;
-let encFileName:string ='';
+const {lt:t,gt}=autoUseI18n();
 
-function handleEncryptFile(event: Event) {
-  const elem = event.target as HTMLInputElement;
-  const file = elem.files?.[0];
-  if (!file) return;
-  encFileName = file.name;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const buffer = e.target?.result as ArrayBuffer;
-    encFileData = new Uint8Array(buffer);
-  };
-  reader.readAsArrayBuffer(file);
-}
+useTitle(`${t('title')} - ${gt('global.name')}`);
 
-function encryptFile() {
-  if (!encFileData) {
-    alert('未选择待加密文件');
-    return;
-  }
-  const password = encPassword.value.trim() || defPw.value;
-  try {
-    const encryptedBase64 = encryptUint8Array(encFileData, password);
-    const url = URL.createObjectURL(
-        //将base64结果保存为文本文件
-        new Blob([encryptedBase64], { type: 'text/plain;charset=utf-8' })
-    );
-    //创建临时a元素触发下载
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${encFileName}.enc`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);//释放
-  } catch (err) {
-    alert('加密失败：' + (err as Error).message);
-  }
-}
-//endregion
-//region 解密
-const decPassword = ref('');
-let decFileData: string | null = null;
-let decFileName:string ='';
-
-function handleDecryptFile(event: Event) {
-  const input = event.target as HTMLInputElement;
-  const file = input.files?.[0];
-  if (!file) return;
-  decFileName = file.name;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    decFileData = e.target?.result as string;
-  };
-  reader.readAsText(file, 'utf-8');
-}
-
-function decryptFile() {
-  if (!decFileData) {
-    alert('未选择待解密文件');
-    return;
-  }
-  const password = decPassword.value.trim() || defPw.value;
-  try {
-    const decryptedData = decryptUint8Array(decFileData, password);
-    const url = URL.createObjectURL(
-        //保存为原始文件
-        new Blob([decryptedData as BlobPart])
-    );
-    //临时创建触发下载
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = (()=>{
-      const tg='.enc';
-      if (decFileName.endsWith(tg))
-        return decFileName.slice(0,-tg.length);
-      else
-        return decFileName;
-    })();
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);//释放
-  } catch (err) {
-    alert('解密失败：' + (err as Error).message);
-  }
-}
-//endregion
+const {encPassword,handleEncFile,encBtn_click,canDoEnc,isEncError}=ENC();
+const {decPassword,handleDecFile,decBtn_click,canDoDec,isDecError}=DEC();
 </script>
 
 <template>
-  <div>
-    <h2>文件加密</h2>
-    <div>
-      <label>选择待加密文件：</label>
-      <input type="file" @change="handleEncryptFile" />
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>{{t('encTitle')}}</h2>
     </div>
-    <div>
-      <label>密码：</label>
-      <input v-model="encPassword" placeholder="留空将使用默认密码" type="text" />
+    <div class="col-12 col-lg-6">
+      <div class="input-group">
+        <label class="input-group-text">{{t('inputFileEnc')}}</label>
+        <input type="file" class="form-control" @change="handleEncFile" />
+      </div>
     </div>
-    <button @click="encryptFile">加密并下载</button>
-    <hr />
-    <h2>文件解密</h2>
-    <div>
-      <label>选择待解密文件：</label>
-      <input type="file" @change="handleDecryptFile" accept=".enc,text/plain" />
+    <div class="col-12 col-lg-6 mt-2 mt-lg-0">
+      <div class="input-group">
+        <label class="input-group-text">{{t('password')}}</label>
+        <input v-model="encPassword" :placeholder="t('pwPlaceholder')" type="text" class="form-control" />
+      </div>
     </div>
-    <div>
-      <label>密码：</label>
-      <input v-model="decPassword" placeholder="留空将使用默认密码" type="text" />
+    <div class="col-12 d-flex justify-content-center mt-2">
+      <button @click="encBtn_click" class="btn btn-primary" :disabled="!canDoEnc">{{t('encButton')}}</button>
     </div>
-    <button @click="decryptFile">解密并下载</button>
+    <div v-if="isEncError" class="col-12 text-center mt-2">
+      <strong class="error-text">{{t('encError')}}</strong>
+    </div>
   </div>
+  <hr />
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>{{t('decTitle')}}</h2>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="input-group">
+        <label class="input-group-text">{{t('inputFileDec')}}</label>
+        <input class="form-control" type="file" @change="handleDecFile" accept=".enc,text/plain" />
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-2 mt-lg-0">
+      <div class="input-group">
+        <label class="input-group-text">{{t('password')}}</label>
+        <input v-model="decPassword" :placeholder="t('pwPlaceholder')" type="text" class="form-control" />
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center mt-2">
+      <button @click="decBtn_click" class="btn btn-primary" :disabled="!canDoDec">{{t('decButton')}}</button>
+    </div>
+    <div v-if="isDecError" class="col-12 text-center mt-2">
+      <strong class="error-text">{{t('decError')}}</strong>
+    </div>
+  </div>
+</div>
 </template>
 
 <style scoped lang="scss">
-
+.error-text{
+  color: red;
+}
 </style>
+
+<i18n>
+{
+  "zh-CN": {
+    "title": "加解密工具",
+    "encTitle": "文件加密",
+    "decTitle": "文件解密",
+    "inputFileEnc": "选择待加密文件：",
+    "inputFileDec": "选择待解密文件：",
+    "password": "密码：",
+    "pwPlaceholder": "留空将使用默认密码",
+    "encButton": "加密并下载",
+    "decButton": "解密并下载",
+    "encError": "加密失败",
+    "decError": "解密失败"
+  }
+}
+</i18n>
