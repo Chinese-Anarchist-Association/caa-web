@@ -63,6 +63,11 @@ const router = createRouter({
             component: lazyLoadGuard(()=>import('@/views/Blog/Blog.vue')),
         },
         ...blogRouter(),
+        {
+            path: '/OnlineSelfVerificationor',
+            name: 'onlineSelfVerificationor',
+            component: lazyLoadGuard(()=>import('@/views/OnlineSelfVerificationor/OnlineSelfVerificationor.vue')),
+        },
     ],
 });
 //此方法无法成功在资源加载前拦截

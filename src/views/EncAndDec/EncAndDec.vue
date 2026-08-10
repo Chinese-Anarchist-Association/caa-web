@@ -12,7 +12,7 @@ const {decPassword,handleDecFile,decBtn_click,canDoDec,isDecError}=DEC();
 </script>
 
 <template>
-<div class="container">
+<div class="container pt-3">
   <div class="row">
     <div class="col-12 text-center">
       <h2>{{t('encTitle')}}</h2>
