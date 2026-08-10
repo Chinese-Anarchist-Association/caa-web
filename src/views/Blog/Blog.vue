@@ -9,9 +9,11 @@ import getFilePath from "@/views/Blog/ts/getFilePath.ts";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from "@/json/defPw.json";
 import {isDev} from "@/ts/env/packMode.ts";
-import Masonry from 'masonry-layout';
+//import Masonry from 'masonry-layout';
 import getAuthorStr from "@/views/Blog/ts/getAuthorStr.ts";
 import {isClient} from "@/ts/env/ssr.ts";
+
+let Masonry:any = null;
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Blog";
@@ -75,8 +77,10 @@ const localView_blogsData:Ref<BlogsData> = ref([]);
 })();
 
 const blogGrid:Ref<HTMLDivElement|null>=ref(null);
-onMounted(()=>{
+onMounted(async ()=>{
   if (blogGrid.value && isClient){
+    Masonry=(await import('masonry-layout')).default;//动态导入以避免ssg预渲染报错
+
     new Masonry(blogGrid.value, {
       itemSelector: '.blog-item',
       percentPosition: true

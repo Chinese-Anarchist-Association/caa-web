@@ -114,6 +114,7 @@ return {
                         'vue-pdf-embed',
                         '@/views/ChessAmateurAssociation/ChessAmateurAssociation.vue',
                         '@/glob/encImg.ts',
+                        'masonry-layout',
                     ],
                     //把所有字符串提取到字符串数组里，通过索引调用
                     stringArray: true,
