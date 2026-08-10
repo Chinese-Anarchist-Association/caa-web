@@ -1,1 +1,0 @@
-const s=["svg-bsi-box-arrow-right","svg-bsi-check2","svg-bsi-circle-half","svg-bsi-download","svg-bsi-file-earmark-fill","svg-bsi-folder-fill","svg-bsi-folder2-open","svg-bsi-moon-stars","svg-bsi-sun","svg-bsi-translate"];function i(){return s}export{i as get_ids};
