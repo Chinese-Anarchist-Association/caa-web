@@ -1,11 +1,12 @@
 import {type Ref, ref} from "vue";
-import {decryptString, encryptString} from "@/utils/cryptoString.ts";
 import {getFormatTimeWithTimezone} from "@/utils/date_timezone.ts";
+import {decUint8ArrayToString, encStringToUint8Array} from "@/utils/cryptoUint8Array.ts";
+import {base94Decode, base94Encode} from "@/utils/base94.ts";
 
 export default function (){
     type DataType={
-        date: string,
-        extra:string,
+        d:string,//date
+        e?:string,//extra
     };
     //region 加密
     const encPw:Ref<string>=ref('');
@@ -23,11 +24,20 @@ export default function (){
             return;
         }
 
-        const content:string=JSON.stringify({
-            date: new Date().toISOString(),
-            extra: encExtraCt.value,
-        });
-        const output:string = encryptString(content,pw);
+        const content:string=JSON.stringify((()=>{
+            if (encExtraCt.value!=''){
+                return {
+                    d: new Date().toISOString(),
+                    e: encExtraCt.value,
+                } as DataType;
+            }else{
+                return {
+                    d: new Date().toISOString(),
+                } as DataType;
+            }
+        })());
+        //console.log(content)
+        const output:string = base94Encode(encStringToUint8Array(content,pw));//encryptString(content,pw);
         encOutputContent.value = `${output}`;
 
         encCopyBtn_show.value=true;
@@ -58,11 +68,11 @@ export default function (){
         }
 
         try {
-            const content: DataType = JSON.parse(decryptString(ipt, pw));
+            const content: DataType = JSON.parse(decUint8ArrayToString(base94Decode(ipt), pw));
             decOutputContent.value =
-                `解密成功：\r\n时间：${getFormatTimeWithTimezone(content.date)}${(content.extra != '') ? `\r\n附加内容：${content.extra}` : ''}`;
+                `解密成功：\r\n时间：${getFormatTimeWithTimezone(content.d)}${(content.e) ? `\r\n附加内容：${content.e}` : ''}`;
         }catch{
-            decOutputContent.value = '解密失败，可能密文或密钥错误';
+            decOutputContent.value = '解密失败，可能是密文或密钥错误';
         }
     }
     //endregion

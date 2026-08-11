@@ -96,7 +96,7 @@ const {
     "title": "网络身份验证器",
     "getEnc": "获取密文",
     "time": "时间",
-    "password": "密钥",
+    "password": "密码",
     "extraContent": "附加内容",
     "extraContent_placeholder": "添加至密文中的附加内容，可选",
     "encButton": "执行加密",
