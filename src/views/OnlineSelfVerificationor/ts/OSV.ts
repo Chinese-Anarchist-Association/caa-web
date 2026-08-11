@@ -1,7 +1,9 @@
 import {type Ref, ref} from "vue";
 import {getFormatTimeWithTimezone} from "@/utils/date_timezone.ts";
-import {decUint8ArrayToString, encStringToUint8Array} from "@/utils/cryptoUint8Array.ts";
-import {base94Decode, base94Encode} from "@/utils/base94.ts";
+//import {decUint8ArrayToString, encStringToUint8Array} from "@/utils/cryptoUint8Array.ts";
+//import {base94Decode, base94Encode} from "@/utils/base94.ts";
+import {decryptString, encryptString} from "@/utils/cryptoString.ts";
+import {base1024ToBase64, base64ToBase1024} from "@/utils/base1024.ts";
 
 export default function (){
     type DataType={
@@ -37,7 +39,7 @@ export default function (){
             }
         })());
         //console.log(content)
-        const output:string = base94Encode(encStringToUint8Array(content,pw));//encryptString(content,pw);
+        const output:string = base64ToBase1024(encryptString(content,pw))//base94Encode(encStringToUint8Array(content,pw));//encryptString(content,pw);
         encOutputContent.value = `${output}`;
 
         encCopyBtn_show.value=true;
@@ -68,7 +70,7 @@ export default function (){
         }
 
         try {
-            const content: DataType = JSON.parse(decUint8ArrayToString(base94Decode(ipt), pw));
+            const content: DataType = JSON.parse(decryptString(base1024ToBase64(ipt),pw)/*decUint8ArrayToString(base94Decode(ipt), pw)*/);
             decOutputContent.value =
                 `解密成功：\r\n时间：${getFormatTimeWithTimezone(content.d)}${(content.e) ? `\r\n附加内容：${content.e}` : ''}`;
         }catch{
