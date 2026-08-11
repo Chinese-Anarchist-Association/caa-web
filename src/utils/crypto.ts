@@ -1,5 +1,17 @@
 import CryptoJS from 'crypto-js';
 
+export function wordArrayToUint8Array(wa:CryptoJS.lib.WordArray){
+    //从WordArray中提取出字节长度并实例化Uint8Array
+    const byteArray = new Uint8Array(wa.sigBytes);
+    for (let i = 0; i < wa.sigBytes; i++) {
+        //从words数组中按位提取每个字节
+        byteArray[i] = (wa.words[i >>> 2]! >>> (24 - (i % 4) * 8)) & 0xff;
+    }
+    return byteArray;
+}
+
+
+
 /**
  * 加密Uint8Array
  * @param data 待加密的Uint8Array
@@ -20,11 +32,5 @@ export function encryptUint8Array(data: Uint8Array, password: string): string {
  */
 export function decryptUint8Array(base64Str: string, password: string): Uint8Array {
     const decrypted = CryptoJS.AES.decrypt(base64Str, password);
-    //从WordArray中提取出字节长度并实例化Uint8Array
-    const byteArray = new Uint8Array(decrypted.sigBytes);
-    for (let i = 0; i < decrypted.sigBytes; i++) {
-        //从words数组中按位提取每个字节
-        byteArray[i] = (decrypted.words[i >>> 2]! >>> (24 - (i % 4) * 8)) & 0xff;
-    }
-    return byteArray;
+    return wordArrayToUint8Array(decrypted);
 }
