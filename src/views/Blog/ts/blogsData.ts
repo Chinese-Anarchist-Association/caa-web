@@ -18,8 +18,10 @@ export type BlogData={
     }
     cover:{
         //博客封面标题
+        //可填写被加密内容，在base64加密内容前添加'enc:'即可
         title:string,
         //博客封面概要
+        //可填写被加密内容，在base64加密内容前添加'enc:'即可
         summary:string,
         //封面图片
         image?:{
