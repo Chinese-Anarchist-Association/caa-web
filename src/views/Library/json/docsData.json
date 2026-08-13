@@ -52,7 +52,8 @@
     "uri": "enctest/",
     "fileName": "test.mdz.enc",
     "classShow": {
-      "path": "/enctest"
+      "path": "enc:U2FsdGVkX1/7t/fKgHhEeGZojcXwF5KhlnF0FdCcGCI=",
+      "name": "enc:U2FsdGVkX18EaScj4tp/FMqpX9gYoxFUWRPfGCHKGlYODCiffb/qKMJnmsO73ReZQuALdFrbD/Pv1N8aswdfRzKMpfneKroWwJcUr6vsKzI="
     }
   },
   {
@@ -60,7 +61,7 @@
     "uri": "enctest/",
     "fileName": "test.docx.enc",
     "classShow": {
-      "path": "/enctest"
+      "path": "enc:U2FsdGVkX1/7t/fKgHhEeGZojcXwF5KhlnF0FdCcGCI="
     }
   },
   {

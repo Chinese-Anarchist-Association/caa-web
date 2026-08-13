@@ -18,6 +18,7 @@ import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
 import {decryptUint8Array} from "@/utils/crypto.ts";
 import defPw from '@/json/defPw.json';
 import {isString, isStringArray} from "@/utils/typeCheck.ts";
+import checkAndDecString from "@/utils/checkAndDecString.ts";
 
 const VuePdfEmbed:any = shallowRef(null);
 
@@ -283,10 +284,10 @@ function downloadBtn_click(){
       <div class="col-12">
         <div class="row">
           <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-start align-items-center">
-            <h4>{{docData?.classShow.path}}/</h4>
+            <h4>{{(docData?.classShow.path)?checkAndDecString(docData.classShow.path):''}}/</h4>
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <h3>{{docData?.classShow.name || docData?.fileName}} {{(docData?.fileName.endsWith('.enc'))?t('isEnc'):''}}</h3>
+            <h3>{{(docData?.classShow.name || docData?.fileName)?checkAndDecString(docData.classShow.name || docData.fileName):''}} {{(docData?.fileName.endsWith('.enc'))?t('isEnc'):''}}</h3>
           </div>
           <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-end align-items-center">
             <button class="btn btn-primary" @click="downloadBtn_click"><!--:href="getFilePath()" :download="docData?.classShow.name || docData?.fileName"-->
