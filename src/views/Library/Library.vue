@@ -7,6 +7,7 @@ import type {btfpPath} from "@/components/directoryTree/ts/buildTreeFromPaths.ts
 import docsData from "@/views/Library/ts/docsData.ts";
 import {useRouter} from "vue-router";
 import {isDev} from "@/ts/env/packMode.ts";
+import checkAndDecString from "@/utils/checkAndDecString.ts";
 
 const {lt:t,gt}=autoUseI18n();
 
@@ -24,8 +25,8 @@ const dtData=computed(():btfpPath[]=>{//将所有文档数据整理后传递至�
   docsData.forEach((dd)=>{
     if(dd.id>=0 || isDev){//负数编号的为测试文档，不需要列入。如果是开发模式下，则显示
       bp.push({
-        name: dd.classShow.name || dd.fileName,
-        path: dd.classShow.path,
+        name: checkAndDecString(dd.classShow.name || dd.fileName),
+        path: checkAndDecString(dd.classShow.path),
         clickFunc:()=>{
           dtFile_click(dd.id);
         },

@@ -12,6 +12,7 @@ import {isDev} from "@/ts/env/packMode.ts";
 //import Masonry from 'masonry-layout';
 import getAuthorStr from "@/views/Blog/ts/getAuthorStr.ts";
 import {isClient} from "@/ts/env/ssr.ts";
+import checkAndDecString from "@/utils/checkAndDecString.ts";
 
 let Masonry:any = null;
 
@@ -106,8 +107,8 @@ onMounted(async ()=>{
              :src="allCoverImgsUrl.find(obj=>obj.id===bd.id)?.url || pushCoverImgUrl(bd.id ,bd.cover.image.uri,bd.cover.image.isEnc)"
         />
         <div class="card-body">
-          <h4 class="card-title">{{bd.cover.title}}</h4>
-          <p class="mb-1">{{bd.cover.summary}}</p>
+          <h4 class="card-title">{{checkAndDecString(bd.cover.title)}}</h4>
+          <p class="mb-1">{{checkAndDecString(bd.cover.summary)}}</p>
         </div>
         <div class="card-footer">
           <div class="text-start position-absolute">

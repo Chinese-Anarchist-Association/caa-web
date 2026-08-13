@@ -74,11 +74,13 @@ return {
                     'src/json/**/*.json',
                     'src/ts/App/*.ts',
                     'src/App.vue',
+                    'src/utils/**/*.ts',
                 ],
                 //排除的文件
                 exclude: [
                     'node_modules',
                     '.vite-ssg-temp',
+                    'src/utils/main/shared.ts',
                 ],
                 //打印匹配或排除文件的路径
                 debugger: isProd,
