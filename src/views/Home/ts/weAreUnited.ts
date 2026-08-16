@@ -23,6 +23,11 @@ export default function (){
             const context:CanvasRenderingContext2D=weAreUnitedContainer.value.getContext('2d')!;
             const xmax=weAreUnitedContainer.value.width;//weAreUnitedContainer.value.offsetWidth;
             const ymax=weAreUnitedContainer.value.height;//weAreUnitedContainer.value.offsetHeight;
+            const maxObjNum=(()=>{
+                const min=60;
+                const max=80;
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            })();
             const allPos:Pos[] = [];
             const fontSize=xmax/100;
 
@@ -31,7 +36,7 @@ export default function (){
 
             context.strokeStyle="rgba(0, 8, 125, .8)";
             context.lineWidth=xmax>1000?1:xmax/1000;
-            for (let num=0;num<100 && isRun;num++){
+            for (let num=0;num<maxObjNum && isRun;num++){
                 const rx:number=Math.floor(Math.random()*xmax);
                 const ry:number=Math.floor(Math.random()*ymax);
 

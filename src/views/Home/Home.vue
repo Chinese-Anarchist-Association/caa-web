@@ -25,6 +25,7 @@ const {
 <template>
   <div id="home">
     <section id="firstSection">
+      <img id="weAreUnited_bgImg" :src="imgsUrl[1]"/>
       <canvas id="weAreUnited_container" ref="weAreUnitedContainer"></canvas>
       <div id="firstSection_title">
         <h1>{{t('global.name')}}</h1>
