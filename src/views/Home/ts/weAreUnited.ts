@@ -2,6 +2,7 @@ import {onMounted, onUnmounted, ref, type Ref} from "vue";
 import {sleep} from "@/utils/sleep.ts";
 import seedrandom from 'seedrandom';
 import dayjs from "dayjs";
+import {isClient} from "@/ts/env/ssr.ts";
 
 type Pos={x:number, y:number};
 
@@ -10,7 +11,8 @@ export default function (){
     let isRun:boolean = false;
 
     onMounted(()=>{
-        start().then();
+        if (isClient)
+            start().then();
         /*
         //test
         const sr=seedrandom('test');

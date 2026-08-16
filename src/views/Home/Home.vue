@@ -20,6 +20,7 @@ const {imgsUrl} = imgLoad();
 const {
   weAreUnitedContainer
 }=weAreUnited();
+void weAreUnitedContainer;//消除构建报错TS6133
 </script>
 
 <template>
