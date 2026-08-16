@@ -25,10 +25,15 @@ section{
   }
 }
 
-h1{
-  &.fs-big-0{
-    //hi default font-size
-    //font-size: calc(1.375rem + 1.5vw);
-    font-size: calc(1.5rem + 3vw);
+#home{
+  #firstSection{
+    position: relative;
+    height: calc(100vh - var(--view_margin-top));
+
+    #firstSection_title{
+      position: absolute;
+      left: calc(10vw + 1rem);
+      bottom: calc(10vh + 1rem);
+    }
   }
 }

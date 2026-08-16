@@ -49,11 +49,14 @@ function doThemeSel(tme:string,setCookie:boolean=true){
     });
 }
 onMounted(()=>{
+  /*
   const theme:'dark'|'light'|'auto'|undefined=useCookies().get('theme');
   if (theme)
     doThemeSel(theme,false);
   else
     doThemeSel('auto',true);
+  */
+  doThemeSel('dark');//目前暂不对亮色模式支持，默认暗色模式
 });
 //endregion
 
@@ -135,7 +138,7 @@ function leaveBtn_click(){
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none my-2 text-white-50">
           </li>
-          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center">
+          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center" v-if="false"><!--目前暂不对亮色模式支持，禁用主题切换-->
             <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <svg class="bi" width="24" height="24" ><use :xlink:href="themeIcon"></use></svg>
             </button>

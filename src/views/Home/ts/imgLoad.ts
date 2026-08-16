@@ -6,6 +6,7 @@ import defPw from "@/json/defPw.json";
 export default function (){
     const allImgs:string[]=[
         encImg['/src/assets/img/logo/caa_transparentBackground.gif.enc'] as string,
+        encImg['/src/assets/img/logo/caa_onlyIcon.png.enc'] as string,
     ]
     const imgsUrl:Ref<string[]>=ref(new Array(1).fill(''));
     onMounted(()=>{
