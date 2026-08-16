@@ -1,5 +1,7 @@
 import {onMounted, onUnmounted, ref, type Ref} from "vue";
 import {sleep} from "@/utils/sleep.ts";
+import seedrandom from 'seedrandom';
+import dayjs from "dayjs";
 
 type Pos={x:number, y:number};
 
@@ -9,11 +11,24 @@ export default function (){
 
     onMounted(()=>{
         start().then();
+        /*
+        //test
+        const sr=seedrandom('test');
+        for (let i=0;i<50;i++){
+            console.log('seedrandom test: ',sr());
+        }
+        console.log(Math.random());
+        console.log(dayjs().format('YYYYMMDD'));
+        */
     });
     onUnmounted(()=>{
         isRun = false;
     });
 
+    //种子随机，以日期年月日为种子
+    const sRandom0=seedrandom(dayjs().format('YYYYMMDD'));
+    //种子随机，以日期年月日为种子。单独隔离，用于对不稳定因素随机，避免扰乱sRandom0
+    const sRandom1=seedrandom(`${dayjs().format('YYYYMMDD')}-1`);
     async function start(){
         if (!isRun && weAreUnitedContainer.value) {
             isRun = true;
@@ -26,7 +41,7 @@ export default function (){
             const maxObjNum=(()=>{
                 const min=60;
                 const max=80;
-                return Math.floor(Math.random() * (max - min + 1)) + min;
+                return Math.floor(sRandom0() * (max - min + 1)) + min;
             })();
             const allPos:Pos[] = [];
             const fontSize=xmax/100;
@@ -37,8 +52,8 @@ export default function (){
             context.strokeStyle="rgba(0, 8, 125, .8)";
             context.lineWidth=xmax>1000?1:xmax/1000;
             for (let num=0;num<maxObjNum && isRun;num++){
-                const rx:number=Math.floor(Math.random()*xmax);
-                const ry:number=Math.floor(Math.random()*ymax);
+                const rx:number=Math.floor(sRandom0()*xmax);//采用种子随机，在一天内，每个对象的数量和位置都是一样的
+                const ry:number=Math.floor(sRandom0()*ymax);
 
                 context.fillText("Ⓐ",rx, ry);
 
@@ -48,7 +63,7 @@ export default function (){
                         //距离更近的目标
                         let tpCloser:Pos|null = null;
                         while (true){
-                            const tp:Pos=allPos[Math.floor(Math.random()*allPos.length)]!;
+                            const tp:Pos=allPos[Math.floor(sRandom1()*allPos.length)]!;//采用种子随机，但窗口大小不是固定值，所以对象之间的连线可能有差别
                             //x轴上与目标的距离
                             const xFar:number = Math.abs(tp.x-rx);
                             //y轴上与目标的距离
