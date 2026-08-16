@@ -4,6 +4,7 @@ import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import aos from "@/plugins/aos.ts";
 import imgLoad from "@/views/Home/ts/imgLoad.ts";
+import weAreUnited from "@/views/Home/ts/weAreUnited.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Home";
@@ -15,33 +16,36 @@ autoLoadLocale(lp,()=>{
 aos();
 
 const {imgsUrl} = imgLoad();
+
+const {
+  weAreUnitedContainer
+}=weAreUnited();
 </script>
 
 <template>
   <div id="home">
-    <section class="pt-4rem pb-2rem bg-a">
+    <section id="firstSection">
+      <img alt="CAA" id="weAreUnited_bgImg" :src="imgsUrl[1]"/>
+      <canvas id="weAreUnited_container" ref="weAreUnitedContainer"></canvas>
+      <div id="firstSection_title">
+        <h1 data-aos="fade-down" data-aos-delay="300">{{t('global.name')}}</h1>
+        <p data-aos="fade-up" data-aos-offset="0" data-aos-delay="500">{{t(`${lp}.subTitle`)}}</p>
+      </div>
+    </section>
+
+    <section class="pt-2rem pb-2rem bg-a">
       <div class="container">
         <div class="row">
-          <div class="col-12 text-center">
-            <h1 class="fs-big-0" data-aos="fade-down" data-aos-delay="300">{{t('global.name')}}</h1>
-            <em data-aos="fade-up" data-aos-delay="500">{{t(`${lp}.subTitle`)}}</em>
+          <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+            <img class="illustration w-50 bg_only-light-show have-padding" alt="caa-logo" loading="lazy" :src="imgsUrl[0]" data-aos="flip-up"/>
+          </div>
+          <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+            <span class="general-text" data-aos="zoom-in">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
           </div>
         </div>
       </div>
     </section>
     <section class="pt-2rem pb-2rem bg-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <img class="illustration w-50 bg_only-light-show have-padding" alt="caa-logo" loading="lazy" :src="imgsUrl[0]" data-aos="flip-up" data-aos-delay="700"/>
-          </div>
-          <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <span class="general-text" data-aos="zoom-in" data-aos-delay="900">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="pt-2rem pb-2rem bg-a">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-6 justify-content-center align-items-center">
@@ -75,7 +79,7 @@ const {imgsUrl} = imgLoad();
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-b">
+    <section class="pt-2rem pb-2rem bg-a">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
@@ -84,7 +88,7 @@ const {imgsUrl} = imgLoad();
         </div>
       </div>
     </section>
-    <section class="pt-6 pb-6 bg-a">
+    <section class="pt-6 pb-6 bg-b">
       <!--用于占位-->
     </section>
   </div>
@@ -92,5 +96,6 @@ const {imgsUrl} = imgLoad();
 
 <style scoped lang="scss" src="@/assets/scss/color/view/Home.scss"></style>
 <style scoped lang="scss" src="./scss/Home.scss"></style>
+<style scoped lang="scss" src="./scss/weAreUnited.scss"></style>
 
 <style scoped lang="css" src="aos/dist/aos.css"></style>
