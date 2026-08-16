@@ -18,6 +18,7 @@ const view:Ref<HTMLElement|null> = ref(null);
 function viewMtComput(data:number){//导航栏在获取了自身高度后将传递到这个函数。设置view的外高以避免导航栏遮挡内容
   if (view.value) {
     view.value.style.marginTop = `${data}px`;
+    view.value.style.setProperty("--view_margin-top", `${data}px`);
   }
 }
 
@@ -39,4 +40,7 @@ const {ChessAmateurAssociation,itcaaSwitchHandler}=caaMask();
 </template>
 
 <style scoped lang="scss">
+#view{
+  --view_margin-top: 0px;
+}
 </style>

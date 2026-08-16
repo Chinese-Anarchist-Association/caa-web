@@ -32,3 +32,16 @@ h1{
     font-size: calc(1.5rem + 3vw);
   }
 }
+
+#home{
+  #firstSection{
+    position: relative;
+    height: calc(100vh - var(--view_margin-top));
+
+    #firstSection_title{
+      position: absolute;
+      left: calc(10vw + 1rem);
+      bottom: calc(10vh + 1rem);
+    }
+  }
+}

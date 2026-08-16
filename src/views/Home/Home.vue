@@ -4,6 +4,7 @@ import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import aos from "@/plugins/aos.ts";
 import imgLoad from "@/views/Home/ts/imgLoad.ts";
+import weAreUnited from "@/views/Home/ts/weAreUnited.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Home";
@@ -15,10 +16,22 @@ autoLoadLocale(lp,()=>{
 aos();
 
 const {imgsUrl} = imgLoad();
+
+const {
+  weAreUnitedContainer
+}=weAreUnited();
 </script>
 
 <template>
   <div id="home">
+    <section id="firstSection">
+      <canvas id="weAreUnited_container" ref="weAreUnitedContainer"></canvas>
+      <div id="firstSection_title">
+        <h1>{{t('global.name')}}</h1>
+        <p>{{t(`${lp}.subTitle`)}}</p>
+      </div>
+    </section>
+
     <section class="pt-4rem pb-2rem bg-a">
       <div class="container">
         <div class="row">
@@ -92,5 +105,6 @@ const {imgsUrl} = imgLoad();
 
 <style scoped lang="scss" src="@/assets/scss/color/view/Home.scss"></style>
 <style scoped lang="scss" src="./scss/Home.scss"></style>
+<style scoped lang="scss" src="./scss/weAreUnited.scss"></style>
 
 <style scoped lang="css" src="aos/dist/aos.css"></style>
