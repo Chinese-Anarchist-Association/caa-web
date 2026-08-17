@@ -35,7 +35,7 @@ const {
     <div class="col-12 col-lg-6 mt-2">
       <div class="input-group">
         <label class="input-group-text">{{t('password')}}</label>
-        <input type="text" v-model="encPw" class="form-control"/>
+        <input type="text" v-model="encPw" :placeholder="t('pwPlaceholder')" class="form-control"/>
       </div>
     </div>
     <div class="col-12 col-lg-6 mt-2 d-flex justify-content-center">
@@ -71,7 +71,7 @@ const {
     <div class="col-12 col-lg-6 mt-2">
       <div class="input-group">
         <label class="input-group-text">{{t('password')}}</label>
-        <input v-model="decPw" type="text" class="form-control"/>
+        <input v-model="decPw" type="text" :placeholder="t('pwPlaceholder')" class="form-control"/>
       </div>
     </div>
     <div class="col-12 col-lg-6 mt-2 d-flex justify-content-center">
@@ -97,6 +97,7 @@ const {
     "getEnc": "获取密文",
     "time": "时间",
     "password": "密码",
+    "pwPlaceholder": "留空将使用即时密码",
     "extraContent": "附加内容",
     "extraContent_placeholder": "添加至密文中的附加内容，可选",
     "encButton": "执行加密",

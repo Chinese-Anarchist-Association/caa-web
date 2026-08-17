@@ -29,7 +29,7 @@ void weAreUnitedContainer;//消除构建报错TS6133
       <img alt="CAA" id="weAreUnited_bgImg" :src="imgsUrl[1]"/>
       <canvas id="weAreUnited_container" ref="weAreUnitedContainer"></canvas>
       <div id="firstSection_title">
-        <h1 data-aos="fade-down" data-aos-delay="300">{{t('global.name')}}</h1>
+        <h1 data-aos="fade-down" data-aos-offset="0" data-aos-delay="300">{{t('global.name')}}</h1>
         <p data-aos="fade-up" data-aos-offset="0" data-aos-delay="500">{{t(`${lp}.subTitle`)}}</p>
       </div>
     </section>

@@ -48,7 +48,7 @@ export default function (){
                 return Math.floor(sRandom0() * (max - min + 1)) + min;
             })();
             const allPos:Pos[] = [];
-            const fontSize=xmax/100;
+            const fontSize=(xmax/100)*dpr;
 
             context.fillStyle="rgba(220, 20, 60, 1)";
             context.font=`${fontSize}px Arial, Helvetica, sans-serif`;
