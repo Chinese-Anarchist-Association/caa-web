@@ -11,7 +11,11 @@ import seedrandom from "seedrandom";
 
 dayjs.extend(utc);
 
-const seed:string = dayjs.utc(new Date().toISOString()).format('YYYY-MM-DD_HH');
+function getSeed(){
+    return dayjs.utc(new Date().toISOString()).format('YYYY-MM-DD_HH');
+}
+
+const seed:string = getSeed();
 const {base64ToBase1024R,base1024RToBase64}=base1024Random(seed);
 
 export default function (){
@@ -51,6 +55,10 @@ export default function (){
 
             }
         }*/
+        if (seed!==getSeed()){
+            encOutputContent.value = '加密失败，当前页面已过时，请刷新';
+            return;
+        }
 
         const content:string=JSON.stringify((()=>{
             if (encExtraCt.value!=''){
@@ -69,11 +77,11 @@ export default function (){
         const output:string = base64ToBase1024R(encryptString(content,pw))//base94Encode(encStringToUint8Array(content,pw));//encryptString(content,pw);
         {
             function encError(){
-                encOutputContent.value = '加密时出现异常，请重试';
+                encOutputContent.value = '加密失败，加密时出现异常，请重试';
                 encCopyBtn_show.value = false;
             }
             try {
-                //有时候加密的密文会无法解密，目前推断是基转换的问题。暂时先通过解密验证密文是否可用来解决此问题
+                //有时候加密的密文会无法解密，目前推断是基转换的问题。暂时先通过解密验证密文是否可逆来临时解决此问题
                 if (decryptString(base1024RToBase64(output), pw)==content) {
                     encOutputContent.value = `${output}`;
                     encCopyBtn_show.value = true;
@@ -102,6 +110,10 @@ export default function (){
         const ipt:string = decInput.value;
         if (ipt==''){
             decOutputContent.value = '解密失败，密文不能为空';
+            return;
+        }
+        if (seed!==getSeed()){
+            decOutputContent.value = '解密失败，当前页面已过时，请刷新';
             return;
         }
 
