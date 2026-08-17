@@ -14,7 +14,6 @@ const {
 </script>
 
 <template>
-<em>批注：目前处于测试阶段，随时可能优化和更改逻辑，请勿投入使用</em>
 <div class="container pt-3">
   <div class="row">
     <div class="col-12 text-center">
@@ -44,7 +43,7 @@ const {
     <div class="col-12 mt-2">
       <div class="input-group">
         <label class="input-group-text">{{t('output')}}</label>
-        <textarea type="text" class="form-control" v-model="encOutputContent" disabled></textarea>
+        <textarea type="text" class="form-control outputBox" v-model="encOutputContent" disabled></textarea>
         <button class="btn btn-primary btn-outline-secondary" v-if="encCopyBtn_show" @click="encCopyBtn_click">
           <svg class="bi" width="16" height="16"><use xlink:href="#svg-bsi-copy"></use></svg>
         </button>
@@ -80,7 +79,7 @@ const {
     <div class="col-12 mt-2">
       <div class="input-group">
         <label class="input-group-text">{{t('output')}}</label>
-        <textarea v-model="decOutputContent" type="text" class="form-control" disabled></textarea>
+        <textarea v-model="decOutputContent" type="text" class="form-control outputBox" disabled></textarea>
       </div>
     </div>
   </div>
@@ -88,13 +87,16 @@ const {
 </template>
 
 <style scoped lang="scss">
+.outputBox{
+  height: 8rem;
+}
 </style>
 
 <i18n>
 {
   "zh-CN": {
     "title": "网络身份验证器",
-    "getEnc": "获取密文",
+    "getEnc": "获取即时密文",
     "time": "时间",
     "password": "密码",
     "pwPlaceholder": "留空将使用即时密码",
@@ -102,7 +104,7 @@ const {
     "extraContent_placeholder": "添加至密文中的附加内容，可选",
     "encButton": "执行加密",
     "output": "输出",
-    "getDec": "获取明文",
+    "getDec": "解密即时密文",
     "decButton": "执行解密",
     "decInput": "密文",
     "decInput_placeholder": "在此输入密文"
