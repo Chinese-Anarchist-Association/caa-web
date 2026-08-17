@@ -34,8 +34,10 @@ export default function (){
     async function start(){
         if (!isRun && weAreUnitedContainer.value) {
             isRun = true;
-            weAreUnitedContainer.value.width=weAreUnitedContainer.value.offsetWidth;
-            weAreUnitedContainer.value.height=weAreUnitedContainer.value.offsetHeight;
+            const dpr = window.devicePixelRatio || 1;
+            //console.log(dpr)
+            weAreUnitedContainer.value.width=weAreUnitedContainer.value.offsetWidth * dpr;
+            weAreUnitedContainer.value.height=weAreUnitedContainer.value.offsetHeight * dpr;
 
             const context:CanvasRenderingContext2D=weAreUnitedContainer.value.getContext('2d')!;
             const xmax=weAreUnitedContainer.value.width;//weAreUnitedContainer.value.offsetWidth;
@@ -52,7 +54,7 @@ export default function (){
             context.font=`${fontSize}px Arial, Helvetica, sans-serif`;
 
             context.strokeStyle="rgba(0, 8, 125, .8)";
-            context.lineWidth=xmax>1000?1:xmax/1000;
+            context.lineWidth=xmax>1000?(1*dpr):(xmax/1000)*dpr;
             for (let num=0;num<maxObjNum && isRun;num++){
                 const rx:number=Math.floor(sRandom0()*xmax);//采用种子随机，在一天内，每个对象的数量和位置都是一样的
                 const ry:number=Math.floor(sRandom0()*ymax);
