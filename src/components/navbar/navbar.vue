@@ -98,7 +98,11 @@ function leaveBtn_click(){
 <template>
   <nav ref="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <router-link class="navbar-brand" :to="{ name: 'home'}" style="font-family: Arial,sans-serif">CⒶA</router-link>
+      <router-link class="navbar-brand" :to="{ name: 'home'}" id="navbar-head-btn">
+        <span>C</span>
+        <svg-a-anarchy class="svgObj"/>
+        <span>A</span>
+      </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

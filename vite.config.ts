@@ -16,6 +16,7 @@ import Icons from 'unplugin-icons/vite';
 import {FileSystemIconLoader} from "unplugin-icons/loaders";
 import Components from 'unplugin-vue-components/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import {fsil_transform} from "./ts/vite/unplugin-icons_Icons.node.ts";
 
 const env = loadEnv(mode as string, process.cwd());
 const distPath=path.resolve(__dirname, 'dist');
@@ -55,9 +56,11 @@ return {
             customCollections: {
                 'bsi':FileSystemIconLoader(
                     path.resolve(__dirname, 'src/assets/_svg/bsi'),
-                    (svg) => svg
-                        .replace(/fill="[^"]*"/g, 'fill="currentColor"')
-                        .replace(/stroke="[^"]*"/g, 'stroke="currentColor"')
+                    fsil_transform
+                ),
+                'a':FileSystemIconLoader(
+                    path.resolve(__dirname, 'src/assets/svg/a'),
+                    fsil_transform
                 ),
             },
         }),
@@ -67,6 +70,7 @@ return {
                     prefix: 'svg',
                     customCollections: [
                         'bsi',
+                        'a',
                     ],
                 }),
             ],

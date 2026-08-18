@@ -17,6 +17,22 @@
       }
     }
   }
+
+  #navbar-head-btn{
+    font-family: Arial,sans-serif;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    .svgObj{
+      color: white;
+      height: 1.5rem;
+      width: 1.5rem;
+      stroke:white;
+      stroke-width: 4;
+    }
+    span{
+    }
+  }
 }
 
 .d-flex{
