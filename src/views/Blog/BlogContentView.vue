@@ -92,7 +92,7 @@ onMounted(async ()=>{
 </script>
 
 <template>
-<div class="container">
+<div class="container pt-3">
   <div class="row">
     <div class="col-12 text-center" v-if="loadStatus==='loading'">
       <span>{{t('loading')}}</span><br/>
@@ -123,6 +123,7 @@ onMounted(async ()=>{
 <style scoped lang="scss">
 #blogView{
   --theme-editor-background-color:transparent;
+  --mdzip-preview-content-padding:0;
 }
 </style>
 

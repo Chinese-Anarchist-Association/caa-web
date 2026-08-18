@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--来源：https://github.com/Hgnim/Anarchism/blob/b5ecf687256bd77a01a5b56e2ca1b47f2b68ab5a/symbol/Anarchism/Anarchy.svg-->
+<!--
+    Author: Hgnim (https://github.com/hgnim)
+    Source: https://github.com/Hgnim/Anarchism
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="128" height="128">
+    <defs>
+        <style>
+            .general {
+                stroke: #000000;
+                stroke-width: 4;
+                fill: none;
+            }
+        </style>
+    </defs>
+
+    <circle cx="22" cy="22" r="20" class="general" />
+
+    <line x1="14" y1="24" x2="30" y2="24" class="general" />
+
+    <line x1="22" y1="2" x2="8" y2="38" class="general" />
+
+    <line x1="22" y1="2" x2="36" y2="38" class="general" />
+</svg>

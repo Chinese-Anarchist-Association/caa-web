@@ -41,22 +41,20 @@ void weAreUnitedContainer;//消除构建报错TS6133
             <img class="illustration w-50 bg_only-light-show have-padding" alt="caa-logo" loading="lazy" :src="imgsUrl[0]" data-aos="flip-up"/>
           </div>
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <span class="general-text" data-aos="zoom-in">{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
+            <div data-aos="zoom-in" data-aos-delay="200">
+              <span class="general-text" >{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
+              <br/>
+              <span class="general-text">{{t(`${lp}.txt-10`)}}</span>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-    <section class="pt-2rem pb-2rem bg-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-6 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 mt-2 justify-content-center align-items-center">
             <div>
               <span class="general-text" data-aos="zoom-in-right">{{t(`${lp}.txt-1-0`)}}<strong>{{t(`${lp}.txt-1-1`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-3`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-4`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-5`)}}</strong>{{t(`${lp}.txt-1-6`)}}<strong>{{t(`${lp}.txt-1-7`)}}</strong>{{t(`${lp}.txt-1-8`)}}</span>
               <br/>
               <span class="general-text" data-aos="zoom-in-right" data-aos-delay="400">{{t(`${lp}.txt-2`)}}</span>
             </div>
           </div>
-          <div class="col-12 col-md-6 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 mt-2 justify-content-center align-items-center">
             <div>
               <strong class="general-text" data-aos="zoom-in-left" data-aos-delay="600">{{t(`${lp}.txt-3`)}}</strong>
               <div class="row">
@@ -80,13 +78,24 @@ void weAreUnitedContainer;//消除构建报错TS6133
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-a">
+    <section class="pt-2rem pb-2rem bg-b">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <span class="general-text" data-aos="zoom-out">{{t(`${lp}.txt-10`)}}</span>
+            <h2>{{t(`${lp}.txt-11`)}}</h2>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mt-2" v-for="(imgUrl,index) in imgsUrl.slice(2,6)">
+            <div class="card" data-aos="flip-up" :data-aos-delay="(index%2==0)?0:200">
+              <img class="card-img" alt="photo" loading="lazy" :src="imgUrl"/>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="pt-2rem pb-2rem bg-a" id="ngnmSection">
+      <div class="h-100 w-100 d-flex justify-content-center align-items-center">
+        <svg-a-punk-style-circle-a class="svgObj" data-aos="fade-down"/>
+        <img alt="没有神明，没有主人" :src="imgsUrl[6]" data-aos="fade-up"/>
       </div>
     </section>
     <section class="pt-6 pb-6 bg-b">

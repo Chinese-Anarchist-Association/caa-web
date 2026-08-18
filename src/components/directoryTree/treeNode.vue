@@ -39,11 +39,11 @@ function onClick(){
         @click="onClick"
     >
       <span v-if="isFolder" class="head-icon">
-        <svg v-if="!isOpen" class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-folder-fill"></use></svg>
-        <svg v-else class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-folder2-open"></use></svg>
+        <svg-bsi-folder-fill v-if="!isOpen" class="bi" width="16" height="16" ></svg-bsi-folder-fill>
+        <svg-bsi-folder2-open v-else class="bi" width="16" height="16" ></svg-bsi-folder2-open>
       </span>
       <span v-else class="head-icon">
-        <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-file-earmark-fill"></use></svg>
+        <svg-bsi-file-earmark-fill class="bi" width="16" height="16" ></svg-bsi-file-earmark-fill>
       </span>
 
       <span class="name">{{ node.name }}</span>

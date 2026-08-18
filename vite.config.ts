@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import fs from 'fs';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
-import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import { createHtmlPlugin } from 'vite-plugin-html';
 import {isDev,isProd,mode} from "./src/ts/env/packMode.node.ts";
 import renderMode from "./src/ts/env/renderMode.node.ts";
@@ -13,6 +12,11 @@ import {md_libraryDocs_get} from "./src/ts/env/moduleDisable.node.ts";
 //import postcssPrefixwrap from 'postcss-prefixwrap';
 import resolveAlias from './ts/vite/resolveAlias.node.ts';
 import jsObfuscator from 'vite-plugin-javascript-obfuscator';
+import Icons from 'unplugin-icons/vite';
+import {FileSystemIconLoader} from "unplugin-icons/loaders";
+import Components from 'unplugin-vue-components/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import {fsil_transform} from "./ts/vite/unplugin-icons_Icons.node.ts";
 
 const env = loadEnv(mode as string, process.cwd());
 const distPath=path.resolve(__dirname, 'dist');
@@ -47,13 +51,30 @@ return {
 
             exclude: ['*.d.ts', '*.ts', '*.js'], //只用JSON，排除脚本
         }),
-        createSvgIconsPlugin({
-            iconDirs: [
-                path.resolve(__dirname, 'src/assets/_svg'),
+        Icons({
+            compiler: 'vue3',
+            customCollections: {
+                'bsi':FileSystemIconLoader(
+                    path.resolve(__dirname, 'src/assets/_svg/bsi'),
+                    fsil_transform
+                ),
+                'a':FileSystemIconLoader(
+                    path.resolve(__dirname, 'src/assets/svg/a'),
+                    fsil_transform
+                ),
+            },
+        }),
+        Components({
+            resolvers: [
+                IconsResolver({
+                    prefix: 'svg',
+                    customCollections: [
+                        'bsi',
+                        'a',
+                    ],
+                }),
             ],
-            symbolId: 'svg-[dir]-[name]',
-            customDomId: '__svg__icons__dom__',
-            //使用示例：<svg class="bi" width="16" height="16"><use xlink:href="#bi-check2"></use></svg>
+            dts: path.resolve(__dirname,'src/_@types/components.d.ts'),
         }),
         createHtmlPlugin({
             minify: true,

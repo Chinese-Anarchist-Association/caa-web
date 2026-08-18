@@ -7,6 +7,14 @@ export default function (){
     const allImgs:string[]=[
         encImg['/src/assets/img/logo/caa_transparentBackground.gif.enc'] as string,
         encImg['/src/assets/img/logo/caa_onlyIcon.png.enc'] as string,
+        ...(()=>{
+            const output:string[]=[];
+            for (let i=1;i<=4;i++){
+                output.push(encImg[`/src/assets/img/Home/photo-${i}.webp.enc`] as string);
+            }
+            return output;
+        })(),
+        encImg['/src/assets/img/Home/ngnm.png.enc'] as string,
     ]
     const imgsUrl:Ref<string[]>=ref(new Array(1).fill(''));
     onMounted(()=>{
