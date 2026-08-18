@@ -38,8 +38,8 @@ export default function (seed:string){
     })();
     //console.log(BASE1024R,BASE1024R.length);
 
-    const base64ToBase1024R=anyBase(BASE64,BASE1024R);
-    const base1024RToBase64=anyBase(BASE1024R,BASE64);
+    const base64ToBase1024R=anyBase(BASE64,BASE1024R,{preserveLeading:true});
+    const base1024RToBase64=anyBase(BASE1024R,BASE64,{preserveLeading:true});
 
     return {base64ToBase1024R,base1024RToBase64};
 }
