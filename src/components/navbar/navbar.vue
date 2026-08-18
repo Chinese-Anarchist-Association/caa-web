@@ -5,6 +5,7 @@ import {onMounted, onUnmounted, type Ref, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
+import {isDev} from "@/ts/env/packMode.ts";
 
 const route = useRoute();
 
@@ -20,24 +21,24 @@ async function doLangSel(lang:string){
 }
 
 //region theme
-const themeIcon:Ref<string> = ref("#svg-bsi-circle-half");
+const themeIcon:Ref<string> = ref("svg-bsi-circle-half");
 const curTheme:Ref<string> = ref("auto");
 function doThemeSel(tme:string,setCookie:boolean=true){
   const html:HTMLHtmlElement = document.querySelector("html")!;
   switch(tme){
     case 'auto':
-      themeIcon.value = '#svg-bsi-circle-half';
+      themeIcon.value = 'svg-bsi-circle-half';
       if (window.matchMedia("(prefers-color-scheme: dark)").matches)
         html.setAttribute('data-bs-theme','dark');
       else
         html.setAttribute('data-bs-theme','light');
       break;
     case 'light':
-      themeIcon.value = '#svg-bsi-sun';
+      themeIcon.value = 'svg-bsi-sun';
       html.setAttribute('data-bs-theme','light');
       break;
     case 'dark':
-      themeIcon.value = '#svg-bsi-moon-stars';
+      themeIcon.value = 'svg-bsi-moon-stars';
       html.setAttribute('data-bs-theme','dark');
       break;
   }
@@ -49,14 +50,15 @@ function doThemeSel(tme:string,setCookie:boolean=true){
     });
 }
 onMounted(()=>{
-  /*
-  const theme:'dark'|'light'|'auto'|undefined=useCookies().get('theme');
-  if (theme)
-    doThemeSel(theme,false);
-  else
-    doThemeSel('auto',true);
-  */
-  doThemeSel('dark');//目前暂不对亮色模式支持，默认暗色模式
+  if (isDev) {
+    const theme: 'dark' | 'light' | 'auto' | undefined = useCookies().get('theme');
+    if (theme)
+      doThemeSel(theme, false);
+    else
+      doThemeSel('auto', true);
+  }else {
+    doThemeSel('dark');//目前暂不对亮色模式支持，生产模式下默认暗色模式
+  }
 });
 //endregion
 
@@ -138,9 +140,11 @@ function leaveBtn_click(){
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none my-2 text-white-50">
           </li>
-          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center" v-if="false"><!--目前暂不对亮色模式支持，禁用主题切换-->
+          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center" v-if="isDev"><!--目前生产模式暂不对亮色模式支持，禁用主题切换-->
             <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <svg class="bi" width="24" height="24" ><use :xlink:href="themeIcon"></use></svg>
+              <svg-bsi-circle-half class="bi" width="24" height="24" v-if="themeIcon=='svg-bsi-circle-half'"></svg-bsi-circle-half>
+              <svg-bsi-sun class="bi" width="24" height="24" v-else-if="themeIcon=='svg-bsi-sun'"></svg-bsi-sun>
+              <svg-bsi-moon-stars class="bi" width="24" height="24" v-else-if="themeIcon=='svg-bsi-moon-stars'"></svg-bsi-moon-stars>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
@@ -148,21 +152,21 @@ function leaveBtn_click(){
               </li>
               <li>
                 <button @click="doThemeSel('auto')" :class="{ 'active': (curTheme=='auto') }" class="dropdown-item">
-                  <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-circle-half"></use></svg>
+                  <svg-bsi-circle-half class="bi" width="16" height="16" ></svg-bsi-circle-half>
                   {{t(`${lp}.theme.auto`)}}
                   <svg :style="(curTheme!='auto')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doThemeSel('light')" :class="{ 'active': (curTheme=='light') }" class="dropdown-item">
-                  <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-sun"></use></svg>
+                  <svg-bsi-sun class="bi" width="16" height="16" ></svg-bsi-sun>
                   {{t(`${lp}.theme.light`)}}
                   <svg :style="(curTheme!='light')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doThemeSel('dark')" :class="{ 'active': (curTheme=='dark') }" class="dropdown-item">
-                  <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-moon-stars"></use></svg>
+                  <svg-bsi-moon-stars class="bi" width="16" height="16" ></svg-bsi-moon-stars>
                   {{t(`${lp}.theme.dark`)}}
                   <svg :style="(curTheme!='dark')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
@@ -171,7 +175,7 @@ function leaveBtn_click(){
           </li>
           <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center">
             <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <svg class="bi" width="24" height="24" ><use xlink:href="#svg-bsi-translate"></use></svg>
+              <svg-bsi-translate class="bi" width="24" height="24" ></svg-bsi-translate>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
@@ -229,7 +233,7 @@ function leaveBtn_click(){
           </li>
           <li class="nav-item col-6 col-lg-auto d-flex flex-ai-c justify-content-center" v-if="isUseCaaMask==='true'">
             <button type="button" class="btn btn-link nav-link" @click="leaveBtn_click">
-              <svg class="bi" width="24" height="24" ><use xlink:href="#svg-bsi-box-arrow-right"></use></svg>
+              <svg-bsi-box-arrow-right class="bi" width="24" height="24" ></svg-bsi-box-arrow-right>
             </button>
           </li>
           <!--<li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">

@@ -15,6 +15,7 @@ src/assets/_svg
 src/_test
 src/views/Library/json/_remote
 src/views/Blog/json/_remote
+src/_@types
 
 script/tools/input
 script/tools/output

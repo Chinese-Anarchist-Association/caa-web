@@ -7,7 +7,6 @@ import {isDev} from "@/ts/env/packMode.ts";
 
 import '@/assets/scss/bootstrap/bs-custom.scss';
 import 'bootstrap';
-import 'virtual:svg-icons-register';//vite-plugin-svg-icons的虚拟模块
 import '@/assets/css/global/unSelect.css';
 
 export default function () {
