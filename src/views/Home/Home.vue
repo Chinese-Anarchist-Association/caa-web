@@ -94,7 +94,7 @@ void weAreUnitedContainer;//消除构建报错TS6133
     </section>
     <section class="pt-2rem pb-2rem bg-a" id="ngnmSection">
       <div class="h-100 w-100 d-flex justify-content-center align-items-center">
-        <svg-a-punk-style-circle-A class="svgObj" data-aos="fade-down"/>
+        <svg-a-punk-style-circle-a class="svgObj" data-aos="fade-down"/>
         <img alt="没有神明，没有主人" :src="imgsUrl[6]" data-aos="fade-up"/>
       </div>
     </section>
