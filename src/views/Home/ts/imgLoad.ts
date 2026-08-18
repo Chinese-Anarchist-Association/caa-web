@@ -14,6 +14,7 @@ export default function (){
             }
             return output;
         })(),
+        encImg['/src/assets/img/Home/ngnm.png.enc'] as string,
     ]
     const imgsUrl:Ref<string[]>=ref(new Array(1).fill(''));
     onMounted(()=>{

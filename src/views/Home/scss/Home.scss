@@ -36,4 +36,18 @@ section{
       bottom: calc(10vh + 1rem);
     }
   }
+  #ngnmSection{
+    img{
+      object-fit: cover;
+      width: 60vw;
+      position: relative;
+    }
+    .svgObj{
+      color: var(--bs-body-color);
+      stroke: var(--bs-body-color);
+      fill: var(--bs-body-color) !important;
+      position: absolute;
+      width: 24vw;
+    }
+  }
 }
