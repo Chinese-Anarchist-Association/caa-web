@@ -73,8 +73,8 @@ export default function (){
             }
         })());
         //console.log(content)
-        //console.log(encryptString(content,pw));
         const output:string = base64ToBase1024R(encryptString(content,pw))//base94Encode(encStringToUint8Array(content,pw));//encryptString(content,pw);
+        //console.log(encryptString(content,pw),base1024RToBase64(output));
         {
             function encError(){
                 encOutputContent.value = '加密失败，加密时出现异常，请重试';

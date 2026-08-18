@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/any-base/index.d.ts b/node_modules/@types/any-base/index.d.ts
+index 4658b06..c9bde28 100644
+--- a/node_modules/@types/any-base/index.d.ts
++++ b/node_modules/@types/any-base/index.d.ts
+@@ -8,7 +8,7 @@ interface AnyBase {
+     OCT: "01234567";
+     DEC: "0123456789";
+     HEX: "0123456789abcdef";
+-    (srcAlphabet: string, dstAlphabet: string): anyBase.Converter;
++    (srcAlphabet: string, dstAlphabet: string,options:{preserveLeading?: boolean}): anyBase.Converter;
+ }
+ 
+ declare namespace anyBase {
