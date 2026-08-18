@@ -29,7 +29,7 @@ void weAreUnitedContainer;//消除构建报错TS6133
       <img alt="CAA" id="weAreUnited_bgImg" :src="imgsUrl[1]"/>
       <canvas id="weAreUnited_container" ref="weAreUnitedContainer"></canvas>
       <div id="firstSection_title">
-        <h1 data-aos="fade-down" data-aos-offset="0" data-aos-delay="300">{{t('global.name')}}</h1>
+        <h1 data-aos="fade-down" data-aos-offset="0" data-aos-delay="300">{{t(`${lp}.txt-0-0`)}}</h1>
         <p data-aos="fade-up" data-aos-offset="0" data-aos-delay="500">{{t(`${lp}.subTitle`)}}</p>
       </div>
     </section>
@@ -82,7 +82,7 @@ void weAreUnitedContainer;//消除构建报错TS6133
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h2>{{t(`${lp}.txt-11`)}}</h2>
+            <h2 data-aos="fade-down">{{t(`${lp}.txt-11`)}}</h2>
           </div>
           <div class="col-12 col-md-6 col-lg-3 mt-2" v-for="(imgUrl,index) in imgsUrl.slice(2,6)">
             <div class="card" data-aos="flip-up" :data-aos-delay="(index%2==0)?0:200">
