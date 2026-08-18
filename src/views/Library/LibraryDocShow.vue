@@ -25,7 +25,7 @@ const VuePdfEmbed:any = shallowRef(null);
 const {lt:t,gt}=autoUseI18n();
 
 function do_useTitle(ct:string|null = null){
-  useTitle(`${ct!=null?`${ct} - `:''}${t('title')} - ${gt('global.name')}`);
+  useTitle(`${ct!=null?`${checkAndDecString(ct)} - `:''}${t('title')} - ${gt('global.name')}`);
 }
 do_useTitle();
 
@@ -291,7 +291,7 @@ function downloadBtn_click(){
           </div>
           <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-end align-items-center">
             <button class="btn btn-primary" @click="downloadBtn_click"><!--:href="getFilePath()" :download="docData?.classShow.name || docData?.fileName"-->
-              <svg class="bi" width="16" height="16" ><use xlink:href="#svg-bsi-download"></use></svg>
+              <svg-bsi-download class="bi" width="16" height="16" />
               {{t(`download`)}}
             </button>
           </div>
