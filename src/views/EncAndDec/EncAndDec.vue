@@ -32,7 +32,7 @@ const {
     <div class="col-12 col-lg-6 mt-2 mt-lg-0">
       <div class="input-group">
         <label class="input-group-text">{{t('password')}}</label>
-        <input v-model="encPassword" :placeholder="t('pwPlaceholder')" type="text" class="form-control" />
+        <input v-model="encPassword" :placeholder="t('pwPlaceholder')" type="password" class="form-control" />
       </div>
     </div>
     <div class="col-12 d-flex justify-content-center mt-2">
@@ -56,7 +56,7 @@ const {
     <div class="col-12 col-lg-6 mt-2 mt-lg-0">
       <div class="input-group">
         <label class="input-group-text">{{t('password')}}</label>
-        <input v-model="decPassword" :placeholder="t('pwPlaceholder')" type="text" class="form-control" />
+        <input v-model="decPassword" :placeholder="t('pwPlaceholder')" type="password" class="form-control" />
       </div>
     </div>
     <div class="col-12 d-flex justify-content-center mt-2">
@@ -80,7 +80,7 @@ const {
     <div class="col-12 col-lg-6 mt-2">
       <div class="input-group">
         <label class="input-group-text">{{t('password')}}</label>
-        <input type="text" v-model="encPw" :placeholder="t('pwPlaceholder')" class="form-control"/>
+        <input type="password" v-model="encPw" :placeholder="t('pwPlaceholder')" class="form-control"/>
       </div>
     </div>
     <div class="col-12 col-lg-6 mt-2 d-flex justify-content-center">
@@ -91,7 +91,7 @@ const {
         <label class="input-group-text">{{t('output')}}</label>
         <textarea type="text" class="form-control" v-model="encOutputContent" disabled></textarea>
         <button class="btn btn-primary btn-outline-secondary" v-if="encCopyBtn_show" @click="encCopyBtn_click">
-          <svg class="bi" width="16" height="16"><use xlink:href="#svg-bsi-copy"></use></svg>
+          <svg-bsi-copy class="bi" width="16" height="16"></svg-bsi-copy>
         </button>
       </div>
     </div>
@@ -110,7 +110,7 @@ const {
     <div class="col-12 col-lg-6 mt-2">
       <div class="input-group">
         <label class="input-group-text">{{t('password')}}</label>
-        <input v-model="decPw" type="text" :placeholder="t('pwPlaceholder')" class="form-control"/>
+        <input v-model="decPw" type="password" :placeholder="t('pwPlaceholder')" class="form-control"/>
       </div>
     </div>
     <div class="col-12 col-lg-6 mt-2 d-flex justify-content-center">
