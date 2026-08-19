@@ -1,4 +1,4 @@
-import anyBase, {DEC, HEX} from 'any-base';
+import anyBase from 'any-base';
 import {BASE1024, /*BASE64*/} from './base1024.ts';
 import seedrandom from 'seedrandom';
 
@@ -50,10 +50,10 @@ export default function (seed:string){
     const base1024RToBase64:anyBase.Converter=(number:string)=>{
     }*/
 
-    const smallB10ToB1024R=anyBase(DEC,BASE1024R/*,{}*/);
-    const smallB1024RToB10=anyBase(BASE1024R,DEC/*,{}*/);
-    const smallB16ToB1024R=anyBase(HEX,BASE1024R/*,{}*/);
-    const smallB1024RToB16=anyBase(BASE1024R,HEX/*,{}*/);
+    const smallB10ToB1024R = anyBase(anyBase.DEC, BASE1024R /*,{}*/);
+    const smallB1024RToB10 = anyBase(BASE1024R, anyBase.DEC /*,{}*/);
+    const smallB16ToB1024R = anyBase(anyBase.HEX, BASE1024R /*,{}*/);
+    const smallB1024RToB16 = anyBase(BASE1024R, anyBase.HEX /*,{}*/);
     const base16ToBase1024R:anyBase.Converter=(number:string)=>{
         //十六进制，每五位分一组
         const hexGroup:string[]=[];
