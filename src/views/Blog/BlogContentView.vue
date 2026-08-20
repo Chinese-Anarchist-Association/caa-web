@@ -14,11 +14,12 @@ import {type MdzipColorScheme, MdzipWorkspaceView} from "@mdzip/editor";
 import {useTitle} from "@vueuse/core";
 import {getFormatTime} from "@/utils/date.ts";
 import getAuthorStr from "@/views/Blog/ts/getAuthorStr.ts";
+import checkAndDecString from "@/utils/checkAndDecString.ts";
 
 const {lt:t,gt}=autoUseI18n();
 
 function do_useTitle(ct:string|null = null){
-  useTitle(`${ct!=null?`${ct} - `:''}${t('title')} - ${gt('global.name')}`);
+  useTitle(`${ct!=null?`${checkAndDecString(ct)} - `:''}${t('title')} - ${gt('global.name')}`);
 }
 do_useTitle();
 
@@ -108,12 +109,16 @@ onMounted(async ()=>{
     </div>
     <div class="col-12" v-show="loadStatus==='done'">
       <div ref="blogView" id="blogView"></div>
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <span>{{t('creationTime')}}{{(blogData)?getFormatTime(blogData.creationTime):''}}</span><br/>
-          <span>{{t('lastModificationTime')}}{{(blogData)?getFormatTime(blogData.lastModificationTime):''}}</span>
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start align-items-center">
+          <div>
+            <span>{{t('creationTime')}}{{(blogData)?getFormatTime(blogData.creationTime):''}}</span><br/>
+            <span>{{t('lastModificationTime')}}{{(blogData)?getFormatTime(blogData.lastModificationTime):''}}</span>
+          </div>
         </div>
-        <span>{{t('author')}}{{blogData?getAuthorStr(blogData.author):''}}</span>
+        <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end align-items-center">
+          <span>{{t('author')}}{{blogData?getAuthorStr(blogData.author):''}}</span>
+        </div>
       </div>
     </div>
   </div>
