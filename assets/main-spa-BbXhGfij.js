@@ -1,1 +1,0 @@
-import{i as a,c as s,r as p,a as o,s as e,A as i}from"./unSelect-v0pkk-uI.js";import"./bootstrap.esm--3AG11oG.js";import"./app-BBm3J8ve.js";function m(){a&&console.log("[main-spa.ts] 进入"),s(i).use(p).use(o).mount("#app"),e()}export{m as default};
