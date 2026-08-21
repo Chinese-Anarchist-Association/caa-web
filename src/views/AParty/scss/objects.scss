@@ -32,13 +32,72 @@
       z-index: 1;
     }
     $tableStep-width: 500px;
+    $tableStep-height: 20px;
     #tableStep{
       position: absolute;
       width: $tableStep-width;
-      height: 20px;
+      height: $tableStep-height;
       background-color: gray;
       left: calc($scene-width / 2 - $tableStep-width / 2);;
       top: calc($table-top + $table-height);
+    }
+
+    $speaker-width: 100px;
+    $speaker-height: 200px;
+    #speaker{
+      position: absolute;
+      width: $speaker-width;
+      height: $speaker-height;
+      top: calc($table-top + $table-height + $tableStep-height - $speaker-height);
+      background-color: gray;
+      transform-origin: 50% 100%;
+      animation: speaker_shake var(--shake-rhythm) infinite;
+      @keyframes speaker_shake {
+        0%{
+          transform: scaleY(1) scaleX(1);
+        }
+        50%{
+          transform: scaleY(1.05) scaleX(.98);
+        }
+        100%{
+          transform: scaleY(1) scaleX(1);
+        }
+      }
+      &.a{
+        left: calc($scene-width / 2 - $tableStep-width / 2 - $speaker-width*2);
+      }
+      &.b{
+        left: calc($scene-width / 2 + $tableStep-width / 2 + $speaker-width);
+      }
+      .circle{
+        position: absolute;
+        clip-path: circle(50% at 50% 50%);
+        background-color: #686868;
+        animation: speaker_circle_shake var(--shake-rhythm) infinite;
+        @keyframes speaker_circle_shake {
+          0%{
+            transform: scaleY(1) scaleX(1);
+          }
+          50%{
+            transform: scaleY(0.98) scaleX(1.05);
+          }
+          100%{
+            transform: scaleY(1) scaleX(1);
+          }
+        }
+        &.c-s{
+          width: calc($speaker-width / 2);
+          height: calc($speaker-width / 2);
+          left: calc($speaker-width / 2 - ($speaker-width / 2) / 2);
+          top: calc($speaker-height/4 - ($speaker-width / 2) / 2);
+        }
+        &.c-b{
+          width: calc($speaker-width / 1.5);
+          height: calc($speaker-width / 1.5);
+          left: calc($speaker-width / 2 - ($speaker-width / 1.5) / 2);
+          top: calc($speaker-height / 1.5 - ($speaker-width / 1.5) / 2);
+        }
+      }
     }
 
     $discoLight-width: 8px;
@@ -54,7 +113,7 @@
       #discoLight_bulb{
         z-index: 999;
         .anarchist{
-          stroke: yellow;
+          stroke: #FFD700;
           width: $discoLight_bulb-diameter;
           height: $discoLight_bulb-diameter;
           z-index: 999;
@@ -145,14 +204,96 @@
       stroke-width: 4;
       width: $anarchist-width;
       height: $anarchist-height;
-      &.red{
+      &.a-normal{
         stroke: #DC143C;
+      }
+      &.a-syn{
+        stroke: #FF0000;
+      }
+      &.a-fem{
+        stroke: #88008F;
+      }
+      &.a-gre{
+        stroke: #008000;
+      }
+      /*&.a-cap{
+        stroke: #FFD700;
+      }*/
+      &.a-pac{
+        stroke: #FFFFFF;
+      }
+      &.a-mut{
+        stroke: #FFA500;
+      }
+      &.a-que{
+        stroke: #FF69B4;
       }
     }
 
     #a_dj{
       top: calc(80px + $table-top);
       left: calc($scene-width / 2 - $anarchist-width / 2);
+    }
+
+    --shake-rhythm: .5s;
+    .shake{
+      transform-origin: 50% 100%;
+      &.s-a{
+        animation: shake_a var(--shake-rhythm) infinite;
+        @keyframes shake_a {
+          0%{
+            transform: scaleY(1) scaleX(1);
+          }
+          50%{
+            transform: scaleY(1.1) scaleX(.95);
+          }
+          100%{
+            transform: scaleY(1) scaleX(1);
+          }
+        }
+      }
+      &.s-b{
+        animation: shake_b calc(var(--shake-rhythm)*2) infinite;
+        @keyframes shake_b {
+          0%{
+            transform: rotateZ(-10deg);
+          }
+          50%{
+            transform: rotateZ(10deg);
+          }
+          100%{
+            transform: rotateZ(-10deg);
+          }
+        }
+      }
+      &.s-c{
+        animation: shake_c var(--shake-rhythm) infinite;
+        @keyframes shake_c  {
+          0%{
+            transform: translateY(0px) scaleY(1);
+          }
+          50%{
+            transform: translateY(-15px) scaleY(1.1);
+          }
+          100%{
+            transform: translateY(0px) scaleY(1);
+          }
+        }
+      }
+      &.s-d{
+        animation: shake_d var(--shake-rhythm) infinite;
+        @keyframes shake_d {
+          0%{
+            transform: scaleY(1) scaleX(1);
+          }
+          50%{
+            transform: scaleY(0.9) scaleX(1.1);
+          }
+          100%{
+            transform: scaleY(1) scaleX(1);
+          }
+        }
+      }
     }
   }
 }

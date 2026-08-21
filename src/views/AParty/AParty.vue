@@ -12,7 +12,21 @@ useTitle(`${t('title')} - ${gt('global.name')}`);
   <div id="scene">
     <div id="table"/>
     <div id="tableStep"/>
-    <svg-a-anarchy id="a_dj" class="anarchist red"/>
+    <div id="speaker" class="a">
+      <div class="circle c-s"></div>
+      <div class="circle c-b"></div>
+    </div>
+    <div id="speaker" class="b">
+      <div class="circle c-s"></div>
+      <div class="circle c-b"></div>
+    </div>
+    <svg-a-anarchy id="a_dj" class="anarchist a-normal shake s-a"/>
+    <svg-a-anarchy style="top: 500px;left: 600px;" class="anarchist a-syn shake s-c"/>
+    <svg-a-anarchy style="top: 650px;left: 850px;" class="anarchist a-fem shake s-b"/>
+    <svg-a-anarchy style="top: 550px;left: 1000px;" class="anarchist a-gre shake s-a"/>
+    <svg-a-anarchy style="top: 600px;left: 700px;" class="anarchist a-pac shake s-d"/>
+    <svg-a-anarchy style="top: 500px;left: 860px;" class="anarchist a-mut shake s-c"/>
+    <svg-a-anarchy style="top: 620px;left: 525px;" class="anarchist a-que shake s-b"/>
 
     <div id="discoLight">
       <div id="discoLight_bulb">
