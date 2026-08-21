@@ -1,0 +1,158 @@
+#aParty{
+  #scene {
+    $scene-width: 1600px;
+    $scene-height: 1200px;
+    position: absolute;
+    @media only screen and (min-width: $scene-width) {
+      left: calc(50vw - ($scene-width / 2));
+    }
+    width: $scene-width;
+    height: $scene-height;
+    background-color: black;
+    overflow: hidden;
+
+    $table-width: 400px;
+    $table-top: 200px;
+    $table-height: 200px;
+    #table {
+      position: absolute;
+      left: calc($scene-width / 2 - $table-width / 2);
+      background-color: gray;
+      width: $table-width;
+      top: $table-top;
+      height: $table-height;
+      clip-path: polygon(
+              100% 100%, 0 100%,
+              0 90%, 40% 90%,
+              40% 80%, 15% 80%,
+              15% 72%, 85% 72%,
+              85% 80%, 60% 80%,
+              60% 90%, 100% 90%
+      );
+      z-index: 1;
+    }
+    $tableStep-width: 500px;
+    #tableStep{
+      position: absolute;
+      width: $tableStep-width;
+      height: 20px;
+      background-color: gray;
+      left: calc($scene-width / 2 - $tableStep-width / 2);;
+      top: calc($table-top + $table-height);
+    }
+
+    $discoLight-width: 8px;
+    $discoLight-height: 100px;
+    #discoLight{
+      position: absolute;
+      width: $discoLight-width;
+      height: $discoLight-height;
+      left: calc($scene-width / 2 - $discoLight-width / 2);;
+      background-color: gray;
+
+      $discoLight_bulb-diameter: 50px;
+      #discoLight_bulb{
+        z-index: 999;
+        .anarchist{
+          stroke: yellow;
+          width: $discoLight_bulb-diameter;
+          height: $discoLight_bulb-diameter;
+          z-index: 999;
+        }
+        position: absolute;
+        width: $discoLight_bulb-diameter;
+        height: $discoLight_bulb-diameter;
+        top: $discoLight-height;
+        left: calc(-1 * ($discoLight_bulb-diameter / 2) + $discoLight-width / 2);
+        animation: discoLight_bulb-rotating 5s infinite linear;
+
+        .bulb-light{
+          $bulb-light_start-width: calc($discoLight_bulb-diameter / 3);
+          $bulb-light_width: calc($bulb-light_start-width * 13);
+
+          position: absolute;
+          height: $scene-height;
+          width: $bulb-light_width;
+          clip-path: polygon(
+                  45% 0, 55% 0,
+                  100% 100%,0% 100%,
+          );
+          z-index: 998;
+          transform-origin: 50% 0;
+
+          $bl_baseLeft:calc(($bulb-light_width / 2)* -1 + ($discoLight_bulb-diameter / 2));
+          &.a{
+            top: $discoLight_bulb-diameter;
+            left: $bl_baseLeft;
+            background-color: rgba(255,0,0,0.5);
+          }
+          &.b{
+            top: calc($bulb-light_start-width * 2.5);
+            left: calc($bl_baseLeft + $bulb-light_start-width);
+            transform: rotateZ(-45deg);
+            background-color: rgba(255,255,0,0.5);
+          }
+          &.c{
+            top: calc($bulb-light_start-width * 1.5);
+            left: calc($bl_baseLeft + $discoLight_bulb-diameter / 2);
+            transform: rotateZ(-90deg);
+            background-color: rgba(0,255,0,0.5);
+          }
+          &.d{
+            top: calc($bulb-light_start-width * 0.5);
+            left: calc($bl_baseLeft + $bulb-light_start-width);
+            transform: rotateZ(-135deg);
+            background-color: rgba(0,255,255,0.5);
+          }
+          &.e{
+            top: 0;
+            left: $bl_baseLeft;
+            transform: rotateZ(-180deg);
+            background-color: rgba(0,0,255,0.5);
+          }
+          &.f{
+            top: calc($bulb-light_start-width * 0.5);
+            left: calc($bl_baseLeft - $bulb-light_start-width);
+            transform: rotateZ(-225deg);
+            background-color: rgba(255,0,255,0.5);
+          }
+          &.g{
+            top: calc($bulb-light_start-width * 1.5);
+            left: calc($bl_baseLeft - $discoLight_bulb-diameter / 2);
+            transform: rotateZ(-270deg);
+            background-color: rgba(255,255,255,0.5);
+          }
+          &.h{
+            top: calc($bulb-light_start-width * 2.5);
+            left: calc($bl_baseLeft - $bulb-light_start-width);
+            transform: rotateZ(-315deg);
+            background-color: rgba(255,127.5,0,0.5);
+          }
+        }
+      }
+      @keyframes discoLight_bulb-rotating {
+        to{
+          transform: rotateZ(360deg);
+        }
+      }
+    }
+
+
+    $anarchist-width:100px;
+    $anarchist-height:100px;
+    .anarchist{
+      position: absolute;
+      stroke-width: 4;
+      width: $anarchist-width;
+      height: $anarchist-height;
+      &.red{
+        stroke: #DC143C;
+      }
+    }
+
+    #a_dj{
+      top: calc(80px + $table-top);
+      left: calc($scene-width / 2 - $anarchist-width / 2);
+    }
+  }
+}
