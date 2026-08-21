@@ -1,0 +1,36 @@
+@mixin svgObjShow{
+  .svgObj {
+    transform: rotateZ(-45deg);
+    left: 0;
+  }
+}
+#easterEgg{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2rem;
+  height: 4rem;
+  overflow: hidden;
+  cursor: pointer;
+
+  .svgObj{
+    width: 4rem;
+    height: 4rem;
+    stroke: white;
+    stroke-width: 4;
+    position: absolute;
+    left: 2rem;
+    transition: 1s;
+  }
+  &.isReady{
+    @include svgObjShow;
+    .svgObj.svgObj{
+      stroke: #ff7575;
+    }
+  }
+}
+#easterEgg:hover{
+  &.notReady {
+    @include svgObjShow;
+  }
+}

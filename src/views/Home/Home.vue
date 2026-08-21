@@ -5,6 +5,7 @@ import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import aos from "@/plugins/aos.ts";
 import imgLoad from "@/views/Home/ts/imgLoad.ts";
 import weAreUnited from "@/views/Home/ts/weAreUnited.ts";
+import easterEgg_init from './ts/easterEgg';
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_Home";
@@ -21,6 +22,9 @@ const {
   weAreUnitedContainer
 }=weAreUnited();
 void weAreUnitedContainer;//消除构建报错TS6133
+
+const {easterEgg,easterEgg_click,isReady:ee_isReady,}=easterEgg_init();
+void easterEgg;
 </script>
 
 <template>
@@ -31,6 +35,11 @@ void weAreUnitedContainer;//消除构建报错TS6133
       <div id="firstSection_title">
         <h1 data-aos="fade-down" data-aos-offset="0" data-aos-delay="300">{{t(`${lp}.txt-0-0`)}}</h1>
         <p data-aos="fade-up" data-aos-offset="0" data-aos-delay="500">{{t(`${lp}.subTitle`)}}</p>
+      </div>
+      <div id="easterEgg" ref="easterEgg" @click="easterEgg_click" @contextmenu.prevent="easterEgg_click"
+           :class="{'notReady':(!ee_isReady),'isReady':(ee_isReady)}"
+      >
+        <svg-a-anarchy class="svgObj"/>
       </div>
     </section>
 
@@ -107,5 +116,6 @@ void weAreUnitedContainer;//消除构建报错TS6133
 <style scoped lang="scss" src="@/assets/scss/color/view/Home.scss"></style>
 <style scoped lang="scss" src="./scss/Home.scss"></style>
 <style scoped lang="scss" src="./scss/weAreUnited.scss"></style>
+<style scoped lang="scss" src="./scss/easterEgg.scss"/>
 
 <style scoped lang="css" src="aos/dist/aos.css"></style>
