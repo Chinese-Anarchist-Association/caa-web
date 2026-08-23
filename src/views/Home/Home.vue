@@ -40,6 +40,7 @@ void easterEgg;
            :class="{'notReady':(!ee_isReady),'isReady':(ee_isReady)}"
       >
         <svg-a-anarchy class="svgObj"/>
+        <router-link :to="{name:'aParty'}" class="ee-link" v-if="ee_isReady"/>
       </div>
     </section>
 

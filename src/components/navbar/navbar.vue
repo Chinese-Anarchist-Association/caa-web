@@ -112,6 +112,9 @@ function leaveBtn_click(){
             <router-link class="nav-link" :class="{'active':(curRouteName=='home')}" aria-current="page" :to="{ name: 'home'}">{{t(`${lp}.home`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='posters')}" aria-current="page" :to="{ name: 'posters'}">{{t(`${lp}.posters`)}}</router-link>
+          </li>
+          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='blog' || curRouteName?.startsWith('blog_ct-'))}" aria-current="page" :to="{ name: 'blog'}">{{t(`${lp}.blog`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">
