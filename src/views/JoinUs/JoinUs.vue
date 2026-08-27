@@ -13,44 +13,12 @@ autoLoadLocale(lp,()=>{
 
 <template>
 <div id="joinUs">
-  <div class="container pt-4">
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <span>
-          {{t(`${lp}.txt-11`)}}
-        </span>
-      </div>
-      <div class="col-12 col-md-6">
-        <span>
-          {{t(`${lp}.txt-12`)}}
-        </span>
-      </div>
-      <div class="col-12 pt-6 text-center">
-        <span class="fs-big-0">{{t(`${lp}.txt-0`)}}</span>
-        <a href="xmpp:caa@conference.conversations.im?join" class="fs-big-0 wrap-break-word">caa@conference.conversations.im</a>
-      </div>
-      <div class="col-12 text-center mt-6">
-        <p><strong>{{t(`${lp}.txt-1`)}}</strong></p>
-        <p>{{t(`${lp}.txt-2`)}}</p>
-        <p>{{t(`${lp}.txt-3`)}}</p>
-        <p>{{t(`${lp}.txt-4`)}}</p>
-        <p>{{t(`${lp}.txt-5`)}}</p>
-        <p>{{t(`${lp}.txt-6`)}}</p>
-        <p>{{t(`${lp}.txt-7`)}}</p>
-        <p>{{t(`${lp}.txt-8`)}}</p>
-        <p>{{t(`${lp}.txt-9`)}}</p>
-        <p><strong>{{t(`${lp}.txt-10`)}}</strong></p>
-      </div>
-    </div>
-  </div>
+  <guided-chat id="guidedChat"></guided-chat>
 </div>
 </template>
 
 <style scoped lang="scss">
-.fs-big-0{
-  font-size: 1.5rem;
-}
-.wrap-break-word{
-  overflow-wrap: break-word
+#guidedChat{
+  height: calc(100vh - var(--view_margin-top));
 }
 </style>
