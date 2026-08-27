@@ -11,6 +11,7 @@
     border: var(--bs-border-color) solid 2px;
     border-radius: var(--bs-border-radius);
     padding: .6rem 1rem;
+    overflow-y: scroll;
 
     .chat-content{
       margin-bottom: .3rem;

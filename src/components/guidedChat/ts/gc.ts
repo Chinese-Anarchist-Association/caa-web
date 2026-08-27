@@ -76,6 +76,10 @@ export default function (isAlive:Ref<boolean>){
                         for (let i=0;i<ad.content.length;i++){
                             ad.elem.textContent+=ad.content[i];
                             await sleep(10);
+
+                            if (ad.elem.classList.contains('chat-content') && chat.value){
+                                chat.value.scrollTop = chat.value.scrollHeight;
+                            }
                         }
                     }
                 }
@@ -189,9 +193,11 @@ export default function (isAlive:Ref<boolean>){
                         canShow=isHave;
                     }else canShow=true;
                     if (canShow) {
-                        if (cuCfc.caaChat.wait && cuCfc.caaChat.wait != 0) {
-                            await wait_autoOwbw();
-                            await sleep(cuCfc.caaChat.wait);
+                        if (chatFlow_haveHistory==null) {
+                            if (cuCfc.caaChat.wait && cuCfc.caaChat.wait != 0) {
+                                await wait_autoOwbw();
+                                await sleep(cuCfc.caaChat.wait);
+                            }
                         }
                         addChatContent(cuCfc.caaChat.content, 'caa');
                     }
@@ -255,7 +261,7 @@ export default function (isAlive:Ref<boolean>){
 
     function getCookie(key:GcCookieKey){
         const c:GcCookieData/*string*/|undefined = useCookies().get(key.name);
-        console.log(c);
+        //console.log(c);
         return c;
         /*if (c)
             return JSON.parse(c) as GcCookieData;
