@@ -1,0 +1,63 @@
+import type {ChatFlowContents} from "@/components/guidedChat/ts/gc.ts";
+
+export default function (){
+    const test:ChatFlowContents=[
+        {
+            caaChat:{
+                content:"test"
+            }
+        },
+        {
+            userSend:[
+                {
+                    content:"test1",
+                    addShowKey:['1'],
+                },
+                {
+                    content:"test2",
+                    addShowKey:['2'],
+                }
+            ]
+        },
+        {
+            caaChat:{
+                content:"test-1",
+                showKey:['1'],
+            }
+        },
+        {
+            caaChat:{
+                content:"test-2",
+                showKey:['2'],
+            }
+        },
+        {
+            userSend:[
+                {
+                    content:"test2-1",
+                    addShowKey:['3'],
+                },
+                {
+                    content:"test2-2",
+                    addShowKey:['4'],
+                }
+            ]
+        },
+        {
+            caaChat:{
+                content:"test-3",
+                showKey:['3'],
+            }
+        },
+        {
+            caaChat:{
+                content:"test-4",
+                showKey:['4'],
+            }
+        },
+    ];
+
+    return{
+        test
+    };
+}
