@@ -2,6 +2,7 @@
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import {useTitle} from "@vueuse/core";
+import GuidedChat from "@/components/guidedChat/guidedChat.vue";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_JoinUs";
@@ -20,5 +21,6 @@ autoLoadLocale(lp,()=>{
 <style scoped lang="scss">
 #guidedChat{
   height: calc(100vh - var(--view_margin-top));
+  padding: .5rem;
 }
 </style>
