@@ -1,0 +1,56 @@
+#guidedChat{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr auto;
+  grid-row-gap: 0;
+  grid-template-areas:
+    "g0"
+    "g1";
+  #chat:deep(){
+    grid-area: g0;
+    border: var(--bs-border-color) solid 2px;
+    border-radius: var(--bs-border-radius);
+    padding: .6rem 1rem;
+    overflow-y: scroll;
+
+    .chat-content{
+      margin-bottom: .3rem;
+      &.sys{
+        color: var(--bs-secondary-color);
+        font-style: italic;
+      }
+      &.user{
+        color: #00c500;
+      }
+      &.caa{
+        color: var(--bs-body-color);
+      }
+    }
+  }
+  #send:deep(){
+    grid-area: g1;
+    border: var(--bs-border-color) solid 2px;
+    border-radius: var(--bs-border-radius);
+    min-height: 1rem;
+    padding: .3rem .5rem;
+
+    .send-content{
+      cursor: pointer;
+      user-select: none;
+      color: var(--bs-body-color);
+      text-align: center;
+
+      &.dis{
+        cursor: not-allowed;
+        color: var(--bs-secondary-color);
+      }
+    }
+    .send-content:hover{
+      color: #00c500;
+
+      &.dis{
+        color: #b30000;
+      }
+    }
+  }
+}
