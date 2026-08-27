@@ -6,6 +6,7 @@ import {useRoute} from "vue-router";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
 import {isDev} from "@/ts/env/packMode.ts";
+import {isClient} from "@/ts/env/ssr.ts";
 
 const route = useRoute();
 
@@ -92,6 +93,10 @@ function leaveBtn_click(){
     path: '/',
   });
   location.reload();
+}
+
+function getLocationHref(){
+  return window.location.href;
 }
 </script>
 
@@ -237,6 +242,11 @@ function leaveBtn_click(){
                 </button>
               </li>
             </ul>
+          </li>
+          <li class="nav-item col-6 col-lg-auto d-flex flex-ai-c justify-content-center">
+            <router-link type="button" class="btn btn-link nav-link" :to="{name: 'shareLink',state: {'curLH':(isClient)?getLocationHref():''}}">
+              <svg-bsi-share class="bi" width="24" height="24" ></svg-bsi-share>
+            </router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto d-flex flex-ai-c justify-content-center" v-if="isUseCaaMask==='true'">
             <button type="button" class="btn btn-link nav-link" @click="leaveBtn_click">
