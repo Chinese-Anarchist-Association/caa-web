@@ -1,0 +1,235 @@
+import {ref, type Ref} from "vue";
+import {marked} from "marked";
+
+export default function (){
+    const content:Ref<string>=ref((()=>{
+        return marked('**★华语无政府主义网络运动矩阵**\n' +
+            '\n' +
+            '●其他XMPP华语无政府主义公开频道\n' +
+            '\n' +
+            '-安那其主义交流：\n' +
+            'xmpp:%E5%AE%89%E9%82%A3%E5%85%B6%E4%B8%BB%E4%B9%89%E4%BA%A4%E6%B5%81@conference.conversations.im?join\n' +
+            '\n' +
+            '-AAC报纸编辑部：\n' +
+            'xmpp:aac%E6%8A%A5%E7%BA%B8%E7%BC%96%E8%BE%91%E9%83%A8@chat.jabb.im?join\n' +
+            '\n' +
+            '-无政府主义 安那其主义：\n' +
+            'xmpp:%E6%97%A0%E6%94%BF%E5%BA%9C%E4%B8%BB%E4%B9%89@conference.conversations.im?join\n' +
+            '\n' +
+            '-无政府共产主义工人授课群：\n' +
+            'xmpp:%E6%97%A0%E6%94%BF%E5%BA%9C%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E5%B7%A5%E4%BA%BA%E6%8E%88%E8%AF%BE%E7%BE%A4@conference.conversations.im?join\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●国际民间活动分享\n' +
+            '\n' +
+            '-哔哩哔哩官号：\n' +
+            'https://b23.tv/eeCq8vr\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●纳粹正义吧 \n' +
+            '\n' +
+            '-哔哩哔哩官号：\n' +
+            'https://b23.tv/C6Getom\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●初墨独行安那其宣传 \n' +
+            '\n' +
+            '-哔哩哔哩官号：\n' +
+            'https://b23.tv/7PKgfwK\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●「赛博安」项目 \n' +
+            '\n' +
+            '-哔哩哔哩官号：\n' +
+            'https://b23.tv/yx4Kxor\n' +
+            '\n' +
+            '-官网：\n' +
+            'https://www.aworld.wiki/#/mobile/recommended-reading\n' +
+            '\n' +
+            '-X官号：\n' +
+            'https://x.com/CyberAnarc2824\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●汝拉社 \n' +
+            '\n' +
+            '-哔哩哔哩官号：\n' +
+            'https://b23.tv/ONs8ghz\n' +
+            'https://b23.tv/rnoOBte\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●红与黑安那其讲解频道 \n' +
+            '\n' +
+            '-哔哩哔哩官号：\n' +
+            'https://b23.tv/g9zCNNs\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●中文无治主义图书馆 \n' +
+            '\n' +
+            '-官网：\n' +
+            'https://zh.anarchistlibraries.net/special/index\n' +
+            '\n' +
+            '-官方邮箱：\n' +
+            'zhanarchistlibrary@protonmail.com\n' +
+            '\n' +
+            '-官方Matrix聊天室：\n' +
+            'https://matrix.to/#/%23ChineseAnarchistLibrary:riot.anarchyplanet.org\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●中国无政府主义协会-中国自由意志共产主义运动\n' +
+            '\n' +
+            '-官网：\n' +
+            'https://chinese-anarchist-association.github.io/caa-web/\n' +
+            'https://www.caanet.top/\n' +
+            '\n' +
+            '-官方Linktree：\n' +
+            'https://linktr.ee/CAA.CLCM\n' +
+            '\n' +
+            '-全球无政府主义组织索引页：\n' +
+            'https://organize.crd.co/#china\n' +
+            '\n' +
+            '-Instagram官号：\n' +
+            'https://www.instagram.com/chineseanarchistassociation\n' +
+            '\n' +
+            '-Threads官号：\n' +
+            'https://www.threads.com/@chineseanarchistassociation\n' +
+            '\n' +
+            '-Facebook官号：\n' +
+            'https://www.facebook.com/share/1BJyFNV3Pe/\n' +
+            '\n' +
+            '-X官号（停更）：\n' +
+            'https://x.com/Gyroject_X\n' +
+            '\n' +
+            '-官方Matrix聊天室：\n' +
+            'https://matrix.to/#/%23chineseanarchistassociation:matrix.org\n' +
+            '\n' +
+            '-官方Github：\n' +
+            'https://github.com/Chinese-Anarchist-Association\n' +
+            '\n' +
+            '-Substack官号：\n' +
+            'https://substack.com/@chineseanarchistassociation\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●「IYouPort 自由港」资源库\n' +
+            '\n' +
+            '-官网：\n' +
+            'https://www.iyouport.org/\n' +
+            '\n' +
+            '-官方Notion：\n' +
+            'https://iyouport.notion.site\n' +
+            '\n' +
+            '-X官号：\n' +
+            'https://x.com/iyouport_news\n' +
+            '\n' +
+            '-Substack官号：\n' +
+            'https://iyouport.substack.com/\n' +
+            '\n' +
+            '-官方Telegram频道：\n' +
+            'https://t.me/s/iyouport?before=6081\n' +
+            '\n' +
+            '-Patreon官号：\n' +
+            'https://www.patreon.com/iyouport\n' +
+            '\n' +
+            '-Steemit官号：\n' +
+            'https://steemit.com/@iyouport\n' +
+            '\n' +
+            '-Medium官号：\n' +
+            'https://medium.com/@iyouport\n' +
+            '\n' +
+            '-Github官号：\n' +
+            'https://nodebe4.github.io/oped2/categories/#iYouPort\n' +
+            '\n' +
+            '-Googleapis官号：\n' +
+            'https://storage.googleapis.com/qurium/iyouport.org/category-opinion-1.html\n' +
+            '\n' +
+            '-Weebly官号：\n' +
+            'https://iyouport.weebly.com/\n' +
+            '\n' +
+            '-Wix官号：\n' +
+            'https://iyouport.wixsite.com/iyouport\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●中国自由意志社会主义同志社 \n' +
+            '\n' +
+            '-官方MPChat群组:\n' +
+            'https://invite.mp.net/%2524gvrbMppG1s5ScrFaGA1AEew%253D%253D\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●无政府主义吧 \n' +
+            '\n' +
+            '-百度贴吧：\n' +
+            'https://tieba.baidu.com/wxf/27925244?kw=%E5%AE%89%E9%82%A3%E7%A5%BA&fr=sharewise\n' +
+            '\n' +
+            '-刻言：\n' +
+            'https://m.keyanba.xyz/bar?params=eyJiYXJJZCI6MTE0NX0%3D\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●反抗者频道 \n' +
+            '\n' +
+            '-官方微信贴图号ID：\n' +
+            'phacct_d9f1ede7d339\n' +
+            '\n' +
+            '-官方百家号：\n' +
+            'https://author.baidu.com/home?context=%7B%22app_id%22%3A%221801644466764469%22%7D&wfr=bjh\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●民间力量分发站\n' +
+            '-官方微信公众号ID：\n' +
+            'PopularPowerChina\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●「暗湾」台湾无政府主义社群\n' +
+            '\n' +
+            '-Instagram官号：\n' +
+            'https://www.instagram.com/anwan.tw?igsh=MnZiNmtpZ2xxanRy\n' +
+            '\n' +
+            '-Facebook官号：\n' +
+            'https://www.facebook.com/share/19N9dL5fHA/\n' +
+            '\n' +
+            '-Threads官号：\n' +
+            'https://www.threads.com/@anwan.tw\n' +
+            '\n' +
+            '\n' +
+            '●安那其文库：\n' +
+            '\n' +
+            '-官方微信公众号ID：\n' +
+            'gilgamesh555\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●anarchy hospital：\n' +
+            '\n' +
+            '-官方微信公众号ID：\n' +
+            'anarchy_hospital\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●暂时不知道叫什么名字：\n' +
+            '\n' +
+            '-官方微信公众号ID：\n' +
+            'gh_3e52ce99dbf8\n' +
+            '\n' +
+            '\n' +
+            '\n' +
+            '●安那其长子：\n' +
+            '\n' +
+            '-官方微信公众号ID：\n' +
+            'N70_anarchy') as string;
+    })());
+    return {
+        content,
+    };
+}
