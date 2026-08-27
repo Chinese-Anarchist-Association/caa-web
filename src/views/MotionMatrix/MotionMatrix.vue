@@ -2,6 +2,7 @@
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import {useTitle} from "@vueuse/core";
+import Content from "@/views/MotionMatrix/ts/content.ts";
 
 const {gt:t}=autoUseI18n();
 const lp:string="view_MotionMatrix";
@@ -9,6 +10,9 @@ const lp:string="view_MotionMatrix";
 autoLoadLocale(lp,()=>{
   useTitle(`${t(`${lp}.title`)} - ${t('global.name')}`);
 });
+
+const {content}=Content();
+void content;
 </script>
 
 <template>
@@ -18,6 +22,8 @@ autoLoadLocale(lp,()=>{
       <div class="col-12 text-center">
         <h2>{{t(`${lp}.pageTitle`)}}</h2>
       </div>
+      <div class="col-12" v-html="content"></div>
+      <!--
       <div class="col-12">
         <strong>{{t(`${lp}.txt-0`)}}</strong>
         <ul>
@@ -247,6 +253,7 @@ autoLoadLocale(lp,()=>{
           </li>
         </ul>
       </div>
+      -->
     </div>
   </div>
 </div>
