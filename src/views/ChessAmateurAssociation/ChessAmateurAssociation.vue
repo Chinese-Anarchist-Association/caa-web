@@ -4,7 +4,7 @@ import caaMaskCode from '@/json/caaMaskCode.json';
 import aos from "@/plugins/aos.ts";
 import {nextTick, onMounted, ref, type Ref} from "vue";
 import {isClient} from "@/ts/env/ssr.ts";
-import type {ShareLinkPassCode} from "@/views/ShareLink/ts/sl.ts";
+import type {ShareLinkPassCode} from "@/views/ShareLink/ts/sl.type.ts";
 import {base62ToHex} from "@/utils/base62.ts";
 import {decryptWordArray, HexToWordArray} from "@/utils/cryptoWordArray.ts";
 import sharelinkPw from '@/json/sharelinkPw.json';

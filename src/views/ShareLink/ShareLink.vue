@@ -14,7 +14,7 @@ const {expirationDate,url:curUrl,doWork,output,outputSuccess,}=Sl();
 
 onMounted(()=>{
   if (isClient){
-    curUrl.value= window.history.state?.curLH;
+    curUrl.value= window.history.state?.curLH ?? window.location.origin;
     expirationDate.value=dayjs(new Date()).format("YYYY-MM-DDTHH:mm:ss");//获取当前本地时间
     //expirationDate.value="2026-08-28T13:00:52"
     //console.log(curUrl.value)

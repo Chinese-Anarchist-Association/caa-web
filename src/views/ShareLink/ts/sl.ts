@@ -4,12 +4,9 @@ import utc from "dayjs/plugin/utc";
 import {encryptWordArray, WordArrayToHex} from "@/utils/cryptoWordArray.ts";
 import sharelinkPw from '@/json/sharelinkPw.json';
 import {hexToBase62} from "@/utils/base62.ts";
+import type { ShareLinkPassCode } from "./sl.type";
 
 dayjs.extend(utc);
-
-export type ShareLinkPassCode={
-    ed:string, //expirationDate, 有效期
-}
 
 export default function (){
     const expirationDate:Ref<string>=ref('');
