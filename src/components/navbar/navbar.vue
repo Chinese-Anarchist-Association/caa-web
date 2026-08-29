@@ -243,7 +243,7 @@ function getLocationHref(){
               </li>
             </ul>
           </li>
-          <li class="nav-item col-6 col-lg-auto d-flex flex-ai-c justify-content-center">
+          <li class="nav-item col-6 col-lg-auto d-flex flex-ai-c justify-content-center" v-if="isUseCaaMask==='true'">
             <router-link type="button" class="btn btn-link nav-link" :to="{name: 'shareLink',state: {'curLH':(isClient)?getLocationHref():''}}">
               <svg-bsi-share class="bi" width="24" height="24" ></svg-bsi-share>
             </router-link>
