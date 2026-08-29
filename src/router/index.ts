@@ -78,6 +78,11 @@ const router = createRouter({
             name: 'posters',
             component: lazyLoadGuard(()=>import('@/views/Posters/Posters.vue')),
         },
+        {
+            path: '/ShareLink',
+            name: 'shareLink',
+            component: lazyLoadGuard(()=>import('@/views/ShareLink/ShareLink.vue')),
+        }
     ],
 });
 //此方法无法成功在资源加载前拦截

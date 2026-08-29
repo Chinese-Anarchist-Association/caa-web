@@ -2,7 +2,16 @@
 import {useTitle} from "@vueuse/core";
 import caaMaskCode from '@/json/caaMaskCode.json';
 import aos from "@/plugins/aos.ts";
-import {ref, type Ref} from "vue";
+import {nextTick, onMounted, ref, type Ref} from "vue";
+import {isClient} from "@/ts/env/ssr.ts";
+import type {ShareLinkPassCode} from "@/views/ShareLink/ts/sl.ts";
+import {base62ToHex} from "@/utils/base62.ts";
+import {decryptWordArray, HexToWordArray} from "@/utils/cryptoWordArray.ts";
+import sharelinkPw from '@/json/sharelinkPw.json';
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
 
 useTitle("国际象棋爱好者协会");
 
@@ -45,6 +54,30 @@ function abcdInput_kuOrC(event: Event){
     ai2=true;
   }
 }
+
+onMounted(async ()=>{
+  if (isClient) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const slpcEnc:string|null=urlParams.get('slpc');
+    if (slpcEnc!=null){
+      let slpc:ShareLinkPassCode|null=null;
+      try{
+        slpc=JSON.parse(decryptWordArray(HexToWordArray(base62ToHex(slpcEnc)),sharelinkPw.value));
+      }catch{}
+      if (slpc!=null){
+        const date=dayjs(slpc.ed);
+        if (date.isAfter(dayjs.utc(new Date()))){
+          abcdInput_isShow.value=false;
+          emit('itcaaSwitch');
+        }else{
+          abcdInput_isShow.value=true;
+          await nextTick();
+          abcdInput.value!.value="该分享已过期";
+        }
+      }
+    }
+  }
+});
 
 aos();
 </script>
