@@ -126,9 +126,6 @@ function getLocationHref(){
             <router-link class="nav-link" :class="{'active':(curRouteName=='library' || curRouteName?.startsWith('library_doc-'))}" aria-current="page" :to="{ name: 'library'}">{{t(`${lp}.library`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='aboutUs')}" aria-current="page" :to="{ name: 'aboutUs'}">{{t(`${lp}.aboutUs`)}}</router-link>
-          </li>
-          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='joinUs')}" aria-current="page" :to="{ name: 'joinUs'}">{{t(`${lp}.joinUs`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">

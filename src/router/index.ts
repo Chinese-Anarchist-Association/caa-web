@@ -32,11 +32,6 @@ const router = createRouter({
             component: lazyLoadGuard(() => import('@/views/Nothing/Nothing.vue')),
         },
         {
-            path: '/AboutUs',
-            name: 'aboutUs',
-            component: lazyLoadGuard(() => import('@/views/AboutUs/AboutUs.vue')),
-        },
-        {
             path: '/JoinUs',
             name: 'joinUs',
             component: lazyLoadGuard(() => import('@/views/JoinUs/JoinUs.vue')),
