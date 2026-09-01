@@ -2,22 +2,35 @@ import {ref, type Ref} from "vue";
 import {sleep} from "@/utils/sleep.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
 
+export type ChatFlowContent_ShowKey={
+    //当前数据拥有所有目标键时为真，该项为空时为真
+    showKeyAnd?:string[];
+    //当前数据拥有其中某个键时为真，该项为空时为真
+    showKeyOr?:string[];
+    //当前数据没有拥有其中某个键时为真
+    showKeyNot?:string[];
+}
 export type ChatFlowContent={
     //输出聊天消息
     caaChat?:{
         //内容
         content:string;
-        //当前数据拥有所有目标键才会执行当前聊天消息输出
-        showKey?:string[];
         //输出前的等待时间，留空则默认为0
         wait?:number;
+
+        //需要所有目标都为真时，才会执行当前聊天消息输出
+        showKey?:ChatFlowContent_ShowKey;
     },
     userSend?:{
-        //内容
-        content:string;
-        //用户使用该选项将获得的键
-        addShowKey?:string[];
-    }[]
+        opt:{
+            //内容
+            content:string;
+            //用户使用该选项将获得的键
+            addShowKey?:string[];
+        }[],
+        //需要所有目标都为真时，才会显示该用户发送选项
+        showKey?:ChatFlowContent_ShowKey;
+    }
 };
 export type ChatFlowContents=ChatFlowContent[];
 
@@ -77,7 +90,7 @@ export default function (isAlive:Ref<boolean>){
                             ad.elem.textContent+=ad.content[i];
                             await sleep(10);
 
-                            if (ad.elem.classList.contains('chat-content') && chat.value){
+                            if (/*ad.elem.classList.contains('chat-content') &&*/ chat.value){
                                 chat.value.scrollTop = chat.value.scrollHeight;
                             }
                         }
@@ -157,16 +170,68 @@ export default function (isAlive:Ref<boolean>){
                         maxAge: 60 * 60 * 24 * 365,
                     });
         }
+        function showKey_check(showKey:ChatFlowContent_ShowKey|undefined):boolean{
+            if (showKey){//检查当前是否拥有目标的所有键
+                let isHave=true;
+
+                if (showKey.showKeyAnd && isHave) {
+                    for (let sk of showKey.showKeyAnd) {
+                        let isHave2 = false;
+                        for (let cfsk of chatFlowShowKey) {
+                            if (cfsk == sk) {
+                                isHave2 = true;
+                                break;
+                            }
+                        }
+                        if (!isHave2) {
+                            isHave = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (showKey.showKeyOr && isHave){
+                    let isHave2=false;
+                    for (let sk of showKey.showKeyOr){
+                        for (let cfsk of chatFlowShowKey){
+                            if (cfsk == sk) {
+                                isHave2 = true;
+                                break;
+                            }
+                        }
+                    }
+                    isHave=isHave2;
+                }
+
+                if (showKey.showKeyNot && isHave){
+                    let isHave2=false;
+                    for (let sk of showKey.showKeyNot){
+                        for (let cfsk of chatFlowShowKey){
+                            if (cfsk == sk) {
+                                isHave2 = true;
+                                break;
+                            }
+                        }
+                    }
+                    isHave=!isHave2;
+                }
+
+                return isHave;
+            }else return true;
+        }
         if (chatFlow_haveHistory!=null) chatFlowHistory=[];//清空重绘
         if (chatFlow_haveHistory==null){
             const cuCfc = chatFlowContents[chatFlowHistory.length];
             if (cuCfc && cuCfc.userSend) {
-                const sid=cuCfc.userSend[sendId]!.addShowKey;
-                if (sid) {
-                    chatFlowShowKey.push(...sid);
+                const canShow:boolean=showKey_check(cuCfc.userSend.showKey);
+                if (canShow) {
+                    const sid = cuCfc.userSend.opt[sendId]!.addShowKey;
+                    if (sid) {
+                        chatFlowShowKey.push(...sid);
+                    }
+                    chatFlowHistory.push(sendId);
+                    saveCookie();
                 }
-                chatFlowHistory.push(sendId);
-                saveCookie();
             }
         }
         let over=false;
@@ -174,24 +239,7 @@ export default function (isAlive:Ref<boolean>){
             const cuCfc = chatFlowContents[chatFlowHistory.length];
             if (cuCfc) {
                 if (cuCfc.caaChat) {
-                    let canShow:boolean=false;
-                    if (cuCfc.caaChat.showKey){//检查当前是否拥有目标的所有键
-                        let isHave=true;
-                        for (let sk of cuCfc.caaChat.showKey){
-                            let isHave2=false;
-                            for (let cfsk of chatFlowShowKey){
-                                if (cfsk == sk){
-                                    isHave2 = true;
-                                    break;
-                                }
-                            }
-                            if (!isHave2){
-                                isHave = false;
-                                break;
-                            }
-                        }
-                        canShow=isHave;
-                    }else canShow=true;
+                    const canShow:boolean=showKey_check(cuCfc.caaChat.showKey);
                     if (canShow) {
                         if (chatFlow_haveHistory==null) {
                             if (cuCfc.caaChat.wait && cuCfc.caaChat.wait != 0) {
@@ -204,20 +252,24 @@ export default function (isAlive:Ref<boolean>){
                     chatFlowHistory.push(-1);
                     saveCookie();
                 } else if (cuCfc.userSend) {
-                    if (chatFlow_haveHistory==null) {
-                        const usContent: string[] = [];
-                        cuCfc.userSend.forEach(us => {
-                            usContent.push(us.content);
-                        });
-                        addSendContent(usContent).then();
+                    const canShow:boolean=showKey_check(cuCfc.userSend.showKey);
+                    if (canShow) {
+                        if (chatFlow_haveHistory == null) {
+                            const usContent: string[] = [];
+                            cuCfc.userSend.opt.forEach(us => {
+                                usContent.push(us.content);
+                            });
+                            addSendContent(usContent).then();
 
-                        over = true;
-                    }
-                    else {
-                        addChatContent(cuCfc.userSend[chatFlow_haveHistory[chatFlowHistory.length]!]!.content,'user');
+                            over = true;
+                        } else {
+                            addChatContent(cuCfc.userSend.opt[chatFlow_haveHistory[chatFlowHistory.length]!]!.content, 'user');
 
-                        chatFlowHistory.push(chatFlow_haveHistory[chatFlowHistory.length]!);
-                        //saveCookie();
+                            chatFlowHistory.push(chatFlow_haveHistory[chatFlowHistory.length]!);
+                            //saveCookie();
+                        }
+                    }else{
+                        chatFlowHistory.push(-1);
                     }
                 }else {
                     chatFlowHistory.push(-1);
