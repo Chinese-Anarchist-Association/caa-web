@@ -44,39 +44,46 @@ void easterEgg;
       </div>
     </section>
 
-    <section class="pt-2rem pb-2rem bg-a">
+    <section class="pt-2rem pb-2rem bg-a overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
             <img class="illustration w-50 bg_only-light-show have-padding" alt="caa-logo" loading="lazy" :src="imgsUrl[0]" data-aos="flip-up"/>
           </div>
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-            <div data-aos="zoom-in" data-aos-delay="200">
+            <div data-aos="zoom-in">
               <span class="general-text" >{{t(`${lp}.txt-0-0`)}}<em>{{t(`${lp}.txt-0-1`)}}</em>{{t(`${lp}.txt-0-2`)}}<em>{{t(`${lp}.txt-0-3`)}}</em>{{t(`${lp}.txt-0-4`)}}</span>
               <br/>
               <span class="general-text">{{t(`${lp}.txt-10`)}}</span>
             </div>
           </div>
-          <div class="col-12 col-md-6 mt-2 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 mt-2 d-flex justify-content-center align-items-center">
             <div>
               <span class="general-text" data-aos="zoom-in-right">{{t(`${lp}.txt-1-0`)}}<strong>{{t(`${lp}.txt-1-1`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-3`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-4`)}}</strong>{{t(`${lp}.txt-1-2`)}}<strong>{{t(`${lp}.txt-1-5`)}}</strong>{{t(`${lp}.txt-1-6`)}}<strong>{{t(`${lp}.txt-1-7`)}}</strong>{{t(`${lp}.txt-1-8`)}}</span>
               <br/>
-              <span class="general-text" data-aos="zoom-in-right" data-aos-delay="400">{{t(`${lp}.txt-2`)}}</span>
+              <span class="general-text" data-aos="zoom-in-right">{{t(`${lp}.txt-2`)}}</span>
             </div>
           </div>
-          <div class="col-12 col-md-6 mt-2 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 mt-2 d-flex justify-content-center align-items-center">
             <div>
-              <strong class="general-text" data-aos="zoom-in-left" data-aos-delay="600">{{t(`${lp}.txt-3`)}}</strong>
+              <span class="general-text" data-aos="zoom-in-right">{{t(`${lp}.txt-12`)}}</span>
+              <br/>
+              <span class="general-text" data-aos="zoom-in-right">{{t(`${lp}.txt-13`)}}</span>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 mt-2 d-flex justify-content-center">
+            <div>
+              <strong class="general-text" data-aos="zoom-in-left">{{t(`${lp}.txt-3`)}}</strong>
               <div class="row">
                 <div class="col-6">
-                  <ul class="general-text" data-aos="zoom-in-up" data-aos-delay="800">
+                  <ul class="general-text" data-aos="zoom-in-up">
                     <li>{{t(`${lp}.txt-4`)}}</li>
                     <li>{{t(`${lp}.txt-5`)}}</li>
                     <li>{{t(`${lp}.txt-6`)}}</li>
                   </ul>
                 </div>
                 <div class="col-6">
-                  <ul class="general-text" data-aos="zoom-in-up" data-aos-delay="800">
+                  <ul class="general-text" data-aos="zoom-in-up">
                     <li>{{t(`${lp}.txt-7`)}}</li>
                     <li>{{t(`${lp}.txt-8`)}}</li>
                     <li>{{t(`${lp}.txt-9`)}}</li>
@@ -85,10 +92,82 @@ void easterEgg;
               </div>
             </div>
           </div>
+          <div class="col-12 col-md-6 mt-2 d-flex justify-content-center">
+            <div>
+              <strong class="general-text" data-aos="zoom-in-left">{{t(`${lp}.txt-14`)}}</strong>
+              <div class="row">
+                <div class="col-6">
+                  <ul class="general-text" data-aos="zoom-in-up">
+                    <li>{{t(`${lp}.txt-15`)}}</li>
+                    <li>{{t(`${lp}.txt-16`)}}</li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <ul class="general-text" data-aos="zoom-in-up">
+                    <li>{{t(`${lp}.txt-17`)}}</li>
+                    <li>{{t(`${lp}.txt-18`)}}</li>
+                    <li>{{t(`${lp}.txt-19`)}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-b">
+    <section class="pt-2rem pb-2rem bg-b overflow-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 data-aos="fade-down">{{t(`${lp}.txt-20`)}}</h2>
+          </div>
+          <div class="col-12">
+            <p data-aos="zoom-in">{{t(`${lp}.txt-21`)}}</p>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-right">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-22`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-23`)}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-left">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-24`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-25`)}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-right">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-26`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-27`)}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-left">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-28`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-29`)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-2rem pb-2rem bg-a overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
@@ -102,13 +181,16 @@ void easterEgg;
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-a" id="ngnmSection">
-      <div class="h-100 w-100 d-flex justify-content-center align-items-center">
-        <svg-a-punk-style-circle-a class="svgObj" data-aos="fade-down"/>
-        <img alt="没有神明，没有主人" :src="imgsUrl[6]" data-aos="fade-up"/>
+    <section class="pt-2rem pb-2rem bg-b overflow-hidden" id="aioSection">
+      <div class="h-100 w-100">
+        <div class="text-center">
+          <span class="text-0" data-aos="zoom-in-down">无治即秩序</span><br/>
+          <svg-a-punk-style-circle-a class="svgObj" data-aos="zoom-in"/><br/>
+          <span class="text-1" data-aos="zoom-in-up">Anarchy Is Order</span>
+        </div>
       </div>
     </section>
-    <section class="pt-6 pb-6 bg-b">
+    <section class="pt-6 pb-6 bg-a">
       <!--用于占位-->
     </section>
   </div>

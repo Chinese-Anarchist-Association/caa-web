@@ -32,11 +32,6 @@ const router = createRouter({
             component: lazyLoadGuard(() => import('@/views/Nothing/Nothing.vue')),
         },
         {
-            path: '/AboutUs',
-            name: 'aboutUs',
-            component: lazyLoadGuard(() => import('@/views/AboutUs/AboutUs.vue')),
-        },
-        {
             path: '/JoinUs',
             name: 'joinUs',
             component: lazyLoadGuard(() => import('@/views/JoinUs/JoinUs.vue')),
@@ -82,7 +77,20 @@ const router = createRouter({
             path: '/ShareLink',
             name: 'shareLink',
             component: lazyLoadGuard(()=>import('@/views/ShareLink/ShareLink.vue')),
-        }
+        },
+
+
+
+        {
+            path: '/404',//使预渲染工具构建一个404.html以供github page使用
+            name: '404',
+            component: lazyLoadGuard(()=>import('@/views/404.vue')),
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'notFound',
+            component: lazyLoadGuard(()=>import('@/views/404.vue')),
+        },
     ],
 });
 //此方法无法成功在资源加载前拦截
