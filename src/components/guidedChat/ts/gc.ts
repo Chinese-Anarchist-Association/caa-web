@@ -90,7 +90,7 @@ export default function (isAlive:Ref<boolean>){
                             ad.elem.textContent+=ad.content[i];
                             await sleep(10);
 
-                            if (ad.elem.classList.contains('chat-content') && chat.value){
+                            if (/*ad.elem.classList.contains('chat-content') &&*/ chat.value){
                                 chat.value.scrollTop = chat.value.scrollHeight;
                             }
                         }
@@ -268,6 +268,8 @@ export default function (isAlive:Ref<boolean>){
                             chatFlowHistory.push(chatFlow_haveHistory[chatFlowHistory.length]!);
                             //saveCookie();
                         }
+                    }else{
+                        chatFlowHistory.push(-1);
                     }
                 }else {
                     chatFlowHistory.push(-1);
