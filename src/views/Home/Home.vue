@@ -181,10 +181,13 @@ void easterEgg;
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-b" id="ngnmSection">
-      <div class="h-100 w-100 d-flex justify-content-center align-items-center">
-        <svg-a-punk-style-circle-a class="svgObj" data-aos="fade-down"/>
-        <img alt="没有神明，没有主人" :src="imgsUrl[6]" data-aos="fade-up"/>
+    <section class="pt-2rem pb-2rem bg-b overflow-hidden" id="aioSection">
+      <div class="h-100 w-100">
+        <div class="text-center">
+          <span class="text-0" data-aos="zoom-in-down">无治即秩序</span><br/>
+          <svg-a-punk-style-circle-a class="svgObj" data-aos="zoom-in"/><br/>
+          <span class="text-1" data-aos="zoom-in-up">Anarchy Is Order</span>
+        </div>
       </div>
     </section>
     <section class="pt-6 pb-6 bg-a">
