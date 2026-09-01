@@ -7,17 +7,32 @@ export type ChatFlowContent={
     caaChat?:{
         //内容
         content:string;
-        //当前数据拥有所有目标键才会执行当前聊天消息输出
-        showKey?:string[];
         //输出前的等待时间，留空则默认为0
         wait?:number;
+
+        //需要所有目标都为真时，才会执行当前聊天消息输出
+        //当前数据拥有所有目标键时为真，该项为空时为真
+        showKeyAnd?:string[];
+        //当前数据拥有其中某个键时为真，该项为空时为真
+        showKeyOr?:string[];
+        //当前数据没有拥有其中某个键时为真
+        showKeyNot?:string[];
     },
     userSend?:{
-        //内容
-        content:string;
-        //用户使用该选项将获得的键
-        addShowKey?:string[];
-    }[]
+        opt:{
+            //内容
+            content:string;
+            //用户使用该选项将获得的键
+            addShowKey?:string[];
+        }[],
+        //需要所有目标都为真时，才会显示该用户发送选项
+        //当前数据拥有所有目标键时为真，该项为空时为真
+        showKeyAnd?:string[];
+        //当前数据拥有其中某个键时为真，该项为空时为真
+        showKeyOr?:string[];
+        //当前数据没有拥有其中某个键时为真
+        showKeyNot?:string[];
+    }
 };
 export type ChatFlowContents=ChatFlowContent[];
 
