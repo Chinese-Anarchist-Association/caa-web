@@ -44,7 +44,7 @@ void easterEgg;
       </div>
     </section>
 
-    <section class="pt-2rem pb-2rem bg-a">
+    <section class="pt-2rem pb-2rem bg-a overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
@@ -115,7 +115,59 @@ void easterEgg;
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-b">
+    <section class="pt-2rem pb-2rem bg-b overflow-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 data-aos="fade-down">{{t(`${lp}.txt-20`)}}</h2>
+          </div>
+          <div class="col-12">
+            <p data-aos="zoom-in">{{t(`${lp}.txt-21`)}}</p>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-right">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-22`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-23`)}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-left">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-24`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-25`)}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-right">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-26`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-27`)}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 mt-1">
+            <div class="card h-100" data-aos="fade-left">
+              <div class="card-header">
+                <strong>{{t(`${lp}.txt-28`)}}</strong>
+              </div>
+              <div class="card-body">
+                <span>{{t(`${lp}.txt-29`)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-2rem pb-2rem bg-a overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
@@ -129,13 +181,13 @@ void easterEgg;
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-a" id="ngnmSection">
+    <section class="pt-2rem pb-2rem bg-b" id="ngnmSection">
       <div class="h-100 w-100 d-flex justify-content-center align-items-center">
         <svg-a-punk-style-circle-a class="svgObj" data-aos="fade-down"/>
         <img alt="没有神明，没有主人" :src="imgsUrl[6]" data-aos="fade-up"/>
       </div>
     </section>
-    <section class="pt-6 pb-6 bg-b">
+    <section class="pt-6 pb-6 bg-a">
       <!--用于占位-->
     </section>
   </div>
