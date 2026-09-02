@@ -14,15 +14,26 @@ const {
   start,
   initChatFlow,
   getCookie,
-}=gc(isAlive);
+}=gc(
+    isAlive,
+    [
+      t('txt-0'),
+      t('txt-1'),
+      t('txt-3'),
+      t('txt-4'),
+      t('txt-2'),
+      t('txt-5'),
+      t('txt-6'),
+      t('txt-7'),
+      t('txt-8'),
+    ],
+);
 void chat;
 void send;
 
 onMounted(()=>{
   if (isClient){
-    start([
-      t('txt-0'),t('txt-1'),t('txt-3'),t('txt-4'),t('txt-2'),t('txt-5'),
-    ]);
+    start();
   }
 });
 
@@ -56,11 +67,14 @@ defineExpose({
 {
   "zh-CN": {
     "txt-0": "欢迎使用CAA引导式交流终端。",
-    "txt-1": "我们的交谈将全程匿名，不会上传你的任何信息。",
-    "txt-2": "开始对话",
+    "txt-1": "我们的通信将全程匿名，不会上传你的任何信息。",
+    "txt-2": "开始通信",
     "txt-3": "正在加载...",
     "txt-4": "加载完毕。",
-    "txt-5": "已发现历史对话记录。"
+    "txt-5": "已发现历史通信记录。",
+    "txt-6": "点击底部按钮即开始通信。",
+    "txt-7": "通信会话已建立。",
+    "txt-8": "通信会话已销毁。"
   }
 }
 </i18n>

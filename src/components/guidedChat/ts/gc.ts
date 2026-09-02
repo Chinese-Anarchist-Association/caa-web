@@ -43,7 +43,15 @@ export type GcCookieData={
     cfsk:string[],
 }
 
-export default function (isAlive:Ref<boolean>){
+/**
+ * def
+ * @param isAlive 当前组件是否存活
+ * @param outputString 输出文本
+ */
+export default function (
+    isAlive:Ref<boolean>,
+    outputString:string[],
+){
     //聊天流程的内容数据
     let chatFlowContents:ChatFlowContents;
     //聊天流程的键数据
@@ -233,6 +241,15 @@ export default function (isAlive:Ref<boolean>){
                     saveCookie();
                 }
             }
+
+            //console.log(chatFlowHistory.length)
+            if (chatFlowHistory.length==0){
+                await wait_autoOwbw();
+                await sleep(500);
+                addChatContent(outputString[7]!, 'sys');
+                await wait_autoOwbw();
+                await sleep(300);
+            }
         }
         let over=false;
         while (!over) {
@@ -278,8 +295,22 @@ export default function (isAlive:Ref<boolean>){
             }else over = true;
 
             if (chatFlow_haveHistory!=null){
-                if (chatFlowHistory.length==chatFlow_haveHistory.length)
-                    chatFlow_haveHistory=null;
+                if (chatFlowHistory.length==chatFlow_haveHistory.length) {
+                    chatFlow_haveHistory = null;
+                    if (chatFlowHistory.length!=chatFlowContents.length) {
+                        await wait_autoOwbw();
+                        await sleep(300);
+                        addChatContent(outputString[7]!, 'sys');
+                        await wait_autoOwbw();
+                        await sleep(300);
+                    }
+                    else over = true;
+                }
+            }else{
+                if (chatFlowHistory.length==chatFlowContents.length) {
+                    addChatContent(outputString[8]!, 'sys');
+                    over = true;
+                }
             }
         }
 
@@ -294,19 +325,21 @@ export default function (isAlive:Ref<boolean>){
         flowPush(id).then();
     }
 
-    async function start(initOutputString:string[]){
-        addChatContent(initOutputString[0]!,'sys');
-        addChatContent(initOutputString[1]!,'sys');
-        addChatContent(initOutputString[2]!,'sys');
+    async function start(){
+        addChatContent(outputString[0]!,'sys');
+        addChatContent(outputString[1]!,'sys');
+        addChatContent(outputString[2]!,'sys');
         while (!chatFlow_isInit && isAlive.value){
             await sleep(500);
             //console.log('test')
         }
-        addChatContent(initOutputString[3]!,'sys');
-        if (chatFlow_haveHistory==null)
-            addSendContent([initOutputString[4]!]).then();
+        addChatContent(outputString[3]!,'sys');
+        if (chatFlow_haveHistory==null) {
+            addChatContent(outputString[6]!, 'sys');
+            addSendContent([outputString[4]!]).then();
+        }
         else {
-            addChatContent(initOutputString[5]!,'sys');
+            addChatContent(outputString[5]!,'sys');
             flowPush(-1).then();
         }
     }

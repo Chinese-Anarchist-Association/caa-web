@@ -34,7 +34,7 @@ onMounted(async ()=>{
     await sleep(500);
   }
   const gck:GcCookieKey={
-    name:"joinUs_GC_v2",//每次更新内容后需要更改cookie键名，以避免使用过的用户的数据不匹配
+    name:"joinUs_GC_v3",//每次更新内容后需要更改cookie键名，以避免使用过的用户的数据不匹配
     path:"/JoinUs",
   }
   const gcd:GcCookieData|undefined=guidedChat.value!.getCookie(gck);
