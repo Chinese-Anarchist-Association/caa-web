@@ -78,6 +78,11 @@ const router = createRouter({
             name: 'shareLink',
             component: lazyLoadGuard(()=>import('@/views/ShareLink/ShareLink.vue')),
         },
+        {
+            path: '/AreYouAnarchist',
+            name: 'areYouAnarchist',
+            component: lazyLoadGuard(()=>import('@/views/AreYouAnarchist/AreYouAnarchist.vue')),
+        },
 
 
 

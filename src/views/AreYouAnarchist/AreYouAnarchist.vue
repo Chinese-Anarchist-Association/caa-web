@@ -2,14 +2,14 @@
 import {autoUseI18n} from "@/utils/i18nUtils.ts";
 import {autoLoadLocale} from "@/utils/vue/autoLoadLocale.ts";
 import {useTitle} from "@vueuse/core";
+import {onMounted, onUnmounted, ref, type Ref} from "vue";
+import useGc from "./ts/useGc.ts";
 import GuidedChat from "@/components/guidedChat/guidedChat.vue";
-import {onMounted, onUnmounted, type Ref, ref} from "vue";
-import type {GcCookieData, GcCookieKey} from "@/components/guidedChat/ts/gc.ts";
-import useGc from "@/views/JoinUs/ts/useGc.ts";
 import {sleep} from "@/utils/sleep.ts";
+import type {GcCookieData, GcCookieKey} from "@/components/guidedChat/ts/gc.ts";
 
 const {gt:t}=autoUseI18n();
-const lp:string="view_JoinUs";
+const lp:string="view_AreYouAnarchist";
 
 //语言数据是否加载完成
 let isLocaleLoaded:boolean=false;
@@ -34,8 +34,8 @@ onMounted(async ()=>{
     await sleep(500);
   }
   const gck:GcCookieKey={
-    name:"joinUs_GC_v3",//每次更新内容后需要更改cookie键名，以避免使用过的用户的数据不匹配
-    path:"/JoinUs",
+    name:"areYouAnarchist_GC_v1",//每次更新内容后需要更改cookie键名，以避免使用过的用户的数据不匹配
+    path:"/AreYouAnarchist",
   }
   const gcd:GcCookieData|undefined=guidedChat.value!.getCookie(gck);
   if (gcd!=undefined)
@@ -46,9 +46,9 @@ onMounted(async ()=>{
 </script>
 
 <template>
-<div id="joinUs">
-  <guided-chat id="guidedChat" ref="guidedChat"></guided-chat>
-</div>
+  <div id="areYouAnarchist">
+    <guided-chat id="guidedChat" ref="guidedChat"></guided-chat>
+  </div>
 </template>
 
 <style scoped lang="scss">
