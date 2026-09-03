@@ -98,6 +98,32 @@ function leaveBtn_click(){
 function getLocationHref(){
   return window.location.href;
 }
+
+//region fonts
+type FontsName='sys'|'lofinia';
+const curFont:Ref<FontsName>=ref('sys');
+function doFontSel(font:FontsName,setCookie:boolean=true){
+  const html:HTMLHtmlElement = document.querySelector("html")!;
+  /*switch(font){
+    case 'sys':
+      break;
+  }*/
+  html.setAttribute('data-font',font);
+  curFont.value=font;
+
+  if (setCookie)
+    useCookies().set('fontFamily', font,{
+      maxAge: 60*60*24*365,
+    });
+}
+onMounted(()=>{
+  const fontCookie:FontsName|undefined=useCookies().get('fontFamily');
+  if (fontCookie!=undefined)
+    doFontSel(fontCookie,false);
+  else
+    doFontSel('sys',true);
+});
+//endregion
 </script>
 
 <template>
@@ -236,6 +262,28 @@ function getLocationHref(){
                 <button @click="doLangSel('id-ID')" :class="{ 'active': (curLoc=='id-ID') }" class="dropdown-item">
                   Bahasa Indonesia{{(curLoc!='id-ID')?`(${t(`${lp}.langs.id-ID`)})`:''}}
                   <svg :style="(curLoc!='id-ID')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item col-6 col-lg-auto dropdown d-flex flex-ai-c justify-content-center">
+            <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <svg-bsi-fonts class="bi" width="24" height="24" ></svg-bsi-fonts>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <h6 class="dropdown-header">{{t(`${lp}.fonts.font-sel`)}}</h6>
+              </li>
+              <li>
+                <button @click="doFontSel('sys')" :class="{ 'active': (curFont=='sys') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curFont!='sys')?{display: 'none'}:{}" class="bi" width="16" height="16"/>
+                  {{t(`${lp}.fonts.sys`)}}
+                </button>
+              </li>
+              <li>
+                <button @click="doFontSel('lofinia')" :class="{ 'active': (curFont=='lofinia') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curFont!='lofinia')?{display: 'none'}:{}" class="bi" width="16" height="16"/>
+                  {{t(`${lp}.fonts.lofinia`)}}
                 </button>
               </li>
             </ul>

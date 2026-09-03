@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Lofinia Regular';
+  src: url("/public/assets/fonts/Lofinia_v0.14-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@mixin sysFont{
+  --font-family: var(--bs-body-font-family);
+}
+:root {
+  @include sysFont;
+}
+:root[data-font="sys"]{
+  @include sysFont;
+}
+:root[data-font="lofinia"]{
+  --font-family: Lofinia Regular;
+}
+
+html body {
+  font-family: var(--font-family), system-ui, -apple-system;
+}
