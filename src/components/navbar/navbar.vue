@@ -187,23 +187,23 @@ onMounted(()=>{
               </li>
               <li>
                 <button @click="doThemeSel('auto')" :class="{ 'active': (curTheme=='auto') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curTheme!='auto')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   <svg-bsi-circle-half class="bi" width="16" height="16" ></svg-bsi-circle-half>
                   {{t(`${lp}.theme.auto`)}}
-                  <svg :style="(curTheme!='auto')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doThemeSel('light')" :class="{ 'active': (curTheme=='light') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curTheme!='light')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   <svg-bsi-sun class="bi" width="16" height="16" ></svg-bsi-sun>
                   {{t(`${lp}.theme.light`)}}
-                  <svg :style="(curTheme!='light')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doThemeSel('dark')" :class="{ 'active': (curTheme=='dark') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curTheme!='dark')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   <svg-bsi-moon-stars class="bi" width="16" height="16" ></svg-bsi-moon-stars>
                   {{t(`${lp}.theme.dark`)}}
-                  <svg :style="(curTheme!='dark')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
             </ul>
@@ -218,50 +218,50 @@ onMounted(()=>{
               </li>
               <li>
                 <button @click="doLangSel('zh-CN')" :class="{ 'active': (curLoc=='zh-CN') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='zh-CN')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   简体中文{{(curLoc!='zh-CN')?`(${t(`${lp}.langs.zh-CN`)})`:''}}<!--{{t(`${lp}.ttii`)/*翻译不完整批注，后续完成翻译后需要手动移除该字样*/}}-->
-                  <svg :style="(curLoc!='zh-CN')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('en-US')" :class="{ 'active': (curLoc=='en-US') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='en-US')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   English{{(curLoc!='en-US')?`(${t(`${lp}.langs.en-US`)})`:''}}
-                  <svg :style="(curLoc!='en-US')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('zh-Hant')" :class="{ 'active': (curLoc=='zh-Hant') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='zh-Hant')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   繁體中文{{(curLoc!='zh-Hant')?`(${t(`${lp}.langs.zh-Hant`)})`:''}}
-                  <svg :style="(curLoc!='zh-Hant')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('es')" :class="{ 'active': (curLoc=='es') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='es')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   Español{{(curLoc!='es')?`(${t(`${lp}.langs.es`)})`:''}}
-                  <svg :style="(curLoc!='es')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('ru')" :class="{ 'active': (curLoc=='ru') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='ru')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   русский{{(curLoc!='ru')?`(${t(`${lp}.langs.ru`)})`:''}}
-                  <svg :style="(curLoc!='ru')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('pt-PT')" :class="{ 'active': (curLoc=='pt-PT') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='pt-PT')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   Português{{(curLoc!='pt-PT')?`(${t(`${lp}.langs.pt-PT`)})`:''}}
-                  <svg :style="(curLoc!='pt-PT')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('el')" :class="{ 'active': (curLoc=='el') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='el')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   Ελληνικά{{(curLoc!='el')?`(${t(`${lp}.langs.el`)})`:''}}
-                  <svg :style="(curLoc!='el')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button @click="doLangSel('id-ID')" :class="{ 'active': (curLoc=='id-ID') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curLoc!='id-ID')?{display: 'none'}:{}" class="bi" width="16" height="16"></svg-bsi-check2>
                   Bahasa Indonesia{{(curLoc!='id-ID')?`(${t(`${lp}.langs.id-ID`)})`:''}}
-                  <svg :style="(curLoc!='id-ID')?{display: 'none'}:{}" class="bi" width="16" height="16"><use xlink:href="#svg-bsi-check2"></use></svg>
                 </button>
               </li>
             </ul>
@@ -271,8 +271,9 @@ onMounted(()=>{
               <svg-bsi-fonts class="bi" width="24" height="24" ></svg-bsi-fonts>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <h6 class="dropdown-header">{{t(`${lp}.fonts.font-sel`)}}</h6>
+              <li class="dropdown-header">
+                <h6>{{t(`${lp}.fonts.font-sel`)}}</h6>
+                <em>{{t(`${lp}.fonts.font-sel-ps`)}}</em>
               </li>
               <li>
                 <button @click="doFontSel('sys')" :class="{ 'active': (curFont=='sys') }" class="dropdown-item">
