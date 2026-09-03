@@ -181,7 +181,19 @@ void easterEgg;
         </div>
       </div>
     </section>
-    <section class="pt-2rem pb-2rem bg-b overflow-hidden" id="aioSection">
+    <section class="pt-2rem pb-2rem bg-b overflow-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <router-link class="btn btn-primary w-100" :to="{name: 'areYouAnarchist'}" data-aos="fade-right">{{t(`${lp}.txt-30`)}}</router-link>
+          </div>
+          <div class="col-6">
+            <router-link class="btn btn-primary w-100" :to="{name: 'joinUs'}" data-aos="fade-left">{{t(`${lp}.txt-31`)}}</router-link>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-2rem pb-2rem bg-a overflow-hidden" id="aioSection">
       <div class="h-100 w-100">
         <div class="text-center">
           <span class="text-0" data-aos="zoom-in-down">无治即秩序</span><br/>
@@ -189,9 +201,6 @@ void easterEgg;
           <span class="text-1" data-aos="zoom-in-up">Anarchy Is Order</span>
         </div>
       </div>
-    </section>
-    <section class="pt-6 pb-6 bg-a">
-      <!--用于占位-->
     </section>
   </div>
 </template>
