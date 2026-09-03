@@ -19,6 +19,7 @@ const iconsName = [//需要复制的图标名
     'box-arrow-right',
     'copy',
     'share',
+    'fonts',
 ];
 const sourceDir = path.resolve(__dirname, '../node_modules/bootstrap-icons/icons');
 const targetDir = path.resolve(__dirname, '../src/assets/_svg/bsi');

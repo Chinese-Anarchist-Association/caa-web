@@ -44,3 +44,4 @@ const {ChessAmateurAssociation,itcaaSwitchHandler}=caaMask();
   --view_margin-top: 0px;
 }
 </style>
+<style lang="scss" src="@/assets/scss/fonts.scss"/>

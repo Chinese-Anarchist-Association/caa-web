@@ -45,7 +45,9 @@ section{
       height: 24vw;
     }
     @mixin text_same{
-      font-size: 10vw;
+      font-size: 12vw;
+      font-weight: bold;
+      font-family: "Lofinia Regular";
       //position: relative;
     }
     /*@mixin text-after_same{

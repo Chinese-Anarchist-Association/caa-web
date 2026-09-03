@@ -24,6 +24,10 @@
             "dark": "Dark",
             "auto": "Auto"
         },
-        "ttii": "(The translation is incomplete)"
+        "ttii": "(The translation is incomplete)",
+        "fonts": {
+            "font-sel": "Font Selection",
+            "sys": "System"
+        }
     }
 }
