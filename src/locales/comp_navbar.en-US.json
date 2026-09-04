@@ -27,7 +27,9 @@
         "ttii": "(The translation is incomplete)",
         "fonts": {
             "font-sel": "Font Selection",
-            "sys": "System"
+            "sys": "System",
+            "dsDigital": "DS Digital",
+            "journal": "Journal"
         }
     }
 }
