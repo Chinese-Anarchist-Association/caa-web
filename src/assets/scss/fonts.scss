@@ -3,6 +3,16 @@
   src: url("/public/assets/fonts/Lofinia_v0.14-Regular.ttf") format("truetype");
   font-display: swap;
 }
+@font-face {
+  font-family: 'DS Digital';
+  src: url("/public/assets/fonts/DS-Digital.TTF") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Journal';
+  src: url("/public/assets/fonts/Journal.ttf") format("truetype");
+  font-display: swap;
+}
 
 @mixin sysFont{
   --font-family: var(--bs-body-font-family);
@@ -15,6 +25,12 @@
 }
 :root[data-font="lofinia"]{
   --font-family: Lofinia Regular;
+}
+:root[data-font="dsDigital"]{
+  --font-family: "DS Digital";
+}
+:root[data-font="journal"]{
+  --font-family: "Journal";
 }
 
 html body {

@@ -100,7 +100,7 @@ function getLocationHref(){
 }
 
 //region fonts
-type FontsName='sys'|'lofinia';
+type FontsName='sys'|'lofinia'|'dsDigital'|'journal';
 const curFont:Ref<FontsName>=ref('sys');
 function doFontSel(font:FontsName,setCookie:boolean=true){
   const html:HTMLHtmlElement = document.querySelector("html")!;
@@ -285,6 +285,18 @@ onMounted(()=>{
                 <button @click="doFontSel('lofinia')" :class="{ 'active': (curFont=='lofinia') }" class="dropdown-item">
                   <svg-bsi-check2 :style="(curFont!='lofinia')?{display: 'none'}:{}" class="bi" width="16" height="16"/>
                   {{t(`${lp}.fonts.lofinia`)}}
+                </button>
+              </li>
+              <li>
+                <button @click="doFontSel('dsDigital')" :class="{ 'active': (curFont=='dsDigital') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curFont!='dsDigital')?{display: 'none'}:{}" class="bi" width="16" height="16"/>
+                  {{t(`${lp}.fonts.dsDigital`)}}
+                </button>
+              </li>
+              <li>
+                <button @click="doFontSel('journal')" :class="{ 'active': (curFont=='journal') }" class="dropdown-item">
+                  <svg-bsi-check2 :style="(curFont!='journal')?{display: 'none'}:{}" class="bi" width="16" height="16"/>
+                  {{t(`${lp}.fonts.journal`)}}
                 </button>
               </li>
             </ul>

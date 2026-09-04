@@ -185,10 +185,14 @@ void easterEgg;
       <div class="container">
         <div class="row">
           <div class="col-6">
-            <router-link class="btn btn-primary w-100" :to="{name: 'areYouAnarchist'}" data-aos="fade-right">{{t(`${lp}.txt-30`)}}</router-link>
+            <router-link class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" :to="{name: 'areYouAnarchist'}" data-aos="fade-right">
+              {{t(`${lp}.txt-30`)}}
+            </router-link>
           </div>
           <div class="col-6">
-            <router-link class="btn btn-primary w-100" :to="{name: 'joinUs'}" data-aos="fade-left">{{t(`${lp}.txt-31`)}}</router-link>
+            <router-link class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" :to="{name: 'joinUs'}" data-aos="fade-left">
+              {{t(`${lp}.txt-31`)}}
+            </router-link>
           </div>
         </div>
       </div>
