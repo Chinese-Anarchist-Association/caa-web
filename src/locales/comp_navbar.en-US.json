@@ -7,6 +7,7 @@
         "library": "Library",
         "blog": "Blog",
         "posters": "Posters",
+        "notice": "Notice",
         "langs": {
             "lang-sel": "Language Selection",
             "zh-CN": "Simplified Chinese",

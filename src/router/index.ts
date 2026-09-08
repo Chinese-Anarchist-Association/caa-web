@@ -83,6 +83,11 @@ const router = createRouter({
             name: 'areYouAnarchist',
             component: lazyLoadGuard(()=>import('@/views/AreYouAnarchist/AreYouAnarchist.vue')),
         },
+        {
+            path: '/Notice',
+            name: 'notice',
+            component: lazyLoadGuard(()=>import('@/views/Notice/Notice.vue')),
+        },
 
 
 
