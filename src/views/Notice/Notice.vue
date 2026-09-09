@@ -105,7 +105,7 @@ function bigView_click(){
 }
 
 #bigView{
-  display: flex;
+  //display: flex;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -113,9 +113,10 @@ function bigView_click(){
   left: 0;
   background: rgba(0,0,0,.5);
   padding-top: var(--view_margin-top);
+  overflow-y: scroll;
   img{
     position: relative;
-    height: 100%;
+    height: auto;
     width: 100%;
     top: 0;
     left: 0;
