@@ -172,6 +172,9 @@ onMounted(()=>{
           <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='onlineSelfVerificationor')}" aria-current="page" :to="{ name: 'onlineSelfVerificationor'}">{{t(`${lp}.onlineSelfVerificationor`)}}</router-link>
           </li>
+          <li class="nav-item col-6 col-lg-auto text-center">
+            <router-link class="nav-link" :class="{'active':(curRouteName=='anonymousSecureCommunication'|| curRouteName?.startsWith('anonymousSecureCommunication_'))}" aria-current="page" :to="{ name: 'anonymousSecureCommunication'}">{{t(`${lp}.anonymousSecureCommunication`)}}</router-link>
+          </li>
         </ul>
         <ul class="navbar-nav flex-row flex-wrap nav-2">
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
