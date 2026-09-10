@@ -146,9 +146,6 @@ onMounted(()=>{
             <router-link class="nav-link" :class="{'active':(curRouteName=='notice')}" aria-current="page" :to="{ name: 'notice'}">{{t(`${lp}.notice`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='posters')}" aria-current="page" :to="{ name: 'posters'}">{{t(`${lp}.posters`)}}</router-link>
-          </li>
-          <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='blog' || curRouteName?.startsWith('blog_ct-'))}" aria-current="page" :to="{ name: 'blog'}">{{t(`${lp}.blog`)}}</router-link>
           </li>
           <li class="nav-item col-6 col-lg-auto text-center">
@@ -157,25 +154,38 @@ onMounted(()=>{
           <li class="nav-item col-6 col-lg-auto text-center">
             <router-link class="nav-link" :class="{'active':(curRouteName=='joinUs')}" aria-current="page" :to="{ name: 'joinUs'}">{{t(`${lp}.joinUs`)}}</router-link>
           </li>
-          <li class="nav-item col-6 col-lg-auto text-center">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='motionMatrix')}" aria-current="page" :to="{ name: 'motionMatrix'}">{{t(`${lp}.motionMatrix`)}}</router-link>
+          <li class="nav-item dropdown col-12 col-lg-auto hover-dropdown nav-btn">
+            <a class="nav-link hover-dropdown-btn text-center unSelectable dropdown-toggle" aria-current="page" role="button">{{t(`${lp}.other`)}}</a>
+            <ul class="dropdown-menu">
+              <li class="nav-item col-lg-auto text-center">
+                <router-link class="nav-link" :class="{'active':(curRouteName=='posters')}" aria-current="page" :to="{ name: 'posters'}">{{t(`${lp}.posters`)}}</router-link>
+              </li>
+              <li class="nav-item col-lg-auto text-center">
+                <router-link class="nav-link" :class="{'active':(curRouteName=='motionMatrix')}" aria-current="page" :to="{ name: 'motionMatrix'}">{{t(`${lp}.motionMatrix`)}}</router-link>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown col-12 col-lg-auto hover-dropdown nav-btn">
+            <a class="nav-link hover-dropdown-btn text-center unSelectable dropdown-toggle" aria-current="page" role="button">{{t(`${lp}.tools`)}}</a>
+            <ul class="dropdown-menu">
+              <li class="nav-item col-lg-auto text-center">
+                <router-link class="nav-link" :class="{'active':(curRouteName=='encAndDec')}" aria-current="page" :to="{ name: 'encAndDec'}">{{t(`${lp}.encAndDec`)}}</router-link>
+              </li>
+              <li class="nav-item col-lg-auto text-center">
+                <router-link class="nav-link" :class="{'active':(curRouteName=='onlineSelfVerificationor')}" aria-current="page" :to="{ name: 'onlineSelfVerificationor'}">{{t(`${lp}.onlineSelfVerificationor`)}}</router-link>
+              </li>
+              <li class="nav-item col-lg-auto text-center">
+                <router-link class="nav-link" :class="{'active':(curRouteName=='anonymousSecureCommunication'|| curRouteName?.startsWith('anonymousSecureCommunication_'))}" aria-current="page" :to="{ name: 'anonymousSecureCommunication'}">{{t(`${lp}.anonymousSecureCommunication`)}}</router-link>
+              </li>
+            </ul>
           </li>
         </ul>
-        <ul class="navbar-nav flex-row flex-wrap nav-1">
+        <!--<ul class="navbar-nav flex-row flex-wrap nav-1">
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none my-2 text-white-50">
           </li>
-          <li class="nav-item col-6 col-lg-auto text-center">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='encAndDec')}" aria-current="page" :to="{ name: 'encAndDec'}">{{t(`${lp}.encAndDec`)}}</router-link>
-          </li>
-          <li class="nav-item col-6 col-lg-auto text-center">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='onlineSelfVerificationor')}" aria-current="page" :to="{ name: 'onlineSelfVerificationor'}">{{t(`${lp}.onlineSelfVerificationor`)}}</router-link>
-          </li>
-          <li class="nav-item col-6 col-lg-auto text-center">
-            <router-link class="nav-link" :class="{'active':(curRouteName=='anonymousSecureCommunication'|| curRouteName?.startsWith('anonymousSecureCommunication_'))}" aria-current="page" :to="{ name: 'anonymousSecureCommunication'}">{{t(`${lp}.anonymousSecureCommunication`)}}</router-link>
-          </li>
-        </ul>
+        </ul>-->
         <ul class="navbar-nav flex-row flex-wrap nav-2">
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>

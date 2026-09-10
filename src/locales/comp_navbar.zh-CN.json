@@ -11,6 +11,8 @@
         "posters": "海报",
         "notice": "公告",
         "anonymousSecureCommunication": "匿名安全通信",
+        "tools": "工具",
+        "other": "其它",
         "langs": {
             "lang-sel": "语言选择",
             "zh-CN": "简体中文",
