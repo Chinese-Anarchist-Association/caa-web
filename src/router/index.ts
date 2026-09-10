@@ -88,6 +88,21 @@ const router = createRouter({
             name: 'notice',
             component: lazyLoadGuard(()=>import('@/views/Notice/Notice.vue')),
         },
+        {
+            path: '/asc',
+            name: 'anonymousSecureCommunication',
+            component: lazyLoadGuard(()=>import('@/views/AnonymousSecureCommunication/AnonymousSecureCommunication_List.vue')),
+        },
+        {
+            path: '/asc/pu',
+            name: 'anonymousSecureCommunication_publicRoom',
+            component:lazyLoadGuard(()=>import('@/views/AnonymousSecureCommunication/ascPublicRoom.vue')),
+        },
+        {
+            path: '/asc/pr',
+            name: 'anonymousSecureCommunication_privateRoom',
+            component:lazyLoadGuard(()=>import('@/views/AnonymousSecureCommunication/ascPrivateRoom.vue')),
+        },
 
 
 
