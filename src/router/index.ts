@@ -103,6 +103,11 @@ const router = createRouter({
             name: 'anonymousSecureCommunication_privateRoom',
             component:lazyLoadGuard(()=>import('@/views/AnonymousSecureCommunication/ascPrivateRoom.vue')),
         },
+        {
+            path: '/LlmAi',
+            name: 'llmAi',
+            component: lazyLoadGuard(()=>import('@/views/llmAi/llmAi.vue')),
+        },
 
 
 
