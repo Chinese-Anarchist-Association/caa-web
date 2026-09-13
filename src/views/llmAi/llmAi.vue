@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/*
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import {onMounted} from "vue";
 
@@ -18,12 +19,17 @@ onMounted(async ()=>{
   console.log(reply.choices[0]!.message.content);
   console.log(reply.usage);
 });
+ */
+import aiChat from "@/components/aiChat/aiChat.vue";
 </script>
 
 <template>
-
+<ai-chat id="aiChat"/>
 </template>
 
 <style scoped lang="scss">
-
+#aiChat{
+  height: calc(100vh - var(--view_margin-top));
+  padding: .5rem;
+}
 </style>

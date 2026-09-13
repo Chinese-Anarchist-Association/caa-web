@@ -1,0 +1,54 @@
+#aiChat{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr auto;
+  grid-row-gap: 0;
+  grid-template-areas:
+    "g0"
+    "g1";
+  #chat:deep(){
+    grid-area: g0;
+    border: var(--bs-border-color) solid 2px;
+    border-radius: var(--bs-border-radius);
+    padding: .6rem 1rem;
+    overflow-y: scroll;
+
+    .chat-content{
+      margin-bottom: .3rem;
+      &.sys{
+        color: var(--bs-secondary-color);
+        font-style: italic;
+      }
+      &.user{
+        color: #00c500;
+      }
+      &.caa{
+        color: var(--bs-body-color);
+      }
+    }
+  }
+  #send{
+    grid-area: g1;
+    border: var(--bs-border-color) solid 2px;
+    border-radius: var(--bs-border-radius);
+    min-height: 1rem;
+    display: flex;
+    overflow: hidden;
+    justify-content: end;
+
+    @mixin sendCtrl{
+      margin: 0;
+      height: 100%;
+      top:0;
+      border: none;
+    }
+    #sendInput{
+      @include sendCtrl;
+      background-color: transparent;
+      width: 100%;
+    }
+    #sendBtn{
+      @include sendCtrl;
+    }
+  }
+}
