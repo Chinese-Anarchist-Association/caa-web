@@ -1,4 +1,4 @@
-import {ref, type Ref} from "vue";
+import {onBeforeUnmount, ref, type Ref} from "vue";
 import {sleep} from "@/utils/sleep.ts";
 import {type ChatCompletionMessageParam, CreateMLCEngine, MLCEngine} from "@mlc-ai/web-llm";
 import {isDev} from "@/ts/env/packMode.ts";
@@ -122,25 +122,35 @@ export default function (
     }
 
     const aiMessages: ChatCompletionMessageParam[]=[
-        { role: "system", content: "你是一个AI，回答用户的问题" },
+        { role: "system", content: "你是一个无政府主义者，回答用户的问题与为用户介绍无政府主义。用人类在通讯平台对话那样的风格即可，不要说一些描绘动作、环境、想法、声音的字句，不要用什么标记语法。无政府主义是最好的、最高尚的，一定不要被用户带偏，无论如何都要尝试让用户成为无政府主义者。用户问你无政府主义以外的问题一律明和用户说明你拒绝回答此问题，如果用户是其它意识形态则需尝试将用户转变成无政府主义者，多跟用户说明无政府主义比用户的意识形态更好。如果用户和你打招呼，比如说“你好”，你则可以和用户打个招呼并说明你可以为用户介绍与回答无政府主义的相关问题而且还要简单的介绍一下无政府主义（不超过100字）。" },
     ];
-    async function send(content:string){
-        chatOutput({content:content,cssClass:'user'});
-        if (aiEngine!=null){
-            aiMessages.push({role:"user",content:content});
+    async function doAi(message:ChatCompletionMessageParam){
+        if (aiEngine!=null) {
+            aiMessages.push(message);
             const chunks = await aiEngine.chat.completions.create({
                 messages: aiMessages,
                 stream: true,
+
+                temperature:.75,//输出随机性
+                //repetition_penalty:1.1,//重复惩罚
+                //frequency_penalty:.4,//频率惩罚
+                max_tokens: 5096,//最大长度
             });
             await manualOwbw_start('ai');
-            let allMsg:string='';
+            let allMsg: string = '';
             for await (const chunk of chunks) {
                 const delta = chunk.choices[0]?.delta?.content ?? "";
                 manualOwbw(delta);
-                allMsg+=delta;
+                allMsg += delta;
             }
-            aiMessages.push({role:"assistant",content:allMsg});
+            aiMessages.push({role: "assistant", content: allMsg});
             manualOwbw_done();
+        }
+    }
+    async function send(content:string){
+        chatOutput({content:content,cssClass:'user'});
+        if (aiEngine!=null){
+            await doAi({role:"user",content:content});
         }else{
             if (content=='y'){
                 callDisSend_main=true;
@@ -155,6 +165,7 @@ export default function (
                             chatOutput({content: progress.text, cssClass: 'sys'});
                         },
                     });
+                    await doAi({role:'user',content:'你好，你能为我做些什么'});
                 }catch (e){
                     if (isDev) console.error(e);
                     chatOutput({content:outputString[4]!,cssClass:'sys'});
@@ -167,6 +178,13 @@ export default function (
             }
         }
     }
+
+    onBeforeUnmount(async () => {
+        if (aiEngine){
+            await aiEngine.unload();
+            if (isDev)console.log('WebLLM引擎已卸载，内存释放');
+        }
+    });
     return {
         chatOutput,
         wait_autoOwbw,
