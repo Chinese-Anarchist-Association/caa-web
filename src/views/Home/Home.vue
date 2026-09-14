@@ -184,15 +184,21 @@ void easterEgg;
     <section class="pt-2rem pb-2rem bg-b overflow-hidden">
       <div class="container">
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 text-center">
+            <h2 data-aos="fade-down">{{`${t(`${lp}.txt-32`)}${t(`${lp}.txt-0-0`)}`}}</h2>
+          </div>
+          <div class="col-6 mt-2">
             <router-link class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" :to="{name: 'areYouAnarchist'}" data-aos="fade-right">
               {{t(`${lp}.txt-30`)}}
             </router-link>
           </div>
-          <div class="col-6">
+          <div class="col-6 mt-2">
             <router-link class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" :to="{name: 'joinUs'}" data-aos="fade-left">
               {{t(`${lp}.txt-31`)}}
             </router-link>
+          </div>
+          <div class="col-12 mt-2 text-center">
+            <span data-aos="fade-up">{{t(`${lp}.txt-33`)}}<a href="mailto:PRCAnAssn@proton.me">PRCAnAssn@proton.me</a></span>
           </div>
         </div>
       </div>
