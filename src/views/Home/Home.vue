@@ -188,7 +188,7 @@ void easterEgg;
             <h2 data-aos="fade-down">{{`${t(`${lp}.txt-32`)}${t(`${lp}.txt-0-0`)}`}}</h2>
           </div>
           <div class="col-6 mt-2">
-            <router-link class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" :to="{name: 'areYouAnarchist'}" data-aos="fade-right">
+            <router-link class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" :to="{name: 'areYouAn'}" data-aos="fade-right">
               {{t(`${lp}.txt-30`)}}
             </router-link>
           </div>
