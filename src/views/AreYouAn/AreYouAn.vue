@@ -9,7 +9,7 @@ import {sleep} from "@/utils/sleep.ts";
 import type {GcCookieData, GcCookieKey} from "@/components/guidedChat/ts/gc.ts";
 
 const {gt:t}=autoUseI18n();
-const lp:string="view_AreYouAnarchist";
+const lp:string="view_AreYouAn";
 
 //语言数据是否加载完成
 let isLocaleLoaded:boolean=false;
@@ -35,7 +35,7 @@ onMounted(async ()=>{
   }
   const gck:GcCookieKey={
     name:"areYouAnarchist_GC_v1",//每次更新内容后需要更改cookie键名，以避免使用过的用户的数据不匹配
-    path:"/AreYouAnarchist",
+    path:"/AreYouAn",
   }
   const gcd:GcCookieData|undefined=guidedChat.value!.getCookie(gck);
   if (gcd!=undefined)

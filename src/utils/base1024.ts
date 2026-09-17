@@ -8,3 +8,6 @@ export const BASE1024=
 
 export const base64ToBase1024=anyBase(BASE64,BASE1024/*,{preserveLeading:true}*/);
 export const base1024ToBase64=anyBase(BASE1024,BASE64/*,{preserveLeading:true}*/);
+
+export const hexToBase1024=anyBase(anyBase.HEX,BASE1024);
+export const base1024ToHex=anyBase(BASE1024,anyBase.HEX);

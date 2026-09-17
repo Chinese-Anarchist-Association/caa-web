@@ -35,6 +35,7 @@ export function base254Decode(input:string):Uint8Array{
 */
 
 import basex from 'base-x';
+import anyBase from "any-base";
 
 const BASE94=
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/~\"\\\`";
@@ -49,3 +50,6 @@ export function base94Encode(input:Uint8Array):string{
 export function base94Decode(input:string):Uint8Array{
     return bs94.decode(input);
 }
+
+export const hexToBase94=anyBase(anyBase.HEX,BASE94);
+export const base94ToHex=anyBase(BASE94,anyBase.HEX);
