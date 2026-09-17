@@ -12,8 +12,8 @@ const {encPassword,handleEncFile,encBtn_click,canDoEnc,isEncError}=ENC();
 const {decPassword,handleDecFile,decBtn_click,canDoDec,isDecError}=DEC();
 
 const {
-  encPw,encContent,encTextBtn_click,encOutputContent,encCopyBtn_show,encCopyBtn_click,
-  decPw,decInput,decOutputContent,decTextBtn_click,
+  encPw,encContent,encTextBtn_click,encOutputContent,encCopyBtn_show,encCopyBtn_click,encBase,
+  decPw,decInput,decOutputContent,decTextBtn_click,decBase,
 }=textEncAndDec();
 </script>
 
@@ -83,7 +83,19 @@ const {
         <input type="password" v-model="encPw" :placeholder="t('pwPlaceholder')" class="form-control"/>
       </div>
     </div>
-    <div class="col-12 col-lg-6 mt-2 d-flex justify-content-center">
+    <div class="col-12 col-lg-6 mt-2">
+      <div class="input-group">
+        <label class="input-group-text">{{t('baseSel')}}</label>
+        <select class="form-control" v-model="encBase">
+          <option value="16">{{t('b16')}}</option>
+          <option value="62">{{t('b62')}}</option>
+          <option value="64">{{t('b64')}}</option>
+          <option value="94">{{t('b94')}}</option>
+          <option value="1024">{{t('b1024')}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 mt-2 d-flex justify-content-center">
       <button class="btn btn-primary" @click="encTextBtn_click">{{t('encTextButton')}}</button>
     </div>
     <div class="col-12 mt-2">
@@ -113,7 +125,19 @@ const {
         <input v-model="decPw" type="password" :placeholder="t('pwPlaceholder')" class="form-control"/>
       </div>
     </div>
-    <div class="col-12 col-lg-6 mt-2 d-flex justify-content-center">
+    <div class="col-12 col-lg-6 mt-2">
+      <div class="input-group">
+        <label class="input-group-text">{{t('baseSel')}}</label>
+        <select class="form-control" v-model="decBase">
+          <option value="16">{{t('b16')}}</option>
+          <option value="62">{{t('b62')}}</option>
+          <option value="64">{{t('b64')}}</option>
+          <option value="94">{{t('b94')}}</option>
+          <option value="1024">{{t('b1024')}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 mt-2 d-flex justify-content-center">
       <button class="btn btn-primary" @click="decTextBtn_click">{{t('decTextButton')}}</button>
     </div>
     <div class="col-12 mt-2">
@@ -152,7 +176,13 @@ const {
     "decContent": "待解密内容",
     "encTextButton": "执行文本加密",
     "decTextButton": "执行文本解密",
-    "output": "输出"
+    "output": "输出",
+    "baseSel": "基",
+    "b16": "十六进制",
+    "b62": "62进制",
+    "b64": "64进制",
+    "b94": "94进制",
+    "b1024": "1024进制"
   }
 }
 </i18n>
