@@ -92,6 +92,8 @@ const {
           <option value="64">{{t('b64')}}</option>
           <option value="94">{{t('b94')}}</option>
           <option value="1024">{{t('b1024')}}</option>
+          <option value="4096">{{t('b4096')}}</option>
+          <option value="20992">{{t('b20992')}}</option>
         </select>
       </div>
     </div>
@@ -134,6 +136,8 @@ const {
           <option value="64">{{t('b64')}}</option>
           <option value="94">{{t('b94')}}</option>
           <option value="1024">{{t('b1024')}}</option>
+          <option value="4096">{{t('b4096')}}</option>
+          <option value="20992">{{t('b20992')}}</option>
         </select>
       </div>
     </div>
@@ -182,7 +186,9 @@ const {
     "b62": "62进制",
     "b64": "64进制",
     "b94": "94进制",
-    "b1024": "1024进制"
+    "b1024": "1024进制",
+    "b4096": "4096进制",
+    "b20992": "20992进制"
   }
 }
 </i18n>

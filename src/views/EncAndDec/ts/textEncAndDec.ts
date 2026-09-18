@@ -5,6 +5,8 @@ import {decryptWordArray, encryptWordArray, HexToWordArray, WordArrayToHex} from
 import {base62ToHex, hexToBase62} from "@/utils/base62.ts";
 import {base94ToHex, hexToBase94} from "@/utils/base94.ts";
 import {base1024ToHex, hexToBase1024} from "@/utils/base1024.ts";
+import {base4096ToHex, hexToBase4096} from "@/utils/base4096.ts";
+import {base20992ToHex, hexToBase20992} from "@/utils/base20992.ts";
 
 export default function (){
     //region 加密
@@ -37,6 +39,8 @@ export default function (){
             case 62:
             case 94:
             case 1024:
+            case 4096:
+            case 20992:
             {
                 const encHex=WordArrayToHex(encryptWordArray(content,pw));
                 switch (base){
@@ -51,6 +55,12 @@ export default function (){
                         break;
                     case 1024:
                         output=hexToBase1024(encHex);
+                        break;
+                    case 4096:
+                        output=hexToBase4096(encHex);
+                        break;
+                    case 20992:
+                        output=hexToBase20992(encHex);
                         break;
                 }
             }
@@ -101,6 +111,8 @@ export default function (){
                     case 62:
                     case 94:
                     case 1024:
+                    case 4096:
+                    case 20992:
                     {
                         let decHex:string;
                         switch (base){
@@ -115,6 +127,12 @@ export default function (){
                                 break;
                             case 1024:
                                 decHex=base1024ToHex(ipt);
+                                break;
+                            case 4096:
+                                decHex=base4096ToHex(ipt);
+                                break;
+                            case 20992:
+                                decHex=base20992ToHex(ipt);
                                 break;
                         }
                         otpt = decryptWordArray(HexToWordArray(decHex),pw);
