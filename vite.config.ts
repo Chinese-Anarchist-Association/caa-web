@@ -186,6 +186,14 @@ return {
     build: {
         //仅在开发模式下生成map
         sourcemap: isDev,
+
+        rollupOptions: {
+            output: {
+                chunkFileNames: 'assets/js/chunk/[hash].js',
+                entryFileNames: 'assets/js/[hash].js',
+                assetFileNames: 'assets/[hash][extname]'
+            }
+        },
     },
     resolve: {
         alias: ra,
