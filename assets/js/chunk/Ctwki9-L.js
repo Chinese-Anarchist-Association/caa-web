@@ -1,1 +1,0 @@
-import{i as a,c as s,r as p,a as o,s as e,A as i}from"./BubknYi2.js";import"./-3AG11oG.js";import"../BU6fbcXG.js";function m(){a&&console.log("[main-spa.ts] 进入"),s(i).use(p).use(o).mount("#app"),e()}export{m as default};

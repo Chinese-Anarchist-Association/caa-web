@@ -1,0 +1,1 @@
+import{i as a,c as s,r as p,a as o,s as e,A as i}from"./4Tzjildt.js";import"./-3AG11oG.js";import"../CC2IEnZS.js";function m(){a&&console.log("[main-spa.ts] 进入"),s(i).use(p).use(o).mount("#app"),e()}export{m as default};
