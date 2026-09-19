@@ -6,6 +6,7 @@ import {loadGlobalLocale} from "@/utils/i18nUtils.ts";
 import isTrueCaa from "@/ts/global/isTrueCaa.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import isUseCaaMask from "@/ts/env/isUseCaaMask.ts";
+import caaMaskVerify from "@/json/caaMaskVerify.json";
 
 export default function (){
     const ChessAmateurAssociation:any=shallowRef(null);
@@ -26,8 +27,8 @@ export default function (){
     }
 
     isTrueCaa.value = (()=>{
-        const ck:boolean|undefined=useCookies().get('itcaa');
-        if (ck!=undefined || !(isUseCaaMask==='true')) {
+        const ck:string|undefined=useCookies().get('itcaa');
+        if ((ck!=undefined && ck == caaMaskVerify.value) || !(isUseCaaMask==='true')) {
             isTrueCaa_trueDo();
             return true;
         }
@@ -41,7 +42,7 @@ export default function (){
         }
     })();
     function itcaaSwitchHandler(){
-        useCookies().set('itcaa',true,{
+        useCookies().set('itcaa',caaMaskVerify.value,{
             path: '/',
             maxAge: 60*60*24*365,
             secure: true,
