@@ -163,6 +163,9 @@ onMounted(()=>{
               <li class="nav-item col-lg-auto text-center">
                 <router-link class="nav-link" :class="{'active':(curRouteName=='motionMatrix')}" aria-current="page" :to="{ name: 'motionMatrix'}">{{t(`${lp}.motionMatrix`)}}</router-link>
               </li>
+              <li class="nav-item col-lg-auto text-center">
+                <router-link class="nav-link" :class="{'active':(curRouteName=='llmAi')}" aria-current="page" :to="{ name: 'llmAi'}">{{t(`${lp}.caaAi`)}}</router-link>
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown col-12 col-lg-auto hover-dropdown nav-btn">
