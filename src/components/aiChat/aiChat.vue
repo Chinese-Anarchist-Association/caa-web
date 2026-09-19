@@ -11,7 +11,7 @@ let isAlive:Ref<boolean>=ref(true);
 
 const chat:Ref<HTMLDivElement|null> = ref(null);
 const sendInput:Ref<HTMLInputElement|null> = ref(null);
-const sendBtn:Ref<HTMLInputElement|null> = ref(null);
+//const sendBtn:Ref<HTMLInputElement|null> = ref(null);
 
 const{
   start,
@@ -57,8 +57,8 @@ function sendInput_keyup_enter(){
   </div>
   <div id="send">
     <input type="text" id="sendInput" ref="sendInput" @keyup.enter="sendInput_keyup_enter"/>
-    <input type="button" id="sendBtn" ref="sendBtn" @click="sendBtn_click"
-           class="btn-primary" :value="t('sendBtn')" :disabled="isDisSend"/>
+    <input type="button" id="sendBtn" @click="sendBtn_click"
+           class="btn-primary" :value="t('sendBtn')" :disabled="isDisSend"/><!--ref="sendBtn"-->
   </div>
 </div>
 </template>
